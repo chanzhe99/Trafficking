@@ -27,12 +27,12 @@ public class MainMenu : MonoBehaviour
     //    SceneManager.LoadScene(scene.ToString());
     //}
 
-    public void Play()
+    public void LoadLevelSelect()
     {
         SceneManager.LoadScene("LevelSelectMenu");
     }
 
-    public void Quit()
+    public void QuitGame()
     {
         Debug.Log("Quit");
         Application.Quit();
