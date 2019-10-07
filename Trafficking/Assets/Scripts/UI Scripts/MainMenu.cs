@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("LevelSelectMenu");
     }
 
     public void Quit()
