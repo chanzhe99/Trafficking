@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     GridBase gridBase;
 
     public List<GameObject> inSceneGameObjects = new List<GameObject>();
-    public List<GameObject> inSceneWalls = new List<GameObject>();
+    //public List<GameObject> inSceneWalls = new List<GameObject>();
     public List<GameObject> inSceneStackableObjects = new List<GameObject>();
 
     private static LevelManager instance = null;
@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         gridBase = GridBase.GetInstance();
-        //InitLevelObjects();
+        InitLevelObjects();
     }
 
     void InitLevelObjects()

@@ -11,6 +11,7 @@ namespace LevelEditor
         InterfaceManager ui;
 
         // Place object variables
+        public Node curNode;
         bool hasObj;
         GameObject objToPlace;
         GameObject cloneObj;
@@ -36,12 +37,12 @@ namespace LevelEditor
         bool deleteStackObj;
 
         // Wall creator variables
-        bool createWall;
-        public GameObject wallPrefab;
-        Node startNode_Wall;
-        Node endNode_Wall;
-        public Material[] wallPlacementMat;
-        bool deleteWall;
+        //bool createWall;
+        //public GameObject wallPrefab;
+        //Node startNode_Wall;
+        //Node endNode_Wall;
+        //public Material[] wallPlacementMat;
+        //bool deleteWall;
 
         private void Start()
         {
@@ -81,8 +82,7 @@ namespace LevelEditor
             {
                 UpdateMousePosition();
 
-                Node curNode = gridBase.NodeFromWorldPosition(mousePosition);
-
+                curNode = gridBase.NodeFromWorldPosition(mousePosition);
                 worldPosition = curNode.vis.transform.position;
 
                 if (cloneObj == null)
@@ -126,6 +126,7 @@ namespace LevelEditor
                 }
             }
         }
+        #endregion
 
         public void PassGameObjectToPlace(string objID)
         {
@@ -142,7 +143,7 @@ namespace LevelEditor
 
         void DeleteObjs()
         {
-            if (deleteObj = true)
+            if (deleteObj == true)
             {
                 UpdateMousePosition();
 
@@ -169,8 +170,7 @@ namespace LevelEditor
             CloseAll();
             deleteObj = true;
         }
-
-        #endregion
+        
 
 
         void CloseAll()
@@ -179,10 +179,10 @@ namespace LevelEditor
             deleteObj = false;
             paintTile = false;
             placeStackObj = false;
-            createWall = false;
+            //createWall = false;
             hasMaterial = false;
             deleteStackObj = false;
-            deleteWall = false;
+            //deleteWall = false;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LevelEditor
         public Vector3 worldRotation;
 
         public bool isStackableObj = false;
-        public bool isWallObject = false;
+        //public bool isWallObject = false;
 
         public float rotateDegree = 90;
 
@@ -47,8 +47,8 @@ namespace LevelEditor
             savedObj.rotX = worldRotation.x;
             savedObj.rotY = worldRotation.y;
             savedObj.rotZ = worldRotation.z;
-            savedObj.isWallObject = isWallObject;
-            savedObj.isStackable = isStackableObj;
+            //savedObj.isWallObject = isWallObject;
+            //savedObj.isStackable = isStackableObj;
 
             return savedObj;
         }

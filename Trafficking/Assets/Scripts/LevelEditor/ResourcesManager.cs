@@ -9,7 +9,7 @@ namespace LevelEditor
         public List<LevelGameObjectBase> LevelGameObjects = new List<LevelGameObjectBase>();
         public List<LevelStackedObjsBase> LevelGameObjects_Stacking = new List<LevelStackedObjsBase>();
         public List<Material> LevelMaterials = new List<Material>();
-        public GameObject wallPrefab;
+        //public GameObject wallPrefab;
 
         private static ResourcesManager instance = null;
 

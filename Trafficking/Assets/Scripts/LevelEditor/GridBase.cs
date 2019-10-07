@@ -33,9 +33,8 @@ public class GridBase : MonoBehaviour
         {
             for (int z = 0; z < sizeZ; z++)
             {
-                // scale of art assets/models is 7:1 for unity
-                float posX = x * offset * 7;
-                float posZ = z * offset * 7;
+                float posX = x * offset;
+                float posZ = z * offset;
 
                 GameObject go = Instantiate(nodePrefab, new Vector3(posX, 0, posZ), Quaternion.identity) as GameObject;
                 go.transform.parent = transform.GetChild(1).transform;
@@ -49,6 +48,7 @@ public class GridBase : MonoBehaviour
                 node.tileRenderer = node.vis.GetComponentInChildren<MeshRenderer>();
                 node.isWalkable = true;
                 node.nodePosX = x;
+                grid[x, z] = node;
             }
         }
     }
@@ -60,7 +60,7 @@ public class GridBase : MonoBehaviour
     {
         GameObject go = new GameObject();
         go.AddComponent<BoxCollider>();
-        go.GetComponent<BoxCollider>().size = new Vector3(sizeX * offset, 0.1f, sizeZ * offset);
+        go.GetComponent<BoxCollider>().size = new Vector3(sizeX * offset, -0.1f, sizeZ * offset);
         // transform position takes into consideration that the grid starts from center
         go.transform.position = new Vector3((sizeX * offset) / 2 - 1, 0, (sizeZ * offset) / 2 - 1);
     }
@@ -80,14 +80,22 @@ public class GridBase : MonoBehaviour
         int z = Mathf.RoundToInt(worldZ);
 
         if (x > sizeX)
+        {
             x = sizeX;
+        }
         if (z > sizeZ)
+        {
             z = sizeZ;
+        }
         if (x < 0)
+        {
             x = 0;
+        }
         if (z < 0)
+        {
             z = 0;
-
+        }
+        
         return grid[x, z];
     }
 }
