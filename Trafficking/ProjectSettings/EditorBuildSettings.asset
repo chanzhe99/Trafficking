@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WaypointTest.unity
-    guid: ac7660f788bd022449ee86156e640538
+    path: Assets/Scenes/MainMenu.unity
+    guid: e323eefe310673344965a5654ccc7dd0
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: bb25e18bd0ccbfc4191b42f8b117e9db
   m_configObjects: {}
