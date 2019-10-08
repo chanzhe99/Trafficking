@@ -63,6 +63,7 @@ public class Car : MonoBehaviour
             {
                 Turn();
             }
+            
 
         }
         Debug.Log("startTime: " + startTime);
@@ -85,7 +86,7 @@ public class Car : MonoBehaviour
                 startPos = nodes[4];
                 endPos = nodes[currentNode];
             }
-            
+            self = _transform.rotation;
             startRot = _transform.rotation; 
         }
         if (curTraffic.Left)
@@ -174,7 +175,9 @@ public class Car : MonoBehaviour
             if(Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
             {
                 GameObject tempObj;
+
                 curTraffic = nodes[currentNode].gameObject.GetComponent<TrafficNode>().entranceTraffic;
+                
                 tempObj = curTraffic.gameObject;
                 if (tempObj.CompareTag("CrossLight"))
                 {
@@ -266,4 +269,6 @@ public class Car : MonoBehaviour
             }
         }
     }
+
+   
 }
