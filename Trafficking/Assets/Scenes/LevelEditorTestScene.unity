@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641ac668deb94ac41a81d68a15424c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 6781408431371668454, guid: 606d52b42480a0e498cfbfa07b95ff89,
+  nodePrefab: {fileID: 7081854738509162542, guid: 2494fc4352fee0f42b14e05cc0e9945e,
     type: 3}
   sizeX: 20
   sizeZ: 20
