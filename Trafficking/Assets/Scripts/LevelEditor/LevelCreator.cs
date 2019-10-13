@@ -126,7 +126,6 @@ namespace LevelEditor
                 }
             }
         }
-        #endregion
 
         public void PassGameObjectToPlace(string objID)
         {
@@ -151,9 +150,9 @@ namespace LevelEditor
 
                 if (Input.GetMouseButton(0) && !ui.mouseOverUIElement)
                 {
-                    if(curNode.placedObj != null)
+                    if (curNode.placedObj != null)
                     {
-                        if(manager.inSceneGameObjects.Contains(curNode.placedObj.gameObject))
+                        if (manager.inSceneGameObjects.Contains(curNode.placedObj.gameObject))
                         {
                             manager.inSceneGameObjects.Remove(curNode.placedObj.gameObject);
                             Destroy(curNode.placedObj.gameObject);
@@ -170,8 +169,101 @@ namespace LevelEditor
             CloseAll();
             deleteObj = true;
         }
-        
+        #endregion
 
+        #region Stacked Objects;
+        public void PassStackedObjectToPlace(string objID)
+        {
+            if (stackCloneObj != null)
+            {
+                Destroy(stackCloneObj);
+            }
+            CloseAll();
+            placeStackObj = true;
+            stackCloneObj = null;
+            stackObjToPlace = ResourcesManager.GetInstance().GetStackObjBase(objID).objPrefab;
+        }
+
+        void PlaceStackedObj()
+        {
+            if(placeStackObj)
+            {
+                UpdateMousePosition();
+
+                Node curNode = gridBase.NodeFromWorldPosition(mousePosition);
+
+                worldPosition = curNode.vis.transform.position;
+
+                if (stackCloneObj == null)
+                {
+                    stackCloneObj = Instantiate(stackObjToPlace, worldPosition, Quaternion.identity) as GameObject;
+                    stackObjProperties = stackCloneObj.GetComponent<Level_Object>();
+                }
+                else
+                {
+                    stackCloneObj.transform.position = worldPosition;
+
+                    if (Input.GetMouseButtonUp(0) && !ui.mouseOverUIElement)
+                    {
+                        GameObject actualObjPlaced = Instantiate(stackObjToPlace, worldPosition, stackCloneObj.transform.rotation);
+                        Level_Object placedObjProperties = actualObjPlaced.GetComponent<Level_Object>();
+
+                        placedObjProperties.gridPosX = curNode.nodePosX;
+                        placedObjProperties.gridPosZ = curNode.nodePosZ;
+                        curNode.stackedObjs.Add(placedObjProperties);
+                        manager.inSceneStackableObjects.Add(actualObjPlaced);
+                    }
+
+                    if (Input.GetMouseButtonUp(1))
+                    {
+                        stackObjProperties.ChangeRotation();
+                    }
+                }
+            }
+            else
+            {
+                if (stackCloneObj != null)
+                {
+                    Destroy(stackCloneObj);
+                }
+            }
+        }
+
+        public void DeleteStackObj()
+        {
+            CloseAll();
+            deleteStackObj = true;
+        }
+
+        void DeleteStackedObjs()
+        {
+            if (deleteStackObj)
+            {
+                UpdateMousePosition();
+
+                Node curNode = gridBase.NodeFromWorldPosition(mousePosition);
+
+                if (Input.GetMouseButton(0) && !ui.mouseOverUIElement)
+                {
+                    if (curNode.stackedObjs.Count > 0)
+                    {
+                        for (int i = 0; i < curNode.stackedObjs.Count; i++)
+                        {
+                            if (manager.inSceneStackableObjects.Contains(curNode.stackedObjs[i].gameObject))
+                            {
+                                manager.inSceneStackableObjects.Remove(curNode.stackedObjs[i].gameObject);
+                                Destroy(curNode.stackedObjs[i].gameObject);
+                            }
+                        }
+                        curNode.stackedObjs.Clear();
+                    }
+                }
+            }
+        }
+
+        #endregion
+        
+        
 
         void CloseAll()
         {
