@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnTrafficUI : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class SpawnTrafficUI : MonoBehaviour
 
     private void Start()
     {
-        trafficUICanvas = FindObjectOfType<Canvas>();
         trafficUI = Instantiate(trafficUIPrefab, trafficUICanvas.transform);
     }
 
