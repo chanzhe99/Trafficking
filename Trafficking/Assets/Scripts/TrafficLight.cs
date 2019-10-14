@@ -11,46 +11,60 @@ public class TrafficLight : MonoBehaviour
     public Transform left;
     public Transform right;
     public Transform tempDelayRight;
-    [SerializeField] public bool Left;
-    [SerializeField] public bool Straight;
-    [SerializeField] public bool Right;
+    //[SerializeField] public bool Left;
+    //[SerializeField] public bool Straight;
+    //[SerializeField] public bool Right;
     [SerializeField] public bool Stop;
+    [SerializeField] public bool Go;
+    public int JunctionNumber = 0;
 
     private void Start()
     {
         ChangeStop();
     }
 
-    [ContextMenu("LEFT")]
-    void ChangeLeft()
-    {
-        Left = true;
-        Straight = false;
-        Right = false;
-        Stop = false;
-    }
-    [ContextMenu("RIGHT")]
-    void ChangeRight()
-    {
-        Right = true;
-        Left = false;
-        Straight = false;
-        Stop = false;
-    }
-    [ContextMenu("STRAIGHT")]
-    void ChangeStraight()
-    {
-        Straight = true;
-        Stop = false;
-        Left = false;
-        Right = false;
-    }
     [ContextMenu("STOP")]
     void ChangeStop()
     {
         Stop = true;
-        Right = false;
-        Straight = false;
-        Left = false;
+        Go = false;
     }
+    [ContextMenu("GO")]
+    void ChangeGo()
+    {
+        Stop = false;
+        Go = true;
+    }
+    //[ContextMenu("LEFT")]
+    //void ChangeLeft()
+    //{
+    //    Left = true;
+    //    Straight = false;
+    //    Right = false;
+    //    Stop = false;
+    //}
+    //[ContextMenu("RIGHT")]
+    //void ChangeRight()
+    //{
+    //    Right = true;
+    //    Left = false;
+    //    Straight = false;
+    //    Stop = false;
+    //}
+    //[ContextMenu("STRAIGHT")]
+    //void ChangeStraight()
+    //{
+    //    Straight = true;
+    //    Stop = false;
+    //    Left = false;
+    //    Right = false;
+    //}
+    //[ContextMenu("STOP")]
+    //void ChangeStop()
+    //{
+    //    Stop = true;
+    //    Right = false;
+    //    Straight = false;
+    //    Left = false;
+    //}
 }

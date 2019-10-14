@@ -8,7 +8,8 @@ public class Car : MonoBehaviour
     public LayerMask layer;
     //public Transform testNode;
     //public bool turnLeft = false;
-
+    enum TargetDir { None, Straight, Left, Right};
+    public enum CarColor { Red, Green, Blue, Orange, Yellow, Purple }
     //public Transform path;
     public float carSpeed;
     [SerializeField] private Transform[] nodes;
@@ -16,7 +17,9 @@ public class Car : MonoBehaviour
     private Transform _transform;
     [SerializeField]private TrafficLight curTraffic;
     private bool turningRight = false;
-    
+    TargetDir targetDir;
+    [SerializeField]public CarColor carColor;
+    private bool hasNext = false;
     
 
     // Variables for Quaternion rotation
@@ -46,16 +49,27 @@ public class Car : MonoBehaviour
         currentNode = 0;
         if(curTraffic != null)
             InitNodes();
+        targetDir = TargetDir.None;
         
     }
 
     private void Update()
     {
+        
         GetNodes();
         if (!CheckToStop())
         {
-            CheckTrafficLight();
-            if (currentNode == 0 || currentNode == 4 || currentNode == 1)
+            //CheckTrafficLight();
+            if(!CheckStopLine())
+            {
+                if (currentNode == 0)
+                {
+                    Drive();
+                    return;
+                }
+            }
+            
+            if (currentNode == 4 || currentNode == 1)
             {
                 Drive();
             }
@@ -63,7 +77,16 @@ public class Car : MonoBehaviour
             {
                 Turn();
             }
-            
+
+            if(!turningRight && currentNode == 4)
+            {
+                if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.01f)
+                {
+                    currentNode = 3;
+                    turningRight = true;
+                }
+            }
+
 
         }
         Debug.Log("startTime: " + startTime);
@@ -76,30 +99,38 @@ public class Car : MonoBehaviour
         {
             startTime = Time.time;
             target = nodes[currentNode];
-            if (curTraffic.Left)
+            if (currentNode == 2)
             {
                 startPos = nodes[0];
-                endPos = nodes[currentNode];
+                endPos = nodes[2];
             }
             else
             {
                 startPos = nodes[4];
-                endPos = nodes[currentNode];
+                endPos = nodes[3];
             }
             self = _transform.rotation;
             startRot = _transform.rotation; 
         }
-        if (curTraffic.Left)
+        if (currentNode == 2)
         {
-            targetRot.eulerAngles = new Vector3(0, self.eulerAngles.y-90, 0);
+            targetRot.eulerAngles = new Vector3(self.eulerAngles.x, self.eulerAngles.y-90, self.eulerAngles.z);
         }
         else
         {
-            targetRot.eulerAngles = new Vector3(0, self.eulerAngles.y + 90, 0);
+            targetRot.eulerAngles = new Vector3(self.eulerAngles.x, self.eulerAngles.y + 90, self.eulerAngles.z);
         }
         //relativePos = target.position - _transform.position;
         //targetRot = Quaternion.LookRotation(relativePos, Vector3.up);
-        GetCenter(Vector3.left);
+        if(currentNode == 2)
+        {
+            GetCenter(Vector3.right);
+        }
+        else
+        {
+            GetCenter(Vector3.left);
+        }
+        
         float fracComplete = (Time.time - startTime) / GetJourneyTime(startPos, endPos) ;
         _transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
         _transform.rotation = Quaternion.Lerp(startRot, targetRot, fracComplete);
@@ -126,7 +157,7 @@ public class Car : MonoBehaviour
     {
         startTime = 0f;
         turningRight = false;
-        transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
+        _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
         Debug.Log("Drove");
         //transform.Translate(nodes[currentNode].position * Time.deltaTime);
     }
@@ -153,8 +184,10 @@ public class Car : MonoBehaviour
     private bool CheckToStop()
     {
         RaycastHit hit;
-        //Debug.DrawRay(_transform.position, Vector3.left+ new Vector3(-2,0,0), Color.red);
-        if (Physics.Raycast(_transform.position, Vector3.left, out hit, 2f, layer))
+        
+        Vector3 direct = (_transform.TransformDirection(new Vector3(0,-1, 0)).normalized);
+        Debug.DrawRay(_transform.position, direct*5f, Color.red);
+        if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
         {
             if (hit.transform.gameObject.CompareTag("Car"))
             {
@@ -162,113 +195,310 @@ public class Car : MonoBehaviour
                 return true;
             }
             else
+            {
+
                 return false;
+
+            }
         }
         else
+        {
+            Debug.Log("No hit");
             return false;
+        }
     }
 
     void GetNodes()
     {
         if(currentNode == 1 || currentNode == 2 || currentNode == 3)
         {
-            if(Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
+            if(Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.025f)
             {
-                GameObject tempObj;
+                hasNext = false;
+                //GameObject tempObj;
 
                 curTraffic = nodes[currentNode].gameObject.GetComponent<TrafficNode>().entranceTraffic;
                 
-                tempObj = curTraffic.gameObject;
-                if (tempObj.CompareTag("CrossLight"))
-                {
+                //tempObj = curTraffic.gameObject;
+                if (curTraffic.stop != null)
                     nodes[0] = curTraffic.stop;
+                if (curTraffic.straight != null)
                     nodes[1] = curTraffic.straight;
+                if (curTraffic.left != null)
                     nodes[2] = curTraffic.left;
+                if (curTraffic.right != null)
+                {
                     nodes[3] = curTraffic.right;
                     nodes[4] = curTraffic.tempDelayRight;
                 }
-                else if (tempObj.CompareTag("StraightLight"))
-                {
-                    nodes[0] = curTraffic.stop;
-                    nodes[1] = curTraffic.straight;
-                }
-                else if (tempObj.CompareTag("TurnRightLight"))
-                {
-                    nodes[0] = curTraffic.stop;
-                    nodes[1] = curTraffic.straight;
-                    nodes[3] = curTraffic.right;
-                    nodes[4] = curTraffic.tempDelayRight;
-                }
-                else if(tempObj.CompareTag("TurnLeftLight"))
-                {
-                    nodes[0] = curTraffic.stop;
-                    nodes[1] = curTraffic.straight;
-                    nodes[2] = curTraffic.left;
-                }
+                currentNode = 0;
+                //if (tempObj.CompareTag("CrossLight"))
+                //{
+                //    nodes[0] = curTraffic.stop;
+                //    nodes[1] = curTraffic.straight;
+                //    nodes[2] = curTraffic.left;
+                //    nodes[3] = curTraffic.right;
+                //    nodes[4] = curTraffic.tempDelayRight;
+                //}
+                //else if (tempObj.CompareTag("StraightLight"))
+                //{
+                //    nodes[0] = curTraffic.stop;
+                //    nodes[1] = curTraffic.straight;
+                //}
+                //else if (tempObj.CompareTag("TurnRightLight"))
+                //{
+                //    nodes[0] = curTraffic.stop;
+                //    nodes[1] = curTraffic.straight;
+                //    nodes[3] = curTraffic.right;
+                //    nodes[4] = curTraffic.tempDelayRight;
+                //}
+                //else if(tempObj.CompareTag("TurnLeftLight"))
+                //{
+                //    nodes[0] = curTraffic.stop;
+                //    nodes[1] = curTraffic.straight;
+                //    nodes[2] = curTraffic.left;
+                //}
             }
         }
     }
 
     void InitNodes()
     {
-        GameObject tempObj;
-        tempObj = curTraffic.gameObject;
-        if (tempObj.CompareTag("CrossLight"))
-        {
+        if(curTraffic.stop != null)
             nodes[0] = curTraffic.stop;
+        if(curTraffic.straight != null)
             nodes[1] = curTraffic.straight;
+        if(curTraffic.left != null)
             nodes[2] = curTraffic.left;
+        if(curTraffic.right != null)
+        {
             nodes[3] = curTraffic.right;
             nodes[4] = curTraffic.tempDelayRight;
         }
-        else if (tempObj.CompareTag("StraightLight"))
-        {
-            nodes[0] = curTraffic.stop;
-            nodes[1] = curTraffic.straight;
-        }
-        else if (tempObj.CompareTag("TurnRightLight"))
-        {
-            nodes[0] = curTraffic.stop;
-            nodes[1] = curTraffic.straight;
-            nodes[3] = curTraffic.right;
-            nodes[4] = curTraffic.tempDelayRight;
-        }
-        else if (tempObj.CompareTag("TurnLeftLight"))
-        {
-            nodes[0] = curTraffic.stop;
-            nodes[1] = curTraffic.straight;
-            nodes[2] = curTraffic.left;
-        }
+
+        //GameObject tempObj;
+        //tempObj = curTraffic.gameObject;
+
+        //if (tempObj.CompareTag("CrossLight"))
+        //{
+        //    nodes[0] = curTraffic.stop;
+        //    nodes[1] = curTraffic.straight;
+        //    nodes[2] = curTraffic.left;
+        //    nodes[3] = curTraffic.right;
+        //    nodes[4] = curTraffic.tempDelayRight;
+        //}
+        //else if (tempObj.CompareTag("StraightLight"))
+        //{
+        //    nodes[0] = curTraffic.stop;
+        //    nodes[1] = curTraffic.straight;
+        //}
+        //else if (tempObj.CompareTag("TurnRightLight"))
+        //{
+        //    nodes[0] = curTraffic.stop;
+        //    nodes[1] = curTraffic.straight;
+        //    nodes[3] = curTraffic.right;
+        //    nodes[4] = curTraffic.tempDelayRight;
+        //}
+        //else if (tempObj.CompareTag("TurnLeftLight"))
+        //{
+        //    nodes[0] = curTraffic.stop;
+        //    nodes[1] = curTraffic.straight;
+        //    nodes[2] = curTraffic.left;
+        //}
     }
 
-    private void CheckTrafficLight()
+    bool CheckTrafficStop()
     {
-
-        if (curTraffic.Stop)
+        if(curTraffic.Stop)
         {
-            currentNode = 0;
+            return true;
         }
-        else if (curTraffic.Straight)
+        else 
         {
-            currentNode = 1;
-        }
-        else if (curTraffic.Left)
-        {
-            currentNode = 2;
-        }
-        else if (curTraffic.Right)
-        {
-            if (!turningRight)
-            {
-                currentNode = 4;
-                if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
-                {
-                    currentNode = 3;
-                    turningRight = true;
-                }
-            }
+            return false;
         }
     }
+
+    //private void CheckTrafficLight()
+    //{
+
+    //    if (curTraffic.Stop)
+    //    {
+    //        currentNode = 0;
+    //    }
+    //    else if (curTraffic.Straight)
+    //    {
+    //        currentNode = 1;
+    //    }
+    //    else if (curTraffic.Left)
+    //    {
+    //        currentNode = 2;
+    //    }
+    //    else if (curTraffic.Right)
+    //    {
+    //        if (!turningRight)
+    //        {
+    //            currentNode = 4;
+    //            if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
+    //            {
+    //                currentNode = 3;
+    //                turningRight = true;
+    //            }
+    //        }
+    //    }
+    //}
+
+    bool CheckStopLine()
+    {
+        if (Vector3.Distance(_transform.position, nodes[0].position) < 0.025f)
+        {
+            if (!CheckTrafficStop() && !hasNext)
+            {
+                FindNextTraffic();
+                if(currentNode ==3)
+                {
+                    currentNode = 4;
+                }
+                hasNext = true;
+                Debug.Log("Not Null");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    void FindNextTraffic()
+    {
+        switch (carColor)
+        {
+            case CarColor.Red:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.RedTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            case CarColor.Green:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.GreenTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            case CarColor.Blue:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.BlueTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            case CarColor.Orange:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.OrangeTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            case CarColor.Yellow:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.YellowTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            case CarColor.Purple:
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (nodes[i] != null)
+                        {
+                            if (nodes[i].gameObject != null)
+                            {
+                                Debug.Log("not null");
+                            }
+                            if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.PurpleTarJunc[curTraffic.JunctionNumber - 1])
+                            {
+                                currentNode = i;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+
+            default: break;
+        }
+        //if(carColor == CarColor.Red)
+        //{
+        //    if (nodes[2].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.RedTarJunc[curTraffic.JunctionNumber - 1])
+        //    {
+        //        currentNode = 2;
+
+        //    }
+        //}
+
+    }
+    
 
    
 }
