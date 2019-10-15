@@ -124,11 +124,13 @@ public class Car : MonoBehaviour
         //targetRot = Quaternion.LookRotation(relativePos, Vector3.up);
         if(currentNode == 2)
         {
-            GetCenter(Vector3.right);
+            Vector3 direct = (_transform.TransformDirection(Vector3.right).normalized);
+            GetCenter(direct);
         }
         else
         {
-            GetCenter(Vector3.left);
+            Vector3 direct = (_transform.TransformDirection(Vector3.left).normalized);
+            GetCenter(direct);
         }
         
         float fracComplete = (Time.time - startTime) / GetJourneyTime(startPos, endPos) ;
@@ -158,7 +160,7 @@ public class Car : MonoBehaviour
         startTime = 0f;
         turningRight = false;
         _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
-        Debug.Log("Drove");
+        //Debug.Log("Drove");
         //transform.Translate(nodes[currentNode].position * Time.deltaTime);
     }
 
@@ -191,7 +193,7 @@ public class Car : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Car"))
             {
-                Debug.Log("Hit car");
+               // Debug.Log("Hit car");
                 return true;
             }
             else
@@ -203,7 +205,7 @@ public class Car : MonoBehaviour
         }
         else
         {
-            Debug.Log("No hit");
+           // Debug.Log("No hit");
             return false;
         }
     }
@@ -360,7 +362,7 @@ public class Car : MonoBehaviour
                     currentNode = 4;
                 }
                 hasNext = true;
-                Debug.Log("Not Null");
+                Debug.Log("StopLineCheck");
             }
             return true;
         }
@@ -376,11 +378,7 @@ public class Car : MonoBehaviour
                     for (int i = 1; i < 4; i++)
                     {
                         if (nodes[i] != null)
-                        {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
+                        { 
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.RedTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
@@ -395,11 +393,7 @@ public class Car : MonoBehaviour
                     for (int i = 1; i < 4; i++)
                     {
                         if (nodes[i] != null)
-                        {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
+                        {                           
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.GreenTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
@@ -415,10 +409,6 @@ public class Car : MonoBehaviour
                     {
                         if (nodes[i] != null)
                         {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.BlueTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
@@ -434,10 +424,6 @@ public class Car : MonoBehaviour
                     {
                         if (nodes[i] != null)
                         {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.OrangeTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
@@ -453,10 +439,6 @@ public class Car : MonoBehaviour
                     {
                         if (nodes[i] != null)
                         {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.YellowTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
@@ -472,10 +454,6 @@ public class Car : MonoBehaviour
                     {
                         if (nodes[i] != null)
                         {
-                            if (nodes[i].gameObject != null)
-                            {
-                                Debug.Log("not null");
-                            }
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.PurpleTarJunc[curTraffic.JunctionNumber - 1])
                             {
                                 currentNode = i;
