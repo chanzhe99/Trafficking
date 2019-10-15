@@ -476,7 +476,15 @@ public class Car : MonoBehaviour
         //}
 
     }
-    
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Exit"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+
+
 }

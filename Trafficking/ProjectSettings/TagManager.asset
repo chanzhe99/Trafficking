@@ -9,6 +9,7 @@ TagManager:
   - TurnLeftLight
   - TurnRightLight
   - CrossLight
+  - Exit
   layers:
   - Default
   - TransparentFX
