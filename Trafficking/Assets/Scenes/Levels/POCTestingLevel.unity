@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: red
       objectReference: {fileID: 0}
+    - target: {fileID: 4676825893824201932, guid: 3d30b1024ebbd334bbf4e8c4ce4c9736,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6213921214892930000, guid: 3d30b1024ebbd334bbf4e8c4ce4c9736,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,6 +196,10 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 284394460, guid: 3d30b1024ebbd334bbf4e8c4ce4c9736, type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d30b1024ebbd334bbf4e8c4ce4c9736, type: 3}
 --- !u!1001 &174527707
@@ -570,16 +579,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 652796385997075466, guid: dcb5ff27320208f4fb7c8149a289043f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1367866279996623958, guid: dcb5ff27320208f4fb7c8149a289043f,
-        type: 3}
-      propertyPath: JunctionNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1636319513230722823, guid: dcb5ff27320208f4fb7c8149a289043f,
         type: 3}
       propertyPath: entranceTraffic
@@ -595,6 +594,16 @@ PrefabInstance:
       propertyPath: entranceTraffic
       value: 
       objectReference: {fileID: 1069766637}
+    - target: {fileID: 652796385997075466, guid: dcb5ff27320208f4fb7c8149a289043f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367866279996623958, guid: dcb5ff27320208f4fb7c8149a289043f,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb5ff27320208f4fb7c8149a289043f, type: 3}
 --- !u!4 &330722489 stripped
@@ -694,6 +703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
@@ -807,6 +821,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &375896584 stripped
@@ -919,6 +938,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &415642520 stripped
@@ -997,6 +1021,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TLight
       objectReference: {fileID: 0}
+    - target: {fileID: 7551338222100879552, guid: 0097affedb39fac419afae44034a31be,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4644163150752346616, guid: 0097affedb39fac419afae44034a31be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1056,11 +1085,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7551338222100879552, guid: 0097affedb39fac419afae44034a31be,
-        type: 3}
-      propertyPath: JunctionNumber
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7822716722710036033, guid: 0097affedb39fac419afae44034a31be,
         type: 3}
@@ -2371,6 +2395,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 44
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &1230109526 stripped
@@ -2699,6 +2728,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
@@ -3391,6 +3425,11 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 2995540025196738122, guid: 56de53ecdc6864e4a9603301bc2aeda1,
+        type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56de53ecdc6864e4a9603301bc2aeda1, type: 3}
 --- !u!1001 &813207437345523815
@@ -3404,6 +3443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000364878637270029, guid: c67afb1106acba94e93c106fc30974a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2821380174983208447, guid: c67afb1106acba94e93c106fc30974a2,
         type: 3}
@@ -3465,6 +3509,11 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 1944449948467701877, guid: c67afb1106acba94e93c106fc30974a2,
+        type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67afb1106acba94e93c106fc30974a2, type: 3}
 --- !u!1001 &1477159836100363656
@@ -3478,6 +3527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: green
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825241848699909571, guid: 13c2aa8846964f64e9ce618a184ef598,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1129176769726851799, guid: 13c2aa8846964f64e9ce618a184ef598,
         type: 3}
@@ -3539,6 +3593,11 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 4699492320317709372, guid: 13c2aa8846964f64e9ce618a184ef598,
+        type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c2aa8846964f64e9ce618a184ef598, type: 3}
 --- !u!1001 &3557320515823776555
@@ -3613,6 +3672,11 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 2857820944921787152, guid: 322b3ebd3803046468266923093c3f1e,
+        type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 322b3ebd3803046468266923093c3f1e, type: 3}
 --- !u!1001 &4201362745952119515
@@ -3626,6 +3690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266703052127486636, guid: 70a3487c51c27e5449a9491a3e1bda5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9145953003839844062, guid: 70a3487c51c27e5449a9491a3e1bda5e,
         type: 3}
@@ -3687,5 +3756,10 @@ PrefabInstance:
       propertyPath: curTraffic
       value: 
       objectReference: {fileID: 494947257}
+    - target: {fileID: 4889514893757074979, guid: 70a3487c51c27e5449a9491a3e1bda5e,
+        type: 3}
+      propertyPath: carSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a3487c51c27e5449a9491a3e1bda5e, type: 3}
