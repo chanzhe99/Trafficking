@@ -700,6 +700,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &370557307 stripped
@@ -812,6 +817,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &375896584 stripped
@@ -923,6 +933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
@@ -2386,6 +2401,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 44
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
 --- !u!4 &1230109526 stripped
@@ -2817,6 +2837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436101539839614937, guid: 91653ced0679c8a4dbffe5ff0a90e4ac,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91653ced0679c8a4dbffe5ff0a90e4ac, type: 3}
