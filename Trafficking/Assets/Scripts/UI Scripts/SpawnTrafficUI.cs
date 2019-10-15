@@ -11,11 +11,14 @@ public class SpawnTrafficUI : MonoBehaviour
 
     private void Start()
     {
+        trafficUICanvas = FindObjectOfType<Canvas>();
         trafficUI = Instantiate(trafficUIPrefab, trafficUICanvas.transform);
+        trafficUI.GetComponent<TrafficUI>().GetTrafficLightScript(this.GetComponent<TrafficLight>());
     }
 
     private void Update()
     {
         trafficUI.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0f, 0f, 0f));
     }
+    
 }

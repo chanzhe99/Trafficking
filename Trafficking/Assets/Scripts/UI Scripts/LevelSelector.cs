@@ -7,7 +7,7 @@ public class LevelSelector : MonoBehaviour
 {
     public void LoadLevel1()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("POCTestingLevel");
     }
 
     public void Back()

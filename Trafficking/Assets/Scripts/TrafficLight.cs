@@ -24,13 +24,13 @@ public class TrafficLight : MonoBehaviour
     }
 
     [ContextMenu("STOP")]
-    void ChangeStop()
+    public void ChangeStop()
     {
         Stop = true;
         Go = false;
     }
     [ContextMenu("GO")]
-    void ChangeGo()
+    public void ChangeGo()
     {
         Stop = false;
         Go = true;
