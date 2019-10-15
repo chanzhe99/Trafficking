@@ -9,12 +9,16 @@ public class SpawnPoint : MonoBehaviour
     private List<SpawnUnit> spawnList;
     private float spawnTimer = 0;
     [SerializeField] List<GameObject> vehicleList;
+    public TrafficLight spawnTraffic;
 
     private void Awake()
     {
         spawnList = new List<SpawnUnit>();
         vehicleList = new List<GameObject>();
+        
     }
+
+    
 
     IEnumerator Start()
     {
@@ -37,11 +41,14 @@ public class SpawnPoint : MonoBehaviour
     {
         for (int i = 0; i < spawnList.Count; i++)
         {
-            spawnTimer = spawnList[i].spawnTime - spawnTimer;
-            yield return new WaitForSeconds(spawnTimer);
+            //float spawnTimer = Time.time;
+            //spawnTimer = spawnList[i].spawnTime - spawnTimer;
+            yield return new WaitForSeconds(spawnList[i].spawnTime);
             Debug.Log(this.name + " spawning at " + spawnTimer + " delay");
             vehicleList[i].gameObject.transform.position = this.transform.position;
+
             vehicleList[i].gameObject.SetActive(true);
+            vehicleList[i].gameObject.GetComponent<Car>().curTraffic = spawnTraffic;
         }
     }
 

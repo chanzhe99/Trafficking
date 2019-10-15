@@ -15,7 +15,7 @@ public class Car : MonoBehaviour
     [SerializeField] private Transform[] nodes;
     [SerializeField] private int currentNode = 0;
     private Transform _transform;
-    [SerializeField]private TrafficLight curTraffic;
+    [SerializeField]public TrafficLight curTraffic;
     private bool turningRight = false;
     TargetDir targetDir;
     [SerializeField]public CarColor carColor;

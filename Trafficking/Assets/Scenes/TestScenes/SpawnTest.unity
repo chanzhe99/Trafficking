@@ -472,20 +472,12 @@ MonoBehaviour:
     spawnTime: 0
   - vehicleType: {fileID: 3122872111213933797, guid: ac02c767b9a0d934ea7843bf2a3428f3,
       type: 3}
-    spawnPoint: {fileID: 1583544108}
-    spawnTime: 5
-  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
-      type: 3}
-    spawnPoint: {fileID: 1583544108}
-    spawnTime: 5
-  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
-      type: 3}
     spawnPoint: {fileID: 1530571334}
-    spawnTime: 10
-  - vehicleType: {fileID: 3122872111213933797, guid: e3d3d99978ef2f14ab3130d83539bf61,
+    spawnTime: 3
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
       type: 3}
     spawnPoint: {fileID: 1766103881}
-    spawnTime: 10
+    spawnTime: 2
   pooledObjects: []
 --- !u!1001 &882437387
 PrefabInstance:

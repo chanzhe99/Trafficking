@@ -68,7 +68,7 @@ public class VehiclePoolManager : MonoBehaviour
         pooledObjects = new List<GameObject>();
         for (int i = 0; i < itemsToPool.Count; i++)
         {
-            GameObject obj = Instantiate(itemsToPool[i].vehicleType, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject obj = Instantiate(itemsToPool[i].vehicleType, new Vector3(0, 0, 0), itemsToPool[i].spawnPoint.transform.rotation);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }

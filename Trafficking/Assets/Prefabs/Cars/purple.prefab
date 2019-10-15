@@ -161,7 +161,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1
-  carSpeed: 3
+  carSpeed: 5
   nodes: []
   currentNode: 0
   curTraffic: {fileID: 0}
