@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/LevelSelectMenu.unity
     guid: bb25e18bd0ccbfc4191b42f8b117e9db
   - enabled: 1
-    path: Assets/Scenes/Levels/POCTestingLevel.unity
+    path: Assets/Scenes/Levels/Extra/POCTestingLevel.unity
     guid: b52a47096f129214ea1732511a81eb59
   m_configObjects: {}
