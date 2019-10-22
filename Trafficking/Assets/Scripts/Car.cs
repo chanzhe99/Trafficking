@@ -8,19 +8,24 @@ public class Car : MonoBehaviour
     public LayerMask layer;
     //public Transform testNode;
     //public bool turnLeft = false;
-    enum TargetDir { None, Straight, Left, Right};
+    enum TargetDir { None, Straight, Left, Right };
     public enum CarColor { Red, Green, Blue, Orange, Yellow, Purple }
     //public Transform path;
     public float carSpeed;
     [SerializeField] private Transform[] nodes;
     [SerializeField] private int currentNode = 0;
     private Transform _transform;
-    [SerializeField]public TrafficLight curTraffic;
+    [SerializeField] public TrafficLight curTraffic;
     private bool turningRight = false;
     TargetDir targetDir;
-    [SerializeField]public CarColor carColor;
+    [SerializeField] public CarColor carColor;
     private bool hasNext = false;
-    
+    private float patience = 10f;
+    private bool stopped = false;
+    private bool increasingP = false;
+    private bool decreasingP = false;
+    private bool decreasingS = false;
+
 
     // Variables for Quaternion rotation
     Vector3 relativePos = Vector3.zero;
@@ -41,16 +46,17 @@ public class Car : MonoBehaviour
     Vector3 endRelCenter = Vector3.zero;
 
 
+
     private void Start()
     {
         _transform = transform;
         nodes = new Transform[5];
         self = _transform.rotation;
         currentNode = 0;
-        if(curTraffic != null)
+        if (curTraffic != null)
             InitNodes();
         targetDir = TargetDir.None;
-        
+
     }
 
     private void Update()
@@ -60,15 +66,20 @@ public class Car : MonoBehaviour
         if (!CheckToStop())
         {
             //CheckTrafficLight();
-            if(!CheckStopLine())
+            if (!CheckStopLine())
             {
                 if (currentNode == 0)
                 {
                     Drive();
+                    if (!stopped && !increasingP)
+                    {
+                        increasingP = true;
+                        StartCoroutine(IncreasePatience());
+                    }
                     return;
                 }
             }
-            
+
             if (currentNode == 4 || currentNode == 1)
             {
                 Drive();
@@ -78,7 +89,7 @@ public class Car : MonoBehaviour
                 Turn();
             }
 
-            if(!turningRight && currentNode == 4)
+            if (!turningRight && currentNode == 4)
             {
                 if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.01f)
                 {
@@ -86,15 +97,63 @@ public class Car : MonoBehaviour
                     turningRight = true;
                 }
             }
-
+        }
+        if (stopped && !decreasingP)
+        {
+            decreasingP = true;
+            StartCoroutine(DecreasePatience());
 
         }
-        Debug.Log("startTime: " + startTime);
+        if(!stopped && !increasingP)
+        {
+            increasingP = true;
+            StartCoroutine(IncreasePatience());
+        }
+        if(patience <1 && !decreasingS)
+        {
+            decreasingS = true;
+            StartCoroutine(DecreaseMeter());
+        }
+        //Debug.Log("startTime: " + startTime);
+       
         //CheckWaypointDistance();
+    }
+
+    private IEnumerator DecreaseMeter()
+    {
+       
+        Debug.Log("Satisfaction: " + Score.Instance.meter);
+        Score.Instance.meter -= 1f;
+        yield return new WaitForSeconds(1.0f);
+        decreasingS = false;
+    }
+
+    private IEnumerator DecreasePatience()
+    {
+
+        if (patience > 0)
+        {
+            patience -= 1f;
+            Debug.Log("Patience: " + patience);
+        }
+        yield return new WaitForSeconds(1.0f);
+        decreasingP = false;
+    }
+
+    private IEnumerator IncreasePatience()
+    {
+        if (patience < 11)
+        {
+            Debug.Log("Patience: " + patience);
+            patience += 1f;
+        }
+        yield return new WaitForSeconds(1.0f);
+        increasingP = false;
     }
 
     void Turn()
     {
+        stopped = false;
         if(startTime == 0.0f)
         {
             startTime = Time.time;
@@ -157,6 +216,7 @@ public class Car : MonoBehaviour
 
     private void Drive()
     {
+        stopped = false;
         startTime = 0f;
         turningRight = false;
         _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
@@ -193,6 +253,7 @@ public class Car : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Car"))
             {
+                stopped = true;
                // Debug.Log("Hit car");
                 return true;
             }
@@ -354,6 +415,10 @@ public class Car : MonoBehaviour
     {
         if (Vector3.Distance(_transform.position, nodes[0].position) < 0.025f)
         {
+            if(CheckTrafficStop())
+            {
+                stopped = true;
+            }
             if (!CheckTrafficStop() && !hasNext)
             {
                 FindNextTraffic();

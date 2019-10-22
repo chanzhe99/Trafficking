@@ -23,7 +23,7 @@ public class SpawnPoint : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log("Current spawn size: " + spawnList.Count);
+        //Debug.Log("Current spawn size: " + spawnList.Count);
         yield return StartCoroutine(Spawner());
     }
 
@@ -44,7 +44,7 @@ public class SpawnPoint : MonoBehaviour
             //float spawnTimer = Time.time;
             //spawnTimer = spawnList[i].spawnTime - spawnTimer;
             yield return new WaitForSeconds(spawnList[i].spawnTime);
-            Debug.Log(this.name + " spawning at " + spawnTimer + " delay");
+            //Debug.Log(this.name + " spawning at " + spawnTimer + " delay");
             vehicleList[i].gameObject.transform.position = this.transform.position;
 
             vehicleList[i].gameObject.SetActive(true);
