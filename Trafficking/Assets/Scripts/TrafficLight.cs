@@ -17,10 +17,12 @@ public class TrafficLight : MonoBehaviour
     [SerializeField] public bool Stop;
     [SerializeField] public bool Go;
     public int JunctionNumber = 0;
+    private GameObject obj;
 
     private void Start()
     {
         ChangeStop();
+        obj = gameObject;
     }
 
     [ContextMenu("STOP")]
@@ -34,6 +36,7 @@ public class TrafficLight : MonoBehaviour
     {
         Stop = false;
         Go = true;
+        TrafficManager.Instance.ShutOthers(gameObject);
     }
     //[ContextMenu("LEFT")]
     //void ChangeLeft()

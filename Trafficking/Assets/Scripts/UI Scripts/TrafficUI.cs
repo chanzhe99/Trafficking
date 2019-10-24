@@ -13,10 +13,23 @@ public class TrafficUI : MonoBehaviour
         currentLight.color = Color.red;
     }
 
+    private void Update()
+    {
+        if(trafficLightScript.Go)
+        {
+            currentLight.color = Color.green;
+     
+        }
+        else
+        {
+            currentLight.color = Color.red;
+        }
+    }
+
     public void ChangeState()
     {
         currentLight.color = (currentLight.color == Color.red) ? Color.green : Color.red;
-
+     
         if (currentLight.color == Color.green)
         {
             trafficLightScript.ChangeGo();

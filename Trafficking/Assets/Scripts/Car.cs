@@ -122,7 +122,7 @@ public class Car : MonoBehaviour
     private IEnumerator DecreaseMeter()
     {
        
-        Debug.Log("Satisfaction: " + Score.Instance.meter);
+        //Debug.Log("Satisfaction: " + Score.Instance.meter);
         Score.Instance.meter -= 1f;
         yield return new WaitForSeconds(1.0f);
         decreasingS = false;
@@ -134,7 +134,7 @@ public class Car : MonoBehaviour
         if (patience > 0)
         {
             patience -= 1f;
-            Debug.Log("Patience: " + patience);
+            //Debug.Log("Patience: " + patience);
         }
         yield return new WaitForSeconds(1.0f);
         decreasingP = false;
@@ -144,7 +144,7 @@ public class Car : MonoBehaviour
     {
         if (patience < 11)
         {
-            Debug.Log("Patience: " + patience);
+            //Debug.Log("Patience: " + patience);
             patience += 1f;
         }
         yield return new WaitForSeconds(1.0f);
