@@ -20,7 +20,7 @@ public class Car : MonoBehaviour
     TargetDir targetDir;
     [SerializeField] public CarColor carColor;
     private bool hasNext = false;
-    private float patience = 10f;
+    public float patience = 10f;
     private bool stopped = false;
     private bool increasingP = false;
     private bool decreasingP = false;

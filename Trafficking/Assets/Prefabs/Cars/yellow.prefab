@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4723495540992607076}
   - component: {fileID: 7745521312806222565}
   - component: {fileID: 1944449948467701877}
+  - component: {fileID: -4620101027950667110}
   m_Layer: 0
   m_Name: yellow
   m_TagString: Car
@@ -158,12 +159,27 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1
-  carSpeed: 5
+  carSpeed: 10
   nodes: []
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 4
+  patience: 10
   target: {fileID: 0}
+--- !u!114 &-4620101027950667110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000364878637270029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999041d7e72150d459f530f31f6abe03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patienceUIPrefab: {fileID: 7966818198221592423, guid: b71281e07e8a6734c801515aaa20ba99,
+    type: 3}
 --- !u!1 &7833166714545746194
 GameObject:
   m_ObjectHideFlags: 0

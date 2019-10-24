@@ -29,7 +29,7 @@ Transform:
   m_LocalPosition: {x: 3.2598212, y: 0.03555817, z: -0.013266681}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5858008254668111571}
+  m_Father: {fileID: 2945171572697985194}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &27653087506722767
@@ -108,7 +108,7 @@ Transform:
   m_LocalPosition: {x: 3.2598212, y: 0.011766118, z: -0.013266681}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5858008254668111571}
+  m_Father: {fileID: 2945171572697985194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6112909949252632747
@@ -169,10 +169,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5858008254668111571}
+  - component: {fileID: 2945171572697985194}
   - component: {fileID: 8251093999581788853}
   - component: {fileID: 7720572557147397086}
   - component: {fileID: 2857820944921787152}
+  - component: {fileID: -1206047775862446830}
   m_Layer: 0
   m_Name: blue
   m_TagString: Car
@@ -180,15 +181,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5858008254668111571
-Transform:
+--- !u!224 &2945171572697985194
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2828571772555677923}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 849497232451307293}
@@ -196,6 +197,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.6}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &8251093999581788853
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -240,9 +246,24 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1
-  carSpeed: 5
+  carSpeed: 10
   nodes: []
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 2
+  patience: 10
   target: {fileID: 0}
+--- !u!114 &-1206047775862446830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828571772555677923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999041d7e72150d459f530f31f6abe03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patienceUIPrefab: {fileID: 7966818198221592423, guid: b71281e07e8a6734c801515aaa20ba99,
+    type: 3}

@@ -159,15 +159,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6074572256696934984, guid: a111c426ea1eedf4485b4031e73ed3cf,
+    - target: {fileID: 6010345489871028942, guid: a111c426ea1eedf4485b4031e73ed3cf,
         type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281791489918297167, guid: a111c426ea1eedf4485b4031e73ed3cf,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
+      propertyPath: JunctionNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a111c426ea1eedf4485b4031e73ed3cf, type: 3}
@@ -188,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551338222100879552, guid: 0097affedb39fac419afae44034a31be,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4644163150752346616, guid: 0097affedb39fac419afae44034a31be,
         type: 3}
@@ -244,15 +244,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 7822716722710036033, guid: 0097affedb39fac419afae44034a31be,
+    - target: {fileID: 7551338223098054141, guid: 0097affedb39fac419afae44034a31be,
         type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819729813435863953, guid: 0097affedb39fac419afae44034a31be,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
+      propertyPath: m_LocalPosition.z
+      value: -0.24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0097affedb39fac419afae44034a31be, type: 3}
@@ -329,15 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 6028264250962722949, guid: e6b065b658d48a54e887aa9630ff59f3,
+    - target: {fileID: 7806266814283820054, guid: e6b065b658d48a54e887aa9630ff59f3,
         type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104706645668958040, guid: e6b065b658d48a54e887aa9630ff59f3,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
+      propertyPath: JunctionNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6b065b658d48a54e887aa9630ff59f3, type: 3}
