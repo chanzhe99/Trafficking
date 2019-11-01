@@ -11,9 +11,9 @@ public class TrafficLight : MonoBehaviour
     public Transform left;
     public Transform right;
     public Transform tempDelayRight;
-    //[SerializeField] public bool Left;
-    //[SerializeField] public bool Straight;
-    //[SerializeField] public bool Right;
+    public bool canLeftTurn;
+    public bool canStraightTurn;
+    public bool canRightTurn;
     [SerializeField] public bool Stop;
     [SerializeField] public bool Go;
     public int JunctionNumber = 0;

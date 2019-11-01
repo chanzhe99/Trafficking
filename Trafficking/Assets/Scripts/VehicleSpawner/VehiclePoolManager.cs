@@ -15,6 +15,8 @@ public class VehiclePoolManager : MonoBehaviour
     //[SerializeField] LevelData data;
     [SerializeField] List<SpawnUnit> itemsToPool;
 
+    private GameObject spawnParent;
+
     public List<GameObject> pooledObjects;
     public static VehiclePoolManager Instance;
 
@@ -34,6 +36,7 @@ public class VehiclePoolManager : MonoBehaviour
     
     void Start()
     {
+        spawnParent = new GameObject("Spawn List");
         SpawnPool();
         SpawnPointAssign();
     }
@@ -69,6 +72,7 @@ public class VehiclePoolManager : MonoBehaviour
         for (int i = 0; i < itemsToPool.Count; i++)
         {
             GameObject obj = Instantiate(itemsToPool[i].vehicleType, new Vector3(0, 0, 0), itemsToPool[i].spawnPoint.transform.rotation);
+            obj.transform.SetParent(spawnParent.transform);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
@@ -82,6 +86,5 @@ public class VehiclePoolManager : MonoBehaviour
             itemsToPool[i].spawnPoint.AddToSpawnList(itemsToPool[i]);
             itemsToPool[i].spawnPoint.AssignVehicles(pooledObjects[i]);
         }
-
     }
 }

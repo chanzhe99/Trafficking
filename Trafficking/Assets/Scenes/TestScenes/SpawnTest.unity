@@ -478,6 +478,34 @@ MonoBehaviour:
       type: 3}
     spawnPoint: {fileID: 1766103881}
     spawnTime: 2
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1766103881}
+    spawnTime: 5
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1583544108}
+    spawnTime: 8
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1530571334}
+    spawnTime: 10
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1766103881}
+    spawnTime: 8
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1583544108}
+    spawnTime: 9
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1766103881}
+    spawnTime: 11
+  - vehicleType: {fileID: 3122872111213933797, guid: 78bc4b4e6533ac24e9b3334e732c1ab6,
+      type: 3}
+    spawnPoint: {fileID: 1583544108}
+    spawnTime: 12
   pooledObjects: []
 --- !u!1001 &882437387
 PrefabInstance:
@@ -735,8 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6ca009c0636646adde2dd86e3deb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDirection: 0
+  spawnDirection: 1
   vehicleList: []
+  spawnTraffic: {fileID: 0}
 --- !u!1 &1579748219
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDirection: 0
   vehicleList: []
+  spawnTraffic: {fileID: 0}
 --- !u!1 &1766103879
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,8 +964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6ca009c0636646adde2dd86e3deb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDirection: 0
+  spawnDirection: 3
   vehicleList: []
+  spawnTraffic: {fileID: 0}
 --- !u!1 &1798354796
 GameObject:
   m_ObjectHideFlags: 0
