@@ -26,6 +26,8 @@ public class Car : MonoBehaviour
     private bool decreasingP = false;
     private bool decreasingS = false;
 
+   
+
 
     // Variables for Quaternion rotation
     Vector3 relativePos = Vector3.zero;
@@ -79,16 +81,32 @@ public class Car : MonoBehaviour
                     return;
                 }
             }
-
-            if (currentNode == 4 || currentNode == 1)
+            if(curTraffic.canStraightTurn)
             {
-                Drive();
+                if(currentNode == 1)
+                {
+                    Drive();
+                }
             }
-            else if (currentNode == 2 || currentNode == 3)
+            if(curTraffic.canRightTurn)
             {
-                Turn();
+                if(currentNode == 4)
+                {
+                    Drive();
+                }
+                else if (currentNode == 3)
+                {
+                    Turn();
+                }
             }
-
+            if(curTraffic.canLeftTurn)
+            {
+                if(currentNode == 2)
+                {
+                    Turn();
+                }
+            }
+           
             if (!turningRight && currentNode == 4)
             {
                 if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.01f)
@@ -118,6 +136,8 @@ public class Car : MonoBehaviour
        
         //CheckWaypointDistance();
     }
+
+   
 
     private IEnumerator DecreaseMeter()
     {

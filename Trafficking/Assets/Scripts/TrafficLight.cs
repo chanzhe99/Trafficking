@@ -36,7 +36,7 @@ public class TrafficLight : MonoBehaviour
     {
         Stop = false;
         Go = true;
-        TrafficManager.Instance.ShutOthers(gameObject);
+        //TrafficManager.Instance.ShutOthers(gameObject);
     }
     //[ContextMenu("LEFT")]
     //void ChangeLeft()
