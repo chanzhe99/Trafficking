@@ -8,6 +8,8 @@ public struct SpawnUnit
     public GameObject vehicleType;
     public SpawnPoint spawnPoint;
     public float spawnTime;
+    public spawnColor spawnPointColor;
+    public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple };
 }
 
 public class VehiclePoolManager : MonoBehaviour
@@ -38,6 +40,7 @@ public class VehiclePoolManager : MonoBehaviour
     {
         spawnParent = new GameObject("Spawn List");
         SpawnPool();
+        SetSpawnPointColor();
         SpawnPointAssign();
     }
 
@@ -85,6 +88,40 @@ public class VehiclePoolManager : MonoBehaviour
         {
             itemsToPool[i].spawnPoint.AddToSpawnList(itemsToPool[i]);
             itemsToPool[i].spawnPoint.AssignVehicles(pooledObjects[i]);
+        }
+    }
+
+    private void SetSpawnPointColor()
+    {
+        for (int i = 0; i < itemsToPool.Count; i++)
+        {
+            switch (itemsToPool[i].spawnPointColor)
+            {
+                case SpawnUnit.spawnColor.Blue:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Blue;
+                    break;
+
+                case SpawnUnit.spawnColor.Green:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Green;
+                    break;
+
+                case SpawnUnit.spawnColor.Orange:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Orange;
+                    break;
+
+                case SpawnUnit.spawnColor.Purple:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Purple;
+                    break;
+
+                case SpawnUnit.spawnColor.Red:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Red;
+                    break;
+
+                case SpawnUnit.spawnColor.Yellow:
+                    pooledObjects[i].GetComponent<Car>().carColor = Car.CarColor.Yellow;
+                    break;
+            }
+
         }
     }
 }

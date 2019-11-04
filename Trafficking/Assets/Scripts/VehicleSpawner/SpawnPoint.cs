@@ -5,8 +5,12 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] SpawnDirection spawnDirection;
+    //[SerializeField] spawnColor spawnPointColor;
     [SerializeField] List<GameObject> vehicleList;
-    
+
+    // colors are for the exits/entrances, not the Car's colors themselves
+    //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
+
     private RaycastHit hit;
     private bool isSpawnPointClear = false;
     private bool isCarSpawned;
@@ -18,6 +22,7 @@ public class SpawnPoint : MonoBehaviour
     {
         spawnList = new List<SpawnUnit>();
         vehicleList = new List<GameObject>();
+        //SetSpawnPointColor();
     }
 
     IEnumerator Start()
@@ -85,6 +90,40 @@ public class SpawnPoint : MonoBehaviour
             vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 270);
         }
     }
+
+    //private void SetSpawnPointColor()
+    //{
+    //    for (int i=0; i<vehicleList.Count; i++)
+    //    {
+    //        switch (spawnPointColor)
+    //        {
+    //            case spawnColor.Blue:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Blue;
+    //                break;
+
+    //            case spawnColor.Green:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Green;
+    //                break;
+
+    //            case spawnColor.Orange:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Orange;
+    //                break;
+
+    //            case spawnColor.Purple:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Purple;
+    //                break;
+
+    //            case spawnColor.Red:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Red;
+    //                break;
+
+    //            case spawnColor.Yellow:
+    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Yellow;
+    //                break;
+    //        }
+            
+    //    }
+    //}
 
     private void ShootRayCast()
     {
