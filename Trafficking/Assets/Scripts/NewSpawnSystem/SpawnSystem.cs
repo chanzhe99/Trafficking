@@ -5,28 +5,34 @@ using UnityEngine;
 
 
 public enum SpawnRate { Low, Med, High};
+[System.Serializable]
 public struct Timeline
 {
-    public int Seconds;
+    public float Seconds;
     public SpawnRate ratePrio;
     public float slowRate;
     public float medRate;
     public float fastRate;
+    public float junc1Rate;
+    public float junc2Rate;
+    public float junc3Rate;
 }
 
 public class SpawnSystem : MonoBehaviour
 {
+    [SerializeField] public List<Timeline> timeLine;
     List<SpawnSystemUnit> fast;
     List<SpawnSystemUnit> slow;
     List<SpawnSystemUnit> medium;
     [SerializeField]float minLow, maxLow, minMed, maxMed, minHigh, maxHigh = 0f;
-    
-    [SerializeField] List<Timeline> Event;
+    GameObject self;
+    bool canSpawn = true;
+    bool isSpawning = false;
     Timeline curTime;
     float startTime;
     Coroutine spawning;
     float junc1, junc2, junc3;
-    
+    int curIndex = 0;
     // colors are for the exits/entrances, not the Car's colors themselves
     //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
     public TrafficLight spawnTraffic;
@@ -40,11 +46,17 @@ public class SpawnSystem : MonoBehaviour
 
     void Start()
     {
+        self = gameObject;
+        curIndex = 0;
         startTime = Time.timeSinceLevelLoad;
+        curTime = timeLine[curIndex];
     }
 
     private void Update()
     {
+        if(spawning == null)
+        { Debug.Log("Spawning is null"); }
+        Debug.Log("Can Spawn : " + canSpawn);
         SpawnCars();
     }
 
@@ -52,33 +64,47 @@ public class SpawnSystem : MonoBehaviour
     {
         if(Time.time - startTime <curTime.Seconds)
         {
-            if(curTime.ratePrio == SpawnRate.Low)
+            if (canSpawn && !isSpawning)
             {
-                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minLow, maxLow)));
+                if (curTime.ratePrio == SpawnRate.Low)
+                {
+                    if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minLow, maxLow)));
+                    isSpawning = true;
+                }
+                else if (curTime.ratePrio == SpawnRate.Med)
+                {
+                    if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minMed, maxMed)));
+                    isSpawning = true;
+                }
+                else if (curTime.ratePrio == SpawnRate.High)
+                {
+                    if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minHigh, maxHigh)));
+                    isSpawning = true;
+                }
             }
-            else if(curTime.ratePrio == SpawnRate.Med)
+        }
+        else
+        {
+            if (curIndex < timeLine.Count-1)
             {
-                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minMed, maxMed)));
+                curIndex++;
             }
-            else if (curTime.ratePrio == SpawnRate.High)
-            {
-                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minHigh, maxHigh)));
-            }
+            curTime = timeLine[curIndex];
         }
     }
 
     Car.CarColor CheckTargetJunc()
     {
         float rand = Random.Range(0.0f, 1.0f);
-        if (rand >= 0 && rand < junc1)
+        if (rand >= 0 && rand < curTime.junc1Rate)
         {
             return Car.CarColor.Green;
         }
-        else if (rand >= junc1 && rand < junc2)
+        else if (rand >= curTime.junc1Rate && rand < curTime.junc2Rate)
         {
             return Car.CarColor.Yellow;
         }
-        else if(rand>= junc2 && rand <=1.0)
+        else if(rand>= curTime.junc2Rate && rand <=1.0)
         {
             return Car.CarColor.Blue;
         }
@@ -90,6 +116,8 @@ public class SpawnSystem : MonoBehaviour
         Debug.Log("RunningIEnumerator");
 
         yield return new WaitForSeconds(sec);
+        spawning = null;
+        isSpawning = false;
         float rand = Random.Range(0.0f, 1.0f);
         if(rand < curTime.slowRate && rand >= 0)
         {
@@ -98,17 +126,19 @@ public class SpawnSystem : MonoBehaviour
                 if(!slow[i].car.activeInHierarchy)
                 {
                     slow[i].car.SetActive(true);
-                    slow[i].car.transform.position = spawnTraffic.transform.position;
-                    slow[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    slow[i].car.transform.position = self.transform.position;
+                    slow[i].car.transform.rotation = self.transform.rotation;
                     slow[i].carScript.curTraffic = spawnTraffic;                   
                     slow[i].carScript.carColor = CheckTargetJunc();
-                    yield return null;
+                    //yield return null;
+                    break;
                 }
+
             }
             PoolingSystem.Instance.SpawnSlow();
             slow[slow.Count-1].car.SetActive(true);
-            slow[slow.Count-1].car.transform.position = spawnTraffic.transform.position;
-            slow[slow.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            slow[slow.Count-1].car.transform.position = self.transform.position;
+            slow[slow.Count - 1].car.transform.rotation = self.transform.rotation;
             slow[slow.Count - 1].carScript.curTraffic = spawnTraffic;
             slow[slow.Count - 1].carScript.carColor = CheckTargetJunc();
             yield return null;
@@ -120,17 +150,18 @@ public class SpawnSystem : MonoBehaviour
                 if (!medium[i].car.activeInHierarchy)
                 {
                     medium[i].car.SetActive(true);
-                    medium[i].car.transform.position = spawnTraffic.transform.position;
-                    medium[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    medium[i].car.transform.position = self.transform.position;
+                    medium[i].car.transform.rotation = self.transform.rotation;
                     medium[i].carScript.curTraffic = spawnTraffic;
                     medium[i].carScript.carColor = CheckTargetJunc();
-                    yield return null;
+                    //yield return null;
+                    break;
                 }
             }
             PoolingSystem.Instance.SpawnMed();
             medium[medium.Count - 1].car.SetActive(true);
-            medium[medium.Count - 1].car.transform.position = spawnTraffic.transform.position;
-            medium[medium.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            medium[medium.Count - 1].car.transform.position = self.transform.position;
+            medium[medium.Count - 1].car.transform.rotation = self.transform.rotation;
             medium[medium.Count - 1].carScript.curTraffic = spawnTraffic;
             medium[medium.Count - 1].carScript.carColor = CheckTargetJunc();
             yield return null;
@@ -142,21 +173,24 @@ public class SpawnSystem : MonoBehaviour
                 if (!fast[i].car.activeInHierarchy)
                 {
                     fast[i].car.SetActive(true);
-                    fast[i].car.transform.position = spawnTraffic.transform.position;
-                    fast[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    fast[i].car.transform.position = self.transform.position;
+                    fast[i].car.transform.rotation = self.transform.rotation;
                     fast[i].carScript.curTraffic = spawnTraffic;
                     fast[i].carScript.carColor = CheckTargetJunc();
-                    yield return null;
+                    //yield return null;
+                    break;
                 }
             }
             PoolingSystem.Instance.SpawnFast();
             fast[fast.Count - 1].car.SetActive(true);
-            fast[fast.Count - 1].car.transform.position = spawnTraffic.transform.position;
-            fast[fast.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            fast[fast.Count - 1].car.transform.position = self.transform.position;
+            fast[fast.Count - 1].car.transform.rotation = self.transform.rotation;
             fast[fast.Count - 1].carScript.curTraffic = spawnTraffic;
             fast[fast.Count - 1].carScript.carColor = CheckTargetJunc();
             yield return null;
         }
+        spawning = null;
+        yield return null;
     }
 
     public void AddToSlow(SpawnSystemUnit vehicle)
@@ -171,5 +205,31 @@ public class SpawnSystem : MonoBehaviour
     public void AddToFast(SpawnSystemUnit vehicle)
     {
         fast.Add(vehicle);
-    } 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Car"))
+        {
+            canSpawn = false;
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Car"))
+        {
+            canSpawn = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Car"))
+        {
+            canSpawn = false;
+        }
+    }
 }
+    
