@@ -47,34 +47,10 @@ public class PoolingSystem : MonoBehaviour
         SpawnPool();
     }
 
-    public GameObject GetPooledObject(string tag)
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].CompareTag(tag))
-            {
-                return pooledObjects[i];
-            }
-        }
-        return null;
-    }
 
-    public GameObject GetSpecificObject(GameObject toBeCompared)
-    {
-        for (int i = 0; i < pooledObjects.Count; i++)
-        {
-            if (GameObject.ReferenceEquals(pooledObjects[i], toBeCompared))
-            {
-                return pooledObjects[i];
-            }
-        }
-        return null;
-    }
-
-    // Pools all vehicles at a location
     private void SpawnPool()
     {
-        for(int i=0; i<12; i++)
+        for (int i = 0; i < 12; i++)
         {
             SpawnSlow();
             SpawnMed();
@@ -111,9 +87,5 @@ public class PoolingSystem : MonoBehaviour
         spawn = new SpawnSystemUnit { car = obj5, carScript = obj5.GetComponent<Car>() };
         spawnSys.AddToFast(spawn);
     }
-
-    // sets vehicles to their spawnpoints
-  
-
 
 }

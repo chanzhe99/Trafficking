@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6913449610846361131}
   - component: {fileID: 922402988675607250}
   m_Layer: 0
-  m_Name: SingleLanePavement
+  m_Name: SingleLanePavement (21x21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509232185735290382}
-  m_Mesh: {fileID: 1194194796530572990, guid: 631e28092cb846b4892315fa898764a0, type: 3}
+  m_Mesh: {fileID: 2830785390433322496, guid: 631e28092cb846b4892315fa898764a0, type: 3}
 --- !u!23 &922402988675607250
 MeshRenderer:
   m_ObjectHideFlags: 0

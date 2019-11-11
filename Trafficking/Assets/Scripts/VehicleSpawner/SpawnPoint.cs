@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SpawnDirection { NORTH, EAST, SOUTH, WEST };
+
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] SpawnDirection spawnDirection;
@@ -75,19 +77,19 @@ public class SpawnPoint : MonoBehaviour
     {
         if (spawnDirection == SpawnDirection.NORTH)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90,0, 0);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0, 0, 0);
         }
         else if(spawnDirection == SpawnDirection.EAST)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 90);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0, 90, 0);
         }
         else if (spawnDirection == SpawnDirection.SOUTH)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 180);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0, 180, 0);
         }
         else if (spawnDirection == SpawnDirection.WEST)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 270);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0, -90, 0);
         }
     }
 
@@ -176,8 +178,7 @@ public class SpawnPoint : MonoBehaviour
             }
         }
     }
-}
 
-public enum SpawnDirection { NORTH, SOUTH, EAST, WEST};
+}
 
 

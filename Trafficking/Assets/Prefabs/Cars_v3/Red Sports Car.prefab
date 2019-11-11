@@ -9672,7 +9672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3608368626016802504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.21, z: 1.57}
+  m_LocalPosition: {x: 0, y: 0.86, z: 1.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3747640791818400363}
@@ -9774,7 +9774,7 @@ GameObject:
   - component: {fileID: 287701154507513854}
   m_Layer: 0
   m_Name: Red Sports Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9806,8 +9806,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.9, z: 4.1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.8, y: 2.8411179, z: 4.1}
+  m_Center: {x: 0, y: 0.5294411, z: 0}
 --- !u!54 &6824291202916383337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9841,6 +9841,7 @@ MonoBehaviour:
     m_Bits: 1
   carSpeed: 15
   nodes: []
+  signalLights: {fileID: 287701154507513854}
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 2
@@ -14839,7 +14840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9126270380950416289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 7906258918660327880}

@@ -14527,7 +14527,7 @@ GameObject:
   - component: {fileID: 1472147912978499589}
   m_Layer: 0
   m_Name: Orange Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14559,8 +14559,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 2.2999997, z: 4}
-  m_Center: {x: 0, y: 1.3, z: 0}
+  m_Size: {x: 1.8, y: 3.1859417, z: 4}
+  m_Center: {x: 0, y: 0.85702896, z: 0}
 --- !u!54 &1979958227829343866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14594,6 +14594,7 @@ MonoBehaviour:
     m_Bits: 1
   carSpeed: 10
   nodes: []
+  signalLights: {fileID: 1472147912978499589}
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 2
@@ -14729,7 +14730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4301128944886053176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 2931570587075730257}
@@ -14762,7 +14763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4362374273150524002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 1.15, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 125206029604676106}
