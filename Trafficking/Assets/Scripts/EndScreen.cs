@@ -8,7 +8,6 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
     [SerializeField] GameObject endScreenUI;
-    [SerializeField] GameObject level;
 
     private void Update()
     {
@@ -25,7 +24,6 @@ public class EndScreen : MonoBehaviour
             }
             Score.Instance.meter = 0.0f;
             endScreenUI.SetActive(true);
-            level.SetActive(false);
         }
     }
 
