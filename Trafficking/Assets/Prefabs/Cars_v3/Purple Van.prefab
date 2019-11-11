@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2166414475393134344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.55, z: 1.55}
+  m_LocalPosition: {x: 0, y: 1.2, z: 1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4594189850961910622}
@@ -9696,7 +9696,7 @@ GameObject:
   - component: {fileID: 6748727698014357862}
   m_Layer: 0
   m_Name: Purple Van
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9728,8 +9728,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 2.3, z: 4.3}
-  m_Center: {x: 0, y: 1.3, z: 0}
+  m_Size: {x: 1.8, y: 3.134941, z: 4.3}
+  m_Center: {x: 0, y: 0.8825292, z: 0}
 --- !u!54 &6155108538166768998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9763,6 +9763,7 @@ MonoBehaviour:
     m_Bits: 1
   carSpeed: 7
   nodes: []
+  signalLights: {fileID: 6748727698014357862}
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 2
@@ -9820,7 +9821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5201894463282991569}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 6570608241262818232}
