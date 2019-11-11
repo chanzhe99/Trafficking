@@ -2,37 +2,160 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum SpawnRate { Low, Med, High};
+public struct Timeline
+{
+    public int Seconds;
+    public SpawnRate ratePrio;
+    public float slowRate;
+    public float medRate;
+    public float fastRate;
+}
+
 public class SpawnSystem : MonoBehaviour
 {
-    [SerializeField] SpawnDirection spawnDirection;
-    //[SerializeField] spawnColor spawnPointColor;
-    [SerializeField] List<SpawnSystemUnit> fast;
-    [SerializeField] List<SpawnSystemUnit> slow;
-    [SerializeField] List<SpawnSystemUnit> medium;
-
-
+    List<SpawnSystemUnit> fast;
+    List<SpawnSystemUnit> slow;
+    List<SpawnSystemUnit> medium;
+    [SerializeField]float minLow, maxLow, minMed, maxMed, minHigh, maxHigh = 0f;
+    
+    [SerializeField] List<Timeline> Event;
+    Timeline curTime;
+    float startTime;
+    Coroutine spawning;
+    float junc1, junc2, junc3;
+    
     // colors are for the exits/entrances, not the Car's colors themselves
     //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
-
-    private RaycastHit hit;
-    private bool isSpawnPointClear = false;
-    private bool isCarSpawned;
-    private List<SpawnUnit> spawnList;
-
     public TrafficLight spawnTraffic;
 
     private void Awake()
     {
-        spawnList = new List<SpawnUnit>();
-        vehicleList = new List<GameObject>();
-        //SetSpawnPointColor();
+        fast = new List<SpawnSystemUnit>();
+        medium = new List<SpawnSystemUnit>();
+        slow = new List<SpawnSystemUnit>();
     }
 
-    IEnumerator Start()
+    void Start()
     {
-        isSpawnPointClear = true;
-        //yield return new WaitForSeconds(3);
-        yield return StartCoroutine(Spawner());
+        startTime = Time.timeSinceLevelLoad;
+    }
+
+    private void Update()
+    {
+        SpawnCars();
+    }
+
+    void SpawnCars()
+    {
+        if(Time.time - startTime <curTime.Seconds)
+        {
+            if(curTime.ratePrio == SpawnRate.Low)
+            {
+                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minLow, maxLow)));
+            }
+            else if(curTime.ratePrio == SpawnRate.Med)
+            {
+                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minMed, maxMed)));
+            }
+            else if (curTime.ratePrio == SpawnRate.High)
+            {
+                if (spawning == null) StartCoroutine(SpawnVehicle(Random.Range(minHigh, maxHigh)));
+            }
+        }
+    }
+
+    Car.CarColor CheckTargetJunc()
+    {
+        float rand = Random.Range(0.0f, 1.0f);
+        if (rand >= 0 && rand < junc1)
+        {
+            return Car.CarColor.Green;
+        }
+        else if (rand >= junc1 && rand < junc2)
+        {
+            return Car.CarColor.Yellow;
+        }
+        else if(rand>= junc2 && rand <=1.0)
+        {
+            return Car.CarColor.Blue;
+        }
+        return Car.CarColor.Green;
+    }
+
+    IEnumerator SpawnVehicle(float sec)
+    {
+        Debug.Log("RunningIEnumerator");
+
+        yield return new WaitForSeconds(sec);
+        float rand = Random.Range(0.0f, 1.0f);
+        if(rand < curTime.slowRate && rand >= 0)
+        {
+            for(int i=0; i < slow.Count; i++)
+            {
+                if(!slow[i].car.activeInHierarchy)
+                {
+                    slow[i].car.SetActive(true);
+                    slow[i].car.transform.position = spawnTraffic.transform.position;
+                    slow[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    slow[i].carScript.curTraffic = spawnTraffic;                   
+                    slow[i].carScript.carColor = CheckTargetJunc();
+                    yield return null;
+                }
+            }
+            PoolingSystem.Instance.SpawnSlow();
+            slow[slow.Count-1].car.SetActive(true);
+            slow[slow.Count-1].car.transform.position = spawnTraffic.transform.position;
+            slow[slow.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            slow[slow.Count - 1].carScript.curTraffic = spawnTraffic;
+            slow[slow.Count - 1].carScript.carColor = CheckTargetJunc();
+            yield return null;
+        }
+        else if (rand >= curTime.slowRate && rand < curTime.medRate)
+        {
+            for (int i = 0; i < medium.Count; i++)
+            {
+                if (!medium[i].car.activeInHierarchy)
+                {
+                    medium[i].car.SetActive(true);
+                    medium[i].car.transform.position = spawnTraffic.transform.position;
+                    medium[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    medium[i].carScript.curTraffic = spawnTraffic;
+                    medium[i].carScript.carColor = CheckTargetJunc();
+                    yield return null;
+                }
+            }
+            PoolingSystem.Instance.SpawnMed();
+            medium[medium.Count - 1].car.SetActive(true);
+            medium[medium.Count - 1].car.transform.position = spawnTraffic.transform.position;
+            medium[medium.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            medium[medium.Count - 1].carScript.curTraffic = spawnTraffic;
+            medium[medium.Count - 1].carScript.carColor = CheckTargetJunc();
+            yield return null;
+        }
+        else if (rand>=curTime.medRate && rand <= 1)
+        {
+            for (int i = 0; i < fast.Count; i++)
+            {
+                if (!fast[i].car.activeInHierarchy)
+                {
+                    fast[i].car.SetActive(true);
+                    fast[i].car.transform.position = spawnTraffic.transform.position;
+                    fast[i].car.transform.rotation = spawnTraffic.transform.rotation;
+                    fast[i].carScript.curTraffic = spawnTraffic;
+                    fast[i].carScript.carColor = CheckTargetJunc();
+                    yield return null;
+                }
+            }
+            PoolingSystem.Instance.SpawnFast();
+            fast[fast.Count - 1].car.SetActive(true);
+            fast[fast.Count - 1].car.transform.position = spawnTraffic.transform.position;
+            fast[fast.Count - 1].car.transform.rotation = spawnTraffic.transform.rotation;
+            fast[fast.Count - 1].carScript.curTraffic = spawnTraffic;
+            fast[fast.Count - 1].carScript.carColor = CheckTargetJunc();
+            yield return null;
+        }
     }
 
     public void AddToSlow(SpawnSystemUnit vehicle)
@@ -47,140 +170,5 @@ public class SpawnSystem : MonoBehaviour
     public void AddToFast(SpawnSystemUnit vehicle)
     {
         fast.Add(vehicle);
-    }
-
-    private IEnumerator Spawner()
-    {
-        for (int i = 0; i < spawnList.Count; i++)
-        {
-            isCarSpawned = false;
-            while (!isCarSpawned)
-            {
-                yield return new WaitForSeconds(spawnList[i].spawnTime);
-                ShootRayCast();
-                if (isSpawnPointClear)
-                {
-                    //Debug.Log(this.name + " spawning at " + spawnList[i].spawnTime + " delay");
-                    vehicleList[i].gameObject.transform.position = this.transform.position;
-                    SpawnRotation(i);
-
-                    vehicleList[i].gameObject.SetActive(true);
-                    vehicleList[i].gameObject.GetComponent<Car>().curTraffic = spawnTraffic;
-                    isCarSpawned = true;
-                }
-                else
-                {
-                    isCarSpawned = false;
-                    Debug.Log("Spawn point not clear. Wait.");
-                    yield return new WaitForSeconds(0.1f);
-                }
-            }
-        }
-    }
-
-    private void SpawnRotation(int vehicleNumber)
-    {
-        if (spawnDirection == SpawnDirection.NORTH)
-        {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
-        }
-        else if (spawnDirection == SpawnDirection.EAST)
-        {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 90);
-        }
-        else if (spawnDirection == SpawnDirection.SOUTH)
-        {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 180);
-        }
-        else if (spawnDirection == SpawnDirection.WEST)
-        {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 270);
-        }
-    }
-
-    //private void SetSpawnPointColor()
-    //{
-    //    for (int i=0; i<vehicleList.Count; i++)
-    //    {
-    //        switch (spawnPointColor)
-    //        {
-    //            case spawnColor.Blue:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Blue;
-    //                break;
-
-    //            case spawnColor.Green:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Green;
-    //                break;
-
-    //            case spawnColor.Orange:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Orange;
-    //                break;
-
-    //            case spawnColor.Purple:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Purple;
-    //                break;
-
-    //            case spawnColor.Red:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Red;
-    //                break;
-
-    //            case spawnColor.Yellow:
-    //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Yellow;
-    //                break;
-    //        }
-
-    //    }
-    //}
-
-    private void ShootRayCast()
-    {
-        if (spawnDirection == SpawnDirection.NORTH)
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 3, Color.red);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0, 0, 90)), 3, 8))
-            {
-                isSpawnPointClear = false;
-            }
-            else
-            {
-                isSpawnPointClear = true;
-            }
-        }
-        else if (spawnDirection == SpawnDirection.EAST)
-        {
-            Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector3.right) * 3, Color.red);
-            if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0, 0, 90)), 3))
-            {
-                isSpawnPointClear = false;
-            }
-            else
-            {
-                isSpawnPointClear = true;
-            }
-        }
-        else if (spawnDirection == SpawnDirection.SOUTH)
-        {
-            Debug.DrawRay(transform.position, -transform.TransformDirection(Vector3.forward) * 3, Color.red);
-            if (Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.forward), 3))
-            {
-                isSpawnPointClear = false;
-            }
-            else
-            {
-                isSpawnPointClear = true;
-            }
-        }
-        else if (spawnDirection == SpawnDirection.WEST)
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * 3, Color.red);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 3))
-            {
-                isSpawnPointClear = false;
-            }
-            else
-            {
-                isSpawnPointClear = true;
-            }
-        }
-    }
+    } 
 }

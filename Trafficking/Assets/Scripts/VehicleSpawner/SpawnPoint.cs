@@ -178,4 +178,6 @@ public class SpawnPoint : MonoBehaviour
     }
 }
 
+public enum SpawnDirection { NORTH, SOUTH, EAST, WEST};
+
 

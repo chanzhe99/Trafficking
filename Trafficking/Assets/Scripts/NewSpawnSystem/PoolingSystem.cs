@@ -76,25 +76,40 @@ public class PoolingSystem : MonoBehaviour
     {
         for(int i=0; i<12; i++)
         {
-            GameObject obj = Instantiate(slow, new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit{car = obj, carScript = obj.GetComponent<Car>()};
-            spawnSys.AddToSlow(spawn);
-            GameObject obj1 = Instantiate((med1), new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
-            spawnSys.AddToMed(spawn);
-            GameObject obj2 = Instantiate((med2), new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
-            spawnSys.AddToMed(spawn);
-            GameObject obj3 = Instantiate((med3), new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
-            spawnSys.AddToMed(spawn);
-            GameObject obj4 = Instantiate((med4), new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
-            spawnSys.AddToMed(spawn);
-            GameObject obj5 = Instantiate((fast), new Vector3(0, 0, 0), Quaternion.identity);
-            spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
-            spawnSys.AddToMed(spawn);
+            SpawnSlow();
+            SpawnMed();
+            SpawnFast();
         }
+    }
+
+    public void SpawnSlow()
+    {
+        GameObject obj = Instantiate(slow, new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
+        spawnSys.AddToSlow(spawn);
+    }
+
+    public void SpawnMed()
+    {
+        GameObject obj1 = Instantiate((med1), new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj1, carScript = obj1.GetComponent<Car>() };
+        spawnSys.AddToMed(spawn);
+        GameObject obj2 = Instantiate((med2), new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj2, carScript = obj2.GetComponent<Car>() };
+        spawnSys.AddToMed(spawn);
+        GameObject obj3 = Instantiate((med3), new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj3, carScript = obj3.GetComponent<Car>() };
+        spawnSys.AddToMed(spawn);
+        GameObject obj4 = Instantiate((med4), new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj4, carScript = obj4.GetComponent<Car>() };
+        spawnSys.AddToMed(spawn);
+    }
+
+    public void SpawnFast()
+    {
+        GameObject obj5 = Instantiate((fast), new Vector3(0, 0, 0), Quaternion.identity);
+        spawn = new SpawnSystemUnit { car = obj5, carScript = obj5.GetComponent<Car>() };
+        spawnSys.AddToFast(spawn);
     }
 
     // sets vehicles to their spawnpoints
