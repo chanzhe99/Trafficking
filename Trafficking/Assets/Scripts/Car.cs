@@ -79,6 +79,7 @@ public class Car : MonoBehaviour
                     return;
                 }
             }
+           
             if(curTraffic.canStraightTurn)
             {
                 if(currentNode == 1)
