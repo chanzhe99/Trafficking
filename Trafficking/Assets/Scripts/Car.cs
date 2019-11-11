@@ -154,7 +154,6 @@ public class Car : MonoBehaviour
         if (patience > 0)
         {
             patience -= 1f;
-            //Debug.Log("Patience: " + patience);
         }
         yield return new WaitForSeconds(1.0f);
         decreasingP = false;
@@ -164,7 +163,6 @@ public class Car : MonoBehaviour
     {
         if (patience < 11)
         {
-            //Debug.Log("Patience: " + patience);
             patience += 1f;
         }
         yield return new WaitForSeconds(1.0f);
@@ -240,33 +238,12 @@ public class Car : MonoBehaviour
         startTime = 0f;
         turningRight = false;
         _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
-        //Debug.Log("Drove");
-        //transform.Translate(nodes[currentNode].position * Time.deltaTime);
     }
 
-    //private void CheckWaypointDistance()
-    //{
-    //    if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
-    //    {
-    //        //if (currentNode == nodes.Count - 1)
-    //        //{
-    //        //    currentNode = 0;
-    //        //}
-    //        //else
-    //        //{
-    //        //    currentNode++;
-    //        //}
-    //        if (currentNode < nodes.Count-1)
-    //        {
-    //            currentNode++;
-    //        }
-    //    }
-    //}
 
     private bool CheckToStop()
     {
         RaycastHit hit;
-        
         Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
         Debug.DrawRay(_transform.position, direct*5f, Color.red);
         if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
@@ -274,19 +251,15 @@ public class Car : MonoBehaviour
             if (hit.transform.gameObject.CompareTag("Car"))
             {
                 stopped = true;
-               // Debug.Log("Hit car");
                 return true;
             }
             else
             {
-
                 return false;
-
             }
         }
         else
         {
-           // Debug.Log("No hit");
             return false;
         }
     }
@@ -297,12 +270,10 @@ public class Car : MonoBehaviour
         {
             if(Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.025f)
             {
+                Debug.Log("Getting node");
+                Debug.Log(currentNode);
                 hasNext = false;
-                //GameObject tempObj;
-
                 curTraffic = nodes[currentNode].gameObject.GetComponent<TrafficNode>().entranceTraffic;
-                
-                //tempObj = curTraffic.gameObject;
                 if (curTraffic.stop != null)
                     nodes[0] = curTraffic.stop;
                 if (curTraffic.straight != null)
@@ -315,32 +286,6 @@ public class Car : MonoBehaviour
                     nodes[4] = curTraffic.tempDelayRight;
                 }
                 currentNode = 0;
-                //if (tempObj.CompareTag("CrossLight"))
-                //{
-                //    nodes[0] = curTraffic.stop;
-                //    nodes[1] = curTraffic.straight;
-                //    nodes[2] = curTraffic.left;
-                //    nodes[3] = curTraffic.right;
-                //    nodes[4] = curTraffic.tempDelayRight;
-                //}
-                //else if (tempObj.CompareTag("StraightLight"))
-                //{
-                //    nodes[0] = curTraffic.stop;
-                //    nodes[1] = curTraffic.straight;
-                //}
-                //else if (tempObj.CompareTag("TurnRightLight"))
-                //{
-                //    nodes[0] = curTraffic.stop;
-                //    nodes[1] = curTraffic.straight;
-                //    nodes[3] = curTraffic.right;
-                //    nodes[4] = curTraffic.tempDelayRight;
-                //}
-                //else if(tempObj.CompareTag("TurnLeftLight"))
-                //{
-                //    nodes[0] = curTraffic.stop;
-                //    nodes[1] = curTraffic.straight;
-                //    nodes[2] = curTraffic.left;
-                //}
             }
         }
     }
@@ -358,36 +303,6 @@ public class Car : MonoBehaviour
             nodes[3] = curTraffic.right;
             nodes[4] = curTraffic.tempDelayRight;
         }
-
-        //GameObject tempObj;
-        //tempObj = curTraffic.gameObject;
-
-        //if (tempObj.CompareTag("CrossLight"))
-        //{
-        //    nodes[0] = curTraffic.stop;
-        //    nodes[1] = curTraffic.straight;
-        //    nodes[2] = curTraffic.left;
-        //    nodes[3] = curTraffic.right;
-        //    nodes[4] = curTraffic.tempDelayRight;
-        //}
-        //else if (tempObj.CompareTag("StraightLight"))
-        //{
-        //    nodes[0] = curTraffic.stop;
-        //    nodes[1] = curTraffic.straight;
-        //}
-        //else if (tempObj.CompareTag("TurnRightLight"))
-        //{
-        //    nodes[0] = curTraffic.stop;
-        //    nodes[1] = curTraffic.straight;
-        //    nodes[3] = curTraffic.right;
-        //    nodes[4] = curTraffic.tempDelayRight;
-        //}
-        //else if (tempObj.CompareTag("TurnLeftLight"))
-        //{
-        //    nodes[0] = curTraffic.stop;
-        //    nodes[1] = curTraffic.straight;
-        //    nodes[2] = curTraffic.left;
-        //}
     }
 
     bool CheckTrafficStop()
@@ -405,6 +320,10 @@ public class Car : MonoBehaviour
     void GetTurnSignal()
     {
         turnNo = 0;
+        if(curTraffic.JunctionNumber>10)
+        {
+            return;
+        }
         turnNo = FindNextTraffic();
         if (turnNo == 2) //left
         {
@@ -419,35 +338,6 @@ public class Car : MonoBehaviour
             signalLights.noSignal();
         }
     }
-
-    //private void CheckTrafficLight()
-    //{
-
-    //    if (curTraffic.Stop)
-    //    {
-    //        currentNode = 0;
-    //    }
-    //    else if (curTraffic.Straight)
-    //    {
-    //        currentNode = 1;
-    //    }
-    //    else if (curTraffic.Left)
-    //    {
-    //        currentNode = 2;
-    //    }
-    //    else if (curTraffic.Right)
-    //    {
-    //        if (!turningRight)
-    //        {
-    //            currentNode = 4;
-    //            if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.05f)
-    //            {
-    //                currentNode = 3;
-    //                turningRight = true;
-    //            }
-    //        }
-    //    }
-    //}
 
     bool CheckStopLine()
     {
