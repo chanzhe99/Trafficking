@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
+public class SpawnSystem : MonoBehaviour
 {
     [SerializeField] SpawnDirection spawnDirection;
     //[SerializeField] spawnColor spawnPointColor;
-    [SerializeField] List<GameObject> vehicleList;
+    [SerializeField] List<SpawnSystemUnit> fast;
+    [SerializeField] List<SpawnSystemUnit> slow;
+    [SerializeField] List<SpawnSystemUnit> medium;
+
 
     // colors are for the exits/entrances, not the Car's colors themselves
     //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
@@ -32,14 +35,18 @@ public class SpawnPoint : MonoBehaviour
         yield return StartCoroutine(Spawner());
     }
 
-    public void AddToSpawnList(SpawnUnit vehicle)
+    public void AddToSlow(SpawnSystemUnit vehicle)
     {
-        spawnList.Add(vehicle);
+        slow.Add(vehicle);
     }
 
-    public void AssignVehicles(GameObject vehicle)
+    public void AddToMed(SpawnSystemUnit vehicle)
     {
-        vehicleList.Add(vehicle);
+        medium.Add(vehicle);
+    }
+    public void AddToFast(SpawnSystemUnit vehicle)
+    {
+        fast.Add(vehicle);
     }
 
     private IEnumerator Spawner()
@@ -75,9 +82,9 @@ public class SpawnPoint : MonoBehaviour
     {
         if (spawnDirection == SpawnDirection.NORTH)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90,0, 0);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
         }
-        else if(spawnDirection == SpawnDirection.EAST)
+        else if (spawnDirection == SpawnDirection.EAST)
         {
             vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-90, 0, 90);
         }
@@ -121,7 +128,7 @@ public class SpawnPoint : MonoBehaviour
     //                vehicleList[i].GetComponent<Car>().carColor = Car.CarColor.Yellow;
     //                break;
     //        }
-            
+
     //    }
     //}
 
@@ -130,7 +137,7 @@ public class SpawnPoint : MonoBehaviour
         if (spawnDirection == SpawnDirection.NORTH)
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 3, Color.red);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0,0,90)), 3, 8))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0, 0, 90)), 3, 8))
             {
                 isSpawnPointClear = false;
             }
@@ -177,5 +184,3 @@ public class SpawnPoint : MonoBehaviour
         }
     }
 }
-
-
