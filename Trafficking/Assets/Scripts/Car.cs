@@ -440,7 +440,7 @@ public class Car : MonoBehaviour
             }
             if (!CheckTrafficStop() && !hasNext)
             {
-                FindNextTraffic();
+                currentNode = FindNextTraffic();
                 if(currentNode ==3)
                 {
                     currentNode = 4;
@@ -453,7 +453,7 @@ public class Car : MonoBehaviour
         return false;
     }
 
-    void FindNextTraffic()
+    int FindNextTraffic()
     {
         switch (carColor)
         {
@@ -465,11 +465,12 @@ public class Car : MonoBehaviour
                         { 
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.RedTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return i;
+                                
                             }
                         }
                     }
+
                     break;
                 }
             case CarColor.Green:
@@ -480,8 +481,8 @@ public class Car : MonoBehaviour
                         {                           
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.GreenTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return i;
+                                
                             }
                         }
                     }
@@ -495,8 +496,8 @@ public class Car : MonoBehaviour
                         {
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.BlueTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return i;
+                                
                             }
                         }
                     }
@@ -510,8 +511,8 @@ public class Car : MonoBehaviour
                         {
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.OrangeTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return  i;
+                               
                             }
                         }
                     }
@@ -525,8 +526,8 @@ public class Car : MonoBehaviour
                         {
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.YellowTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return i;
+                                
                             }
                         }
                     }
@@ -540,15 +541,19 @@ public class Car : MonoBehaviour
                         {
                             if (nodes[i].gameObject.GetComponent<TrafficNode>().entranceTraffic.JunctionNumber == Direction.Instance.PurpleTarJunc[curTraffic.JunctionNumber - 1])
                             {
-                                currentNode = i;
-                                break;
+                                return  i;
+                                
                             }
                         }
                     }
                     break;
                 }
 
-            default: break;
+            default: 
+                
+             return 0;
+
+            
         }
         //if(carColor == CarColor.Red)
         //{
@@ -558,7 +563,7 @@ public class Car : MonoBehaviour
 
         //    }
         //}
-
+        return 0;
     }
 
     private void OnTriggerEnter(Collider other)
