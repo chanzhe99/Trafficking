@@ -8,7 +8,6 @@ public class Car : MonoBehaviour
     public LayerMask layer;
     //public Transform testNode;
     //public bool turnLeft = false;
-    enum TargetDir { None, Straight, Left, Right };
     public enum CarColor { Red, Green, Blue, Orange, Yellow, Purple }
     //public Transform path;
     public float carSpeed;
@@ -17,7 +16,6 @@ public class Car : MonoBehaviour
     private Transform _transform;
     [SerializeField] public TrafficLight curTraffic;
     private bool turningRight = false;
-    TargetDir targetDir;
     [SerializeField] public CarColor carColor;
     private bool hasNext = false;
     public float patience = 10f;
@@ -57,7 +55,7 @@ public class Car : MonoBehaviour
         currentNode = 0;
         if (curTraffic != null)
             InitNodes();
-        targetDir = TargetDir.None;
+        
 
     }
 
@@ -81,6 +79,7 @@ public class Car : MonoBehaviour
                     return;
                 }
             }
+           
             if(curTraffic.canStraightTurn)
             {
                 if(currentNode == 1)
@@ -137,7 +136,7 @@ public class Car : MonoBehaviour
         //CheckWaypointDistance();
     }
 
-   
+
 
     private IEnumerator DecreaseMeter()
     {
