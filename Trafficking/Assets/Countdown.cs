@@ -8,9 +8,6 @@ public class Countdown : MonoBehaviour
 {
     [SerializeField] TMP_Text countdownText;
     [SerializeField] GameObject counterdownTimer;
-    [SerializeField] GameObject level;
-    [SerializeField] GameObject satisfactionMeter;
-    [SerializeField] GameObject timer;
     private float startTime;
 
     // Start is called before the first frame update
@@ -18,12 +15,13 @@ public class Countdown : MonoBehaviour
     {
         startTime = 3.0f;
         Time.timeScale = 0.0f;
+        counterdownTimer.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        startTime -= (0.75f / 120);
+        startTime -= (0.5f / 60);
         float t = startTime;
 
         if(t > 0)
@@ -35,9 +33,6 @@ public class Countdown : MonoBehaviour
         {
             counterdownTimer.SetActive(false);
             Time.timeScale = 1f;
-            level.SetActive(true);
-            satisfactionMeter.SetActive(true);
-            timer.SetActive(true);
         }
 
     }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject SettingsPanelUI;
+    public GameObject MainMenuUI;
 
     public void OpenSettings()
     {
@@ -15,6 +16,16 @@ public class MainMenu : MonoBehaviour
     public void CloseSettings()
     {
         SettingsPanelUI.SetActive(false);
+    }
+
+    public void OpenMainMenu()
+    {
+        MainMenuUI.SetActive(true);
+    }
+
+    public void CloseMainMenu()
+    {
+        MainMenuUI.SetActive(false);
     }
 
     //public enum Scene
