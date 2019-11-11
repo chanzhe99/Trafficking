@@ -77,7 +77,7 @@ public class SpawnPoint : MonoBehaviour
     {
         if (spawnDirection == SpawnDirection.NORTH)
         {
-            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0,0, 0);
+            vehicleList[vehicleNumber].gameObject.transform.rotation = Quaternion.Euler(-0, 0, 0);
         }
         else if(spawnDirection == SpawnDirection.EAST)
         {

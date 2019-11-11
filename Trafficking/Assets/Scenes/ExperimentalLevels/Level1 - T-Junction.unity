@@ -1003,19 +1003,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsToPool:
-  - vehicleType: {fileID: 2828571772555677923, guid: 322b3ebd3803046468266923093c3f1e,
+  - vehicleType: {fileID: 3327623361640607350, guid: 60e19f533a2e5fe41b7bdf3a27cea886,
       type: 3}
     spawnPoint: {fileID: 899436193}
     spawnTime: 1
     spawnPointColor: 2
-  - vehicleType: {fileID: 2828571772555677923, guid: 322b3ebd3803046468266923093c3f1e,
+  - vehicleType: {fileID: 3327623361640607350, guid: 60e19f533a2e5fe41b7bdf3a27cea886,
       type: 3}
     spawnPoint: {fileID: 899436193}
     spawnTime: 1.5
     spawnPointColor: 2
-  - vehicleType: {fileID: 7000364878637270029, guid: c67afb1106acba94e93c106fc30974a2,
+  - vehicleType: {fileID: 3327623361640607350, guid: 60e19f533a2e5fe41b7bdf3a27cea886,
       type: 3}
     spawnPoint: {fileID: 899436193}
+    spawnTime: 1.5
+    spawnPointColor: 4
+  - vehicleType: {fileID: 3327623361640607350, guid: 60e19f533a2e5fe41b7bdf3a27cea886,
+      type: 3}
+    spawnPoint: {fileID: 1281437242}
+    spawnTime: 1.5
+    spawnPointColor: 4
+  - vehicleType: {fileID: 3327623361640607350, guid: 60e19f533a2e5fe41b7bdf3a27cea886,
+      type: 3}
+    spawnPoint: {fileID: 1511027006}
     spawnTime: 1.5
     spawnPointColor: 4
   pooledObjects: []
@@ -1275,6 +1285,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7551338221974372211, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: Stop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551338221974372211, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806266813607208971, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: Stop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806266813607208971, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010345489589285172, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: Stop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6010345489589285172, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: JunctionNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281791490172884917, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 1568995293}
+    - target: {fileID: 6074572256441815474, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 933662152}
+    - target: {fileID: 7822716722835102194, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 933662152}
+    - target: {fileID: 7819729813578183714, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 1903069412}
+    - target: {fileID: 3104706646883978053, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 1903069412}
+    - target: {fileID: 6028264252180333720, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
+        type: 3}
+      propertyPath: entranceTraffic
+      value: 
+      objectReference: {fileID: 1568995293}
     - target: {fileID: 5803946237413979818, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1305,16 +1375,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7551338221974372211, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: Stop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7551338221974372211, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: JunctionNumber
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6010345488608848904, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1328,16 +1388,6 @@ PrefabInstance:
     - target: {fileID: 6010345489341885124, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7806266813607208971, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: Stop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7806266813607208971, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: JunctionNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7551338221290271975, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
@@ -1358,16 +1408,6 @@ PrefabInstance:
     - target: {fileID: 7551338223225365071, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6010345489589285172, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: Stop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6010345489589285172, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: JunctionNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7806266812805772283, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
@@ -1425,36 +1465,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6281791490172884917, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 1568995293}
-    - target: {fileID: 6074572256441815474, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 933662152}
-    - target: {fileID: 7822716722835102194, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 933662152}
-    - target: {fileID: 7819729813578183714, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 1903069412}
-    - target: {fileID: 3104706646883978053, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 1903069412}
-    - target: {fileID: 6028264252180333720, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
-        type: 3}
-      propertyPath: entranceTraffic
-      value: 
-      objectReference: {fileID: 1568995293}
     - target: {fileID: 1617579652774656032, guid: cde1f5ee0ad277a4ebbb78ee62274b19,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3111,7 +3121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6ca009c0636646adde2dd86e3deb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDirection: 2
+  spawnDirection: 1
   vehicleList: []
   spawnTraffic: {fileID: 470923056}
 --- !u!114 &933662152 stripped

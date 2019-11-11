@@ -17,13 +17,14 @@ public class Car : MonoBehaviour
     [SerializeField] public TrafficLight curTraffic;
     private bool turningRight = false;
     [SerializeField] public CarColor carColor;
+    private TurnLights signalLights;
     private bool hasNext = false;
     public float patience = 10f;
     private bool stopped = false;
     private bool increasingP = false;
     private bool decreasingP = false;
     private bool decreasingS = false;
-
+    private int turnNo;
    
 
 
@@ -49,6 +50,7 @@ public class Car : MonoBehaviour
 
     private void Start()
     {
+        signalLights = GetComponent<TurnLights>();
         _transform = transform;
         nodes = new Transform[5];
         self = _transform.rotation;
@@ -61,7 +63,7 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        
+        GetTurnSignal();
         GetNodes();
         if (!CheckToStop())
         {
@@ -140,7 +142,6 @@ public class Car : MonoBehaviour
 
     private IEnumerator DecreaseMeter()
     {
-       
         //Debug.Log("Satisfaction: " + Score.Instance.meter);
         Score.Instance.meter -= 1f;
         yield return new WaitForSeconds(1.0f);
@@ -266,7 +267,7 @@ public class Car : MonoBehaviour
     {
         RaycastHit hit;
         
-        Vector3 direct = (_transform.TransformDirection(new Vector3(0,-1, 0)).normalized);
+        Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
         Debug.DrawRay(_transform.position, direct*5f, Color.red);
         if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
         {
@@ -398,6 +399,24 @@ public class Car : MonoBehaviour
         else 
         {
             return false;
+        }
+    }
+
+    void GetTurnSignal()
+    {
+        turnNo = 0;
+        turnNo = FindNextTraffic();
+        if (turnNo == 2) //left
+        {
+            signalLights.leftSignal();
+        }
+        else if (turnNo == 3 || turnNo == 4) //right
+        {
+            signalLights.rightSignal();
+        }
+        else
+        {
+            signalLights.noSignal();
         }
     }
 
