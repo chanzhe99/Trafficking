@@ -25,7 +25,7 @@ public class Car : MonoBehaviour
     private bool decreasingP = false;
     private bool decreasingS = false;
     private int turnNo;
-   
+    bool turning = false;
 
 
     // Variables for Quaternion rotation
@@ -171,6 +171,7 @@ public class Car : MonoBehaviour
 
     void Turn()
     {
+        turning = true;
         stopped = false;
         if(startTime == 0.0f)
         {
@@ -234,6 +235,7 @@ public class Car : MonoBehaviour
 
     private void Drive()
     {
+        turning = false;
         stopped = false;
         startTime = 0f;
         turningRight = false;
@@ -243,25 +245,29 @@ public class Car : MonoBehaviour
 
     private bool CheckToStop()
     {
-        RaycastHit hit;
-        Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
-        Debug.DrawRay(_transform.position, direct*5f, Color.red);
-        if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
-        {
-            if (hit.transform.gameObject.CompareTag("Car"))
+        if (!turning)
+        { 
+            RaycastHit hit;
+            Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
+            Debug.DrawRay(_transform.position, direct * 5f, Color.red);
+            if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
             {
-                stopped = true;
-                return true;
+                if (hit.transform.gameObject.CompareTag("Car"))
+                {
+                    stopped = true;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
                 return false;
             }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     void GetNodes()
