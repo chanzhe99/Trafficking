@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 5054038020559963221}
   - component: {fileID: 5054038020559963209}
   - component: {fileID: 5054038020559963214}
-  - component: {fileID: 5054038020559963215}
+  - component: {fileID: 3757802401968298309}
   m_Layer: 5
   m_Name: TrafficUICanvas
   m_TagString: Untagged
@@ -454,7 +454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownText: {fileID: 0}
   counterdownTimer: {fileID: 0}
---- !u!114 &5054038020559963215
+  isStart: 0
+--- !u!114 &3757802401968298309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,3 +471,4 @@ MonoBehaviour:
   Timer: {fileID: 5054038020559963220}
   Lose: {fileID: 0}
   Win: {fileID: 0}
+  isGameOver: 0
