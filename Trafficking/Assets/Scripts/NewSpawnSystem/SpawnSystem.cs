@@ -63,7 +63,7 @@ public class SpawnSystem : MonoBehaviour
     {
         if(Time.time - startTime <curTime.Seconds)
         {
-            Debug.Log("true");
+            //Debug.Log("true");
             if (canSpawn && !isSpawning)
             {
                 if (curTime.ratePrio == SpawnRate.Low)

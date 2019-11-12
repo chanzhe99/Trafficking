@@ -12,31 +12,30 @@ public class EndScreen : MonoBehaviour
     [SerializeField] GameObject Lose;
     [SerializeField] GameObject Win;
 
+    public bool isGameOver = false;
+
     private void Update()
     {
-        checkSatisfaction();
+        checkSatisfaction(); 
     }
 
     private void checkSatisfaction()
     {
         if(Score.Instance.meter <= 0.0f)
         {
-            if (Time.timeScale == 1.0f)
-            {
-                Time.timeScale = 0.0f;
-            }
+            isGameOver = true;
             endScreenUI.SetActive(true);
             Lose.SetActive(true);
         }
-        //else if (Timer.GetComponent<Timer>().rTime <= 0 && Score.Instance.meter >= 0.0f)
-        //{
-        //    if (Time.timeScale == 1.0f)
-        //    {
-        //        Time.timeScale = 0.0f;
-        //    }
-        //    endScreenUI.SetActive(true);
-        //    Win.SetActive(true);
-        //}
+        else if (Timer.GetComponent<Timer>().rTime <= 0)
+        {
+            if (Score.Instance.meter >= 0.0f)
+            {
+                isGameOver = true;
+                endScreenUI.SetActive(true);
+                Win.SetActive(true);
+            } 
+        }
     }
 
     public void Retry()

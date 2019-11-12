@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 5054038019240890928}
-  rTime: 0
+  rTime: 5
 --- !u!114 &5054038020559963214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,4 +468,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endScreenUI: {fileID: 0}
   Timer: {fileID: 5054038020559963220}
-  Lose: {fileID: 5054038020559963220}
+  Lose: {fileID: 0}
+  Win: {fileID: 0}
