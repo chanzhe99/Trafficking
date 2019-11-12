@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 677162516182869942}
   - component: {fileID: 6510317009870379855}
   m_Layer: 0
-  m_Name: Level3Road
+  m_Name: Level3RoadLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8376348993336450432
 Transform:
