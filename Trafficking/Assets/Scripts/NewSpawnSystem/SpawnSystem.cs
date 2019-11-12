@@ -154,7 +154,7 @@ public class SpawnSystem : MonoBehaviour
             slow[slow.Count - 1].car.transform.rotation = self.transform.rotation;
             slow[slow.Count - 1].carScript.curTraffic = spawnTraffic;
             slow[slow.Count - 1].carScript.carColor = CheckTargetJunc();
-            slow[i].carScript.InitNodes();
+            slow[slow.Count - 1].carScript.InitNodes();
             yield return null;
         }
         else if (rand >= curTime.slowRate && rand < curTime.medRate)
@@ -168,7 +168,7 @@ public class SpawnSystem : MonoBehaviour
                     medium[i].car.transform.rotation = self.transform.rotation;
                     medium[i].carScript.curTraffic = spawnTraffic;
                     medium[i].carScript.carColor = CheckTargetJunc();
-                    slow[i].carScript.InitNodes();
+                    medium[i].carScript.InitNodes();
                     //yield return null;
                     yield break;
                 }
@@ -179,7 +179,7 @@ public class SpawnSystem : MonoBehaviour
             medium[medium.Count - 1].car.transform.rotation = self.transform.rotation;
             medium[medium.Count - 1].carScript.curTraffic = spawnTraffic;
             medium[medium.Count - 1].carScript.carColor = CheckTargetJunc();
-            slow[i].carScript.InitNodes();
+            medium[medium.Count - 1].carScript.InitNodes();
             yield return null;
         }
         else if (rand>=curTime.medRate && rand <= 1)
@@ -193,7 +193,7 @@ public class SpawnSystem : MonoBehaviour
                     fast[i].car.transform.rotation = self.transform.rotation;
                     fast[i].carScript.curTraffic = spawnTraffic;
                     fast[i].carScript.carColor = CheckTargetJunc();
-                    slow[i].carScript.InitNodes();
+                    fast[i].carScript.InitNodes();
                     //yield return null;
                     yield break;
                 }
@@ -204,7 +204,7 @@ public class SpawnSystem : MonoBehaviour
             fast[fast.Count - 1].car.transform.rotation = self.transform.rotation;
             fast[fast.Count - 1].carScript.curTraffic = spawnTraffic;
             fast[fast.Count - 1].carScript.carColor = CheckTargetJunc();
-            slow[i].carScript.InitNodes();
+            fast[fast.Count - 1].carScript.InitNodes();
             yield return null;
         }
         spawning = null;
