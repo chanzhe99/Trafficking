@@ -25,21 +25,18 @@ public class EndScreen : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
             }
-            Score.Instance.meter = 0.0f;
             endScreenUI.SetActive(true);
             Lose.SetActive(true);
         }
-        else if (Score.Instance.meter >= 0.0f)
-        {
-            if (Time.timeScale == 1.0f)
-            {
-                Time.timeScale = 0.0f;
-            }
-            Score.Instance.meter = 0.0f;
-            endScreenUI.SetActive(true);
-            Win.SetActive(true);
-            Lose.SetActive(false);
-        }
+        //else if (Timer.GetComponent<Timer>().rTime <= 0 && Score.Instance.meter >= 0.0f)
+        //{
+        //    if (Time.timeScale == 1.0f)
+        //    {
+        //        Time.timeScale = 0.0f;
+        //    }
+        //    endScreenUI.SetActive(true);
+        //    Win.SetActive(true);
+        //}
     }
 
     public void Retry()
