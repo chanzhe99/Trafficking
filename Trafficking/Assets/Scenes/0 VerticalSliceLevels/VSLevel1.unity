@@ -609,6 +609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21877b3a9aa8f48805483ae46ce37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRed: 1
+  greenButton: {fileID: 0}
+  redButton: {fileID: 0}
   trafficLights:
   - {fileID: 954648876}
   - {fileID: 2025229153}
@@ -623,6 +626,7 @@ MonoBehaviour:
   - canGoLeft: 1
     canGoRight: 0
     canGoStraight: 1
+  controllers: []
 --- !u!1 &137320823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21877b3a9aa8f48805483ae46ce37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRed: 1
+  greenButton: {fileID: 0}
+  redButton: {fileID: 0}
   trafficLights:
   - {fileID: 954648876}
   - {fileID: 2025229153}
@@ -1841,6 +1848,7 @@ MonoBehaviour:
   - canGoLeft: 1
     canGoRight: 0
     canGoStraight: 0
+  controllers: []
 --- !u!1 &1393564617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,6 +2137,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5282116477407745786, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
+        type: 3}
+      propertyPath: Timer
+      value: 
+      objectReference: {fileID: 1891086113}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db, type: 3}
 --- !u!1001 &1494892852
@@ -2367,6 +2380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f21877b3a9aa8f48805483ae46ce37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRed: 1
+  greenButton: {fileID: 0}
+  redButton: {fileID: 0}
   trafficLights:
   - {fileID: 954648876}
   - {fileID: 2025229153}
@@ -2381,6 +2397,7 @@ MonoBehaviour:
   - canGoLeft: 0
     canGoRight: 0
     canGoStraight: 0
+  controllers: []
 --- !u!1001 &1594697693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2771,6 +2788,12 @@ PrefabInstance:
       objectReference: {fileID: 249746169}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 797c25cf0c7ebc9458b0a8cb2ed37705, type: 3}
+--- !u!1 &1891086113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5054038019240890931, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
+    type: 3}
+  m_PrefabInstance: {fileID: 1826170555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1986021390
 PrefabInstance:
   m_ObjectHideFlags: 0
