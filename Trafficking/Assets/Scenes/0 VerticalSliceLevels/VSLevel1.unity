@@ -2529,9 +2529,8 @@ MonoBehaviour:
   med3: {fileID: 3417119104543224007, guid: e9832442421be7f4ea2f26441aade0b8, type: 3}
   med4: {fileID: 4774742853991499505, guid: 1d02c59a420c7b748a8bb4d4dc4df7ae, type: 3}
   fast: {fileID: 6497118839344831583, guid: c81166fb789026c439c6074afed04199, type: 3}
-  spawnSys: {fileID: 8915189567190660930}
-  spawnSys2: {fileID: 8915189567190660929}
-  spawnSys3: {fileID: 8915189567190660928}
+  spawnSys:
+  - {fileID: 0}
   pooledObjects: []
 --- !u!1001 &726495537487840974
 PrefabInstance:
@@ -2858,7 +2857,7 @@ PrefabInstance:
     - target: {fileID: 590472310538684444, guid: 3438553a7b82893479f2a22bca464151,
         type: 3}
       propertyPath: JunctionNumber
-      value: 22
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 9016992429545826998, guid: 3438553a7b82893479f2a22bca464151,
         type: 3}
@@ -2923,7 +2922,7 @@ PrefabInstance:
     - target: {fileID: 590472310094241527, guid: 3438553a7b82893479f2a22bca464151,
         type: 3}
       propertyPath: JunctionNumber
-      value: 33
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 9016992429436632157, guid: 3438553a7b82893479f2a22bca464151,
         type: 3}
@@ -3038,6 +3037,7 @@ MonoBehaviour:
     junc1Rate: 0.4
     junc2Rate: 0
     junc3Rate: 1
+    junc4Rate: 0
   - Seconds: 11
     ratePrio: 0
     slowRate: 0.3
@@ -3046,6 +3046,7 @@ MonoBehaviour:
     junc1Rate: 0.2
     junc2Rate: 0
     junc3Rate: 1
+    junc4Rate: 0
   - Seconds: 11
     ratePrio: 1
     slowRate: 0.5
@@ -3054,6 +3055,7 @@ MonoBehaviour:
     junc1Rate: 0.5
     junc2Rate: 0
     junc3Rate: 1
+    junc4Rate: 0
   - Seconds: 13
     ratePrio: 2
     slowRate: 0.8
@@ -3062,6 +3064,7 @@ MonoBehaviour:
     junc1Rate: 0.6
     junc2Rate: 0
     junc3Rate: 1
+    junc4Rate: 0
   minLow: 5
   maxLow: 7
   minMed: 3
@@ -3090,6 +3093,7 @@ MonoBehaviour:
     junc1Rate: 0
     junc2Rate: 0.4
     junc3Rate: 1
+    junc4Rate: 0
   - Seconds: 10
     ratePrio: 0
     slowRate: 0.5
@@ -3098,6 +3102,7 @@ MonoBehaviour:
     junc1Rate: 0
     junc2Rate: 0.7
     junc3Rate: 1
+    junc4Rate: 0
   - Seconds: 20
     ratePrio: 2
     slowRate: 0.5
@@ -3106,6 +3111,7 @@ MonoBehaviour:
     junc1Rate: 0
     junc2Rate: 0.8
     junc3Rate: 1
+    junc4Rate: 0
   minLow: 5
   maxLow: 7
   minMed: 3
@@ -3134,6 +3140,7 @@ MonoBehaviour:
     junc1Rate: 0.4
     junc2Rate: 1
     junc3Rate: 0
+    junc4Rate: 0
   - Seconds: 19
     ratePrio: 1
     slowRate: 0.4
@@ -3142,6 +3149,7 @@ MonoBehaviour:
     junc1Rate: 0.1
     junc2Rate: 1
     junc3Rate: 0
+    junc4Rate: 0
   - Seconds: 19
     ratePrio: 2
     slowRate: 0.4
@@ -3150,6 +3158,7 @@ MonoBehaviour:
     junc1Rate: 0.3
     junc2Rate: 0
     junc3Rate: 1
+    junc4Rate: 0
   minLow: 5
   maxLow: 7
   minMed: 3
