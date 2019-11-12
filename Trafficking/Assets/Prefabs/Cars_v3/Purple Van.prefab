@@ -9761,9 +9761,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1
-  carSpeed: 7
+  carSpeed: 10
   nodes: []
-  signalLights: {fileID: 6748727698014357862}
   currentNode: 0
   curTraffic: {fileID: 0}
   carColor: 2
