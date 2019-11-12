@@ -8,6 +8,7 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
     [SerializeField] GameObject endScreenUI;
+    [SerializeField] GameObject Timer;
 
     private void Update()
     {
@@ -17,6 +18,15 @@ public class EndScreen : MonoBehaviour
     private void checkSatisfaction()
     {
         if(Score.Instance.meter <= 0.0f)
+        {
+            if (Time.timeScale == 1.0f)
+            {
+                Time.timeScale = 0.0f;
+            }
+            Score.Instance.meter = 0.0f;
+            endScreenUI.SetActive(true);
+        }
+        else if (Timer.GetComponent<Timer>().rTime <= 0)
         {
             if (Time.timeScale == 1.0f)
             {
