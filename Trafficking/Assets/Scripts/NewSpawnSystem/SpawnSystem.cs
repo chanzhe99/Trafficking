@@ -16,6 +16,7 @@ public struct Timeline
     public float junc1Rate;
     public float junc2Rate;
     public float junc3Rate;
+    public float junc4Rate;
 }
 
 public class SpawnSystem : MonoBehaviour
@@ -31,7 +32,7 @@ public class SpawnSystem : MonoBehaviour
     Timeline curTime;
     float startTime;
     Coroutine spawning;
-    float junc1, junc2, junc3;
+    float junc1, junc2, junc3, junc4;
     int curIndex = 0;
     // colors are for the exits/entrances, not the Car's colors themselves
     //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
@@ -95,7 +96,7 @@ public class SpawnSystem : MonoBehaviour
             curTime = timeLine[curIndex];
         }
     }
-
+    //Needs fixing
     Car.CarColor CheckTargetJunc()
     {
         float rand = Random.Range(0.0f, 1.0f);
@@ -107,9 +108,16 @@ public class SpawnSystem : MonoBehaviour
         {
             return Car.CarColor.Yellow;
         }
-        else if(rand>= curTime.junc2Rate && rand <=1.0)
+        else if(rand>= curTime.junc2Rate && rand <=curTime.junc3Rate)
         {
             return Car.CarColor.Blue;
+        }
+        else if(curTime.junc4Rate != 0)
+        {
+            if(rand>=curTime.junc3Rate && rand<= curTime.junc4Rate)
+            {
+                return Car.CarColor.Red;
+            }
         }
         return Car.CarColor.Green;
     }
