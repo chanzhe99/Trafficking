@@ -621,6 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreenUI: {fileID: 5282116477407745785}
+  Timer: {fileID: 0}
+  Lose: {fileID: 5282116476904507884}
 --- !u!1 &5282116477551900459
 GameObject:
   m_ObjectHideFlags: 0

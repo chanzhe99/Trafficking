@@ -9,6 +9,7 @@ public class EndScreen : MonoBehaviour
 {
     [SerializeField] GameObject endScreenUI;
     [SerializeField] GameObject Timer;
+    [SerializeField] GameObject Lose;
 
     private void Update()
     {
@@ -25,6 +26,7 @@ public class EndScreen : MonoBehaviour
             }
             Score.Instance.meter = 0.0f;
             endScreenUI.SetActive(true);
+            Lose.SetActive(true);
         }
         else if (Timer.GetComponent<Timer>().rTime <= 0)
         {
