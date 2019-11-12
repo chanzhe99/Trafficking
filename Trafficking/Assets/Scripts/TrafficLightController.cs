@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [ExecuteInEditMode]
-public class TrafficLightController : MonoBehaviour, IPointerClickHandler
+public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
 {
     [SerializeField] private TrafficLight[] trafficLights;
     [SerializeField] private List<TrafficLightPhase> phase;
@@ -31,10 +31,10 @@ public class TrafficLightController : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void ChangeLights()
     {
         SetAllRed();
-        for (int i=0; i<phase.Count; i++)
+        for (int i = 0; i < phase.Count; i++)
         {
             // LEFT TURN
             if (phase[i].canGoLeft)
@@ -57,6 +57,33 @@ public class TrafficLightController : MonoBehaviour, IPointerClickHandler
             trafficLights[i].ChangeGo();
         }
     }
+
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    SetAllRed();
+    //    for (int i=0; i<phase.Count; i++)
+    //    {
+    //        // LEFT TURN
+    //        if (phase[i].canGoLeft)
+    //            trafficLights[i].canLeftTurn = true;
+    //        else
+    //            trafficLights[i].canLeftTurn = false;
+
+    //        // RIGHT TURN
+    //        if (phase[i].canGoRight)
+    //            trafficLights[i].canRightTurn = true;
+    //        else
+    //            trafficLights[i].canRightTurn = false;
+
+    //        // STRAIGHT
+    //        if (phase[i].canGoStraight)
+    //            trafficLights[i].canStraightTurn = true;
+    //        else
+    //            trafficLights[i].canStraightTurn = false;
+
+    //        trafficLights[i].ChangeGo();
+    //    }
+    //}
 }
 
 [System.Serializable]
