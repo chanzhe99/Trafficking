@@ -10,7 +10,10 @@ public class PauseMenu : MonoBehaviour
     public void OpenPauseMenu()
     {
         PauseMenuUI.SetActive(true);
-        Time.timeScale = 0.0f;
+        if(Time.timeScale == 1.0f)
+        {
+            Time.timeScale = 0.0f;
+        }
     }
 
     public void OpenSettings()
@@ -31,6 +34,9 @@ public class PauseMenu : MonoBehaviour
     public void Back()
     {
         PauseMenuUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        if (Time.timeScale == 0.0f)
+        {
+            Time.timeScale = 1.0f;
+        }
     }
 }

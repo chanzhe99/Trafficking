@@ -8,11 +8,13 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
     private float startTime;
+    public float rTime;
 
     // Start is called before the first frame update
     void Start()
     {
         startTime = 60.0f;
+        rTime = startTime;
     }
 
     // Update is called once per frame
@@ -24,5 +26,6 @@ public class Timer : MonoBehaviour
         string seconds = (t % 60).ToString("f0");
 
         timerText.text = minutes + ":" + seconds;
+        rTime = t;
     }
 }
