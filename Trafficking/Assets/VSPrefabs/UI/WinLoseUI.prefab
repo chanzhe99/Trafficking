@@ -623,6 +623,7 @@ MonoBehaviour:
   endScreenUI: {fileID: 5282116477407745785}
   Timer: {fileID: 0}
   Lose: {fileID: 5282116476904507884}
+  Win: {fileID: 5282116478033508213}
 --- !u!1 &5282116477551900459
 GameObject:
   m_ObjectHideFlags: 0

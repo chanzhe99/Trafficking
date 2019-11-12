@@ -21,7 +21,7 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        startTime -= (0.5f / 60);
+        startTime -= (1.0f / 60);
         float t = startTime;
 
         if(t > 0)

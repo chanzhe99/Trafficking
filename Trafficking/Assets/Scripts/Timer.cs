@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = 60.0f;
+        startTime = 5.0f;
         rTime = startTime;
     }
 
