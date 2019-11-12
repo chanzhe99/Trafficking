@@ -296,7 +296,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    void InitNodes()
+    public void InitNodes()
     {
         if(curTraffic.stop != null)
             nodes[0] = curTraffic.stop;
