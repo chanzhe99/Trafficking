@@ -2415,9 +2415,10 @@ MonoBehaviour:
   med3: {fileID: 3417119104543224007, guid: e9832442421be7f4ea2f26441aade0b8, type: 3}
   med4: {fileID: 4774742853991499505, guid: 1d02c59a420c7b748a8bb4d4dc4df7ae, type: 3}
   fast: {fileID: 6497118839344831583, guid: c81166fb789026c439c6074afed04199, type: 3}
-  spawnSys: {fileID: 8915189567190660930}
-  spawnSys2: {fileID: 8915189567190660929}
-  spawnSys3: {fileID: 8915189567190660928}
+  spawnSys:
+  - {fileID: 8915189567190660930}
+  - {fileID: 8915189567190660929}
+  - {fileID: 8915189567190660928}
   pooledObjects: []
 --- !u!1001 &726495537487840974
 PrefabInstance:
