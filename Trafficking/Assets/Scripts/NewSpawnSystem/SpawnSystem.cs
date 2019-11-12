@@ -36,7 +36,7 @@ public class SpawnSystem : MonoBehaviour
     // colors are for the exits/entrances, not the Car's colors themselves
     //public enum spawnColor { Red, Green, Blue, Orange, Yellow, Purple }; 
     public TrafficLight spawnTraffic;
-
+    float debugRan = 0;
     private void Awake()
     {
         fast = new List<SpawnSystemUnit>();
@@ -54,9 +54,7 @@ public class SpawnSystem : MonoBehaviour
 
     private void Update()
     {
-        if(spawning == null)
-        { Debug.Log("Spawning is null"); }
-        Debug.Log("Can Spawn : " + canSpawn);
+        
         SpawnCars();
     }
 
@@ -64,20 +62,24 @@ public class SpawnSystem : MonoBehaviour
     {
         if(Time.time - startTime <curTime.Seconds)
         {
+            Debug.Log("true");
             if (canSpawn && !isSpawning)
             {
                 if (curTime.ratePrio == SpawnRate.Low)
                 {
+                    if (spawning != null) StopCoroutine(spawning);
                     if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minLow, maxLow)));
                     isSpawning = true;
                 }
                 else if (curTime.ratePrio == SpawnRate.Med)
                 {
+                    if (spawning != null) StopCoroutine(spawning);
                     if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minMed, maxMed)));
                     isSpawning = true;
                 }
                 else if (curTime.ratePrio == SpawnRate.High)
                 {
+                    if (spawning != null) StopCoroutine(spawning);
                     if (spawning == null) spawning = StartCoroutine(SpawnVehicle(Random.Range(minHigh, maxHigh)));
                     isSpawning = true;
                 }
@@ -89,6 +91,7 @@ public class SpawnSystem : MonoBehaviour
             {
                 curIndex++;
             }
+            startTime = Time.time;
             curTime = timeLine[curIndex];
         }
     }
@@ -114,6 +117,7 @@ public class SpawnSystem : MonoBehaviour
     IEnumerator SpawnVehicle(float sec)
     {
         Debug.Log("RunningIEnumerator");
+        debugRan++;
 
         yield return new WaitForSeconds(sec);
         spawning = null;
@@ -131,7 +135,7 @@ public class SpawnSystem : MonoBehaviour
                     slow[i].carScript.curTraffic = spawnTraffic;                   
                     slow[i].carScript.carColor = CheckTargetJunc();
                     //yield return null;
-                    break;
+                    yield break;
                 }
 
             }
@@ -155,7 +159,7 @@ public class SpawnSystem : MonoBehaviour
                     medium[i].carScript.curTraffic = spawnTraffic;
                     medium[i].carScript.carColor = CheckTargetJunc();
                     //yield return null;
-                    break;
+                    yield break;
                 }
             }
             PoolingSystem.Instance.SpawnMed();
@@ -178,7 +182,7 @@ public class SpawnSystem : MonoBehaviour
                     fast[i].carScript.curTraffic = spawnTraffic;
                     fast[i].carScript.carColor = CheckTargetJunc();
                     //yield return null;
-                    break;
+                    yield break;
                 }
             }
             PoolingSystem.Instance.SpawnFast();
