@@ -6,6 +6,7 @@ public class Score : MonoBehaviour
 {
     public static Score Instance;
     public float meter = 100f;
+    public float carCounter = 0f;
 
     private void Awake()
     {
