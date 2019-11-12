@@ -29,6 +29,16 @@ public class EndScreen : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("POCTestingLevel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
