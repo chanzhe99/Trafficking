@@ -47,12 +47,15 @@ public class Car : MonoBehaviour
     Vector3 endRelCenter = Vector3.zero;
 
 
-
+    private void Awake()
+    {
+        nodes = new Transform[5];
+    }
     private void Start()
     {
         signalLights = GetComponent<TurnLights>();
         _transform = transform;
-        nodes = new Transform[5];
+        
         self = _transform.rotation;
         currentNode = 0;
         if (curTraffic != null)
@@ -309,6 +312,7 @@ public class Car : MonoBehaviour
             nodes[3] = curTraffic.right;
             nodes[4] = curTraffic.tempDelayRight;
         }
+        currentNode = 0;
     }
 
     bool CheckTrafficStop()
