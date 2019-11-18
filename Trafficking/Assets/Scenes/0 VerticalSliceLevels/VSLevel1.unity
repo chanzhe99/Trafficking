@@ -2930,17 +2930,17 @@ PrefabInstance:
       propertyPath: counterdownTimer
       value: 
       objectReference: {fileID: 2073003843}
-    - target: {fileID: 5054038020559963215, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
+    - target: {fileID: 3757802401968298309, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
         type: 3}
       propertyPath: endScreenUI
       value: 
       objectReference: {fileID: 249746169}
-    - target: {fileID: 5054038020559963215, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
+    - target: {fileID: 3757802401968298309, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
         type: 3}
       propertyPath: Lose
       value: 
       objectReference: {fileID: 1565273807}
-    - target: {fileID: 5054038020559963215, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
+    - target: {fileID: 3757802401968298309, guid: 797c25cf0c7ebc9458b0a8cb2ed37705,
         type: 3}
       propertyPath: Win
       value: 
@@ -2964,6 +2964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CountdownUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842546766616448085, guid: 3c2f208dc59cdf84f822f0bbcf86a1c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3842546766616448089, guid: 3c2f208dc59cdf84f822f0bbcf86a1c7,
         type: 3}
