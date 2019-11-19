@@ -9,19 +9,20 @@ public class Countdown : MonoBehaviour
     [SerializeField] TMP_Text countdownText;
     [SerializeField] GameObject counterdownTimer;
     private float startTime;
+    public bool isStart;
 
     // Start is called before the first frame update
     void Start()
     {
         startTime = 3.0f;
-        Time.timeScale = 0.0f;
+        isStart = false;
         counterdownTimer.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        startTime -= (0.5f / 60);
+        startTime -= (1f / 60);
         float t = startTime;
 
         if(t > 0)
@@ -31,9 +32,8 @@ public class Countdown : MonoBehaviour
         }
         else if( t <= 0)
         {
+            isStart = true;
             counterdownTimer.SetActive(false);
-            Time.timeScale = 1f;
         }
-
     }
 }
