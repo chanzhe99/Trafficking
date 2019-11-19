@@ -10,9 +10,10 @@ public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
     private Image buttonImage;
 
     public bool isRed = true;
-
+    bool changingLights = false;
     public Sprite greenButton;
     public Sprite redButton;
+    
 
     [SerializeField] private TrafficLight[] trafficLights;
     [SerializeField] private List<TrafficLightPhase> phase;
@@ -22,7 +23,7 @@ public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
     private void Start()
     {
         buttonImage = GetComponent<Image>();
-        SetAllRed();
+       // SetAllRed();
         //AssignInfo();
     }
 
@@ -36,21 +37,51 @@ public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
 
     private void SetAllRed()
     {
-        for (int i=0; i<controllers.Length; i++)
+        for (int i = 0; i < controllers.Length; i++)
         {
             controllers[i].isRed = true;
             controllers[i].buttonImage.sprite = controllers[i].redButton;
         }
 
-        for (int i=0; i<trafficLights.Length; i++)
+        for (int i = 0; i < trafficLights.Length; i++)
         {
             trafficLights[i].ChangeStop();
+            trafficLights[i].canRightTurn = false;
+            trafficLights[i].canLeftTurn = false;
+            trafficLights[i].canStraightTurn = false;
         }
     }
 
     public void ChangeLights()
     {
         SetAllRed();
+        if (!changingLights)
+        {
+            for(int i =0; i< controllers.Length; i ++)
+            {
+                if(controllers[i].changingLights)
+                {
+                    return;
+                }
+            }
+            changingLights = true;
+            StartCoroutine(DelayLights());
+        }
+    }
+
+    IEnumerator DelayLights()
+    {
+        buttonImage.color = Color.yellow;
+        yield return new WaitForSeconds(1f);
+        buttonImage.color = Color.white;
+        buttonImage.sprite = greenButton;
+        SetLightDir();
+        changingLights = false;
+
+    }
+
+    private void SetLightDir()
+    {
         buttonImage.sprite = greenButton;
         for (int i = 0; i < phase.Count; i++)
         {

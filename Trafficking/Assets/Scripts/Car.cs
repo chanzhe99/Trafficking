@@ -68,7 +68,7 @@ public class Car : MonoBehaviour
     {
         GetTurnSignal();
         GetNodes();
-        if (!CheckToStop())
+        if (!CheckToStop() )
         {
             //CheckTrafficLight();
             if (!CheckStopLine())
@@ -85,14 +85,14 @@ public class Car : MonoBehaviour
                 }
             }
            
-            if(curTraffic.canStraightTurn)
+            if(curTraffic.canStraightTurn || currentNode != 0)
             {
-                if(currentNode == 1)
+                if(currentNode == 1 )
                 {
                     Drive();
                 }
             }
-            if(curTraffic.canRightTurn)
+            if(curTraffic.canRightTurn || currentNode != 0)
             {
                 if(currentNode == 4)
                 {
@@ -103,7 +103,7 @@ public class Car : MonoBehaviour
                     Turn();
                 }
             }
-            if(curTraffic.canLeftTurn)
+            if(curTraffic.canLeftTurn || currentNode != 0)
             {
                 if(currentNode == 2)
                 {
@@ -240,7 +240,7 @@ public class Car : MonoBehaviour
     {
         turning = false;
         stopped = false;
-        startTime = 0f;
+        startTime = 0.0f;
         turningRight = false;
         _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
     }
@@ -248,29 +248,37 @@ public class Car : MonoBehaviour
 
     private bool CheckToStop()
     {
-        if (!turning)
-        { 
-            RaycastHit hit;
-            Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
-            Debug.DrawRay(_transform.position, direct * 5f, Color.red);
-            if (Physics.Raycast(_transform.position, direct, out hit, 2.3f, layer))
+        float rayRange;
+        if(turning)
+        {
+            rayRange = 1.5f;
+        }
+        else
+        {
+            rayRange = 2.3f;
+        }
+
+        RaycastHit hit;
+        Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
+        Debug.DrawRay(_transform.position, direct * rayRange, Color.red);
+        if (Physics.Raycast(_transform.position, direct, out hit, rayRange, layer))
+        {
+            if (hit.transform.gameObject.CompareTag("Car"))
             {
-                if (hit.transform.gameObject.CompareTag("Car"))
-                {
-                    stopped = true;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                stopped = true;
+                return true;
             }
             else
             {
                 return false;
             }
         }
-        return false;
+        else
+        {
+            return false;
+        }
+        
+        
     }
 
     void GetNodes()
@@ -317,13 +325,21 @@ public class Car : MonoBehaviour
 
     bool CheckTrafficStop()
     {
-        if(curTraffic.Stop)
-        {
-            return true;
-        }
-        else 
+        if(FindNextTraffic() == 1 && curTraffic.canStraightTurn)
         {
             return false;
+        }
+        else if(FindNextTraffic() == 2 && curTraffic.canLeftTurn)
+        {
+            return false;
+        }
+        else if((FindNextTraffic() == 3 || FindNextTraffic() == 4) && curTraffic.canRightTurn)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
