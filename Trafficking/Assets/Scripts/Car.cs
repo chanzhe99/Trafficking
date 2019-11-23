@@ -162,6 +162,10 @@ public class Car : MonoBehaviour
             decreasingS = true;
             StartCoroutine(DecreaseMeter());
         }
+        if (patience < 1)
+        {
+            ScoreManager.instance.ImpatientCarOnScreen();
+        }
         //Debug.Log("startTime: " + startTime);
        
         //CheckWaypointDistance();
@@ -529,13 +533,17 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Exit"))
+        if (other.gameObject.CompareTag("Exit"))
         {
             gameObject.SetActive(false);
             Score.Instance.carCounter++;
+            //Destroy(other.gameObject);
+            ScoreManager.instance.AdjustMultiplier();
+            if (patience > 0)
+            {
+                ScoreManager.instance.AddToScore();
+            }
         }
+        ScoreManager.instance.ImpatientCarLeavesScreen();
     }
-
-
-
 }
