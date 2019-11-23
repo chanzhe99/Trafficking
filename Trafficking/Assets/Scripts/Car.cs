@@ -13,7 +13,6 @@ public class Car : MonoBehaviour
     public float carSpeed;
     [SerializeField] private Transform[] nodes;
     [SerializeField] private int currentNode = 0;
-    private Transform _transform;
     [SerializeField] public TrafficLight curTraffic;
     private bool turningRight = false;
     [SerializeField] public CarColor carColor;
@@ -47,21 +46,48 @@ public class Car : MonoBehaviour
     Vector3 endRelCenter = Vector3.zero;
 
 
+    public void ResetValues()
+    {
+        for(int i=0; i < nodes.Length; i++)
+        {
+            nodes[i] = null;
+        }
+        currentNode = 0;
+        curTraffic = null;
+        turningRight = false;
+        hasNext = false;
+        patience = 10f;
+        stopped = false;
+        increasingP = false;
+        decreasingP = false;
+        decreasingS = false;
+        turnNo = 0;
+        turning = false;
+        relativePos = Vector3.zero;
+        targetRot = Quaternion.identity;
+        target = null;
+        startRot = Quaternion.identity;
+        self = Quaternion.identity;
+        startPos = null;
+        endPos = null;
+        startTime = 0.0f;
+        journeyTime = 0.0f;
+        centerPoint = Vector3.zero;
+        startRelCenter = Vector3.zero;
+        endRelCenter = Vector3.zero;
+    }
+
     private void Awake()
     {
         nodes = new Transform[5];
     }
     private void Start()
     {
-        signalLights = GetComponent<TurnLights>();
-        _transform = transform;
-        
-        self = _transform.rotation;
+        signalLights = GetComponent<TurnLights>();        
+        self = transform.rotation;
         currentNode = 0;
         if (curTraffic != null)
             InitNodes();
-        
-
     }
 
     private void Update()
@@ -113,7 +139,7 @@ public class Car : MonoBehaviour
            
             if (!turningRight && currentNode == 4)
             {
-                if (Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.01f)
+                if (Vector3.Distance(transform.position, nodes[currentNode].position) < 0.01f)
                 {
                     currentNode = 3;
                     turningRight = true;
@@ -190,8 +216,8 @@ public class Car : MonoBehaviour
                 startPos = nodes[4];
                 endPos = nodes[3];
             }
-            self = _transform.rotation;
-            startRot = _transform.rotation; 
+            self = transform.rotation;
+            startRot = transform.rotation; 
         }
         if (currentNode == 2)
         {
@@ -205,19 +231,19 @@ public class Car : MonoBehaviour
         //targetRot = Quaternion.LookRotation(relativePos, Vector3.up);
         if(currentNode == 2)
         {
-            Vector3 direct = (_transform.TransformDirection(Vector3.right).normalized);
+            Vector3 direct = (transform.TransformDirection(Vector3.right).normalized);
             GetCenter(direct);
         }
         else
         {
-            Vector3 direct = (_transform.TransformDirection(Vector3.left).normalized);
+            Vector3 direct = (transform.TransformDirection(Vector3.left).normalized);
             GetCenter(direct);
         }
         
         float fracComplete = (Time.time - startTime) / GetJourneyTime(startPos, endPos) ;
-        _transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
-        _transform.rotation = Quaternion.Lerp(startRot, targetRot, fracComplete);
-        _transform.position += centerPoint;
+        transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
+        transform.rotation = Quaternion.Lerp(startRot, targetRot, fracComplete);
+        transform.position += centerPoint;
     }
 
     void GetCenter(Vector3 dir)
@@ -242,7 +268,7 @@ public class Car : MonoBehaviour
         stopped = false;
         startTime = 0.0f;
         turningRight = false;
-        _transform.position = Vector3.MoveTowards(_transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, nodes[currentNode].position, Time.deltaTime * carSpeed);
     }
 
 
@@ -259,9 +285,9 @@ public class Car : MonoBehaviour
         }
 
         RaycastHit hit;
-        Vector3 direct = (_transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
-        Debug.DrawRay(_transform.position, direct * rayRange, Color.red);
-        if (Physics.Raycast(_transform.position, direct, out hit, rayRange, layer))
+        Vector3 direct = (transform.TransformDirection(new Vector3(0, 0, 1)).normalized);
+        Debug.DrawRay(transform.position, direct * rayRange, Color.red);
+        if (Physics.Raycast(transform.position, direct, out hit, rayRange, layer))
         {
             if (hit.transform.gameObject.CompareTag("Car"))
             {
@@ -285,7 +311,7 @@ public class Car : MonoBehaviour
     {
         if(currentNode == 1 || currentNode == 2 || currentNode == 3)
         {
-            if(Vector3.Distance(_transform.position, nodes[currentNode].position) < 0.025f)
+            if(Vector3.Distance(transform.position, nodes[currentNode].position) < 0.025f)
             {
                 Debug.Log("Getting node");
                 Debug.Log(currentNode);
@@ -367,7 +393,7 @@ public class Car : MonoBehaviour
 
     bool CheckStopLine()
     {
-        if (Vector3.Distance(_transform.position, nodes[0].position) < 0.025f)
+        if (Vector3.Distance(transform.position, nodes[0].position) < 0.025f)
         {
             if(CheckTrafficStop())
             {

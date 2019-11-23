@@ -124,8 +124,6 @@ public class SpawnSystem : MonoBehaviour
 
     IEnumerator SpawnVehicle(float sec)
     {
-        Debug.Log("RunningIEnumerator");
-        debugRan++;
 
         yield return new WaitForSeconds(sec);
         spawning = null;
@@ -138,6 +136,7 @@ public class SpawnSystem : MonoBehaviour
                 if(!slow[i].car.activeInHierarchy)
                 {
                     slow[i].car.SetActive(true);
+                    slow[i].carScript.ResetValues();
                     slow[i].car.transform.position = self.transform.position;
                     slow[i].car.transform.rotation = self.transform.rotation;
                     slow[i].carScript.curTraffic = spawnTraffic;                   
@@ -164,6 +163,7 @@ public class SpawnSystem : MonoBehaviour
                 if (!medium[i].car.activeInHierarchy)
                 {
                     medium[i].car.SetActive(true);
+                    medium[i].carScript.ResetValues();
                     medium[i].car.transform.position = self.transform.position;
                     medium[i].car.transform.rotation = self.transform.rotation;
                     medium[i].carScript.curTraffic = spawnTraffic;
@@ -189,6 +189,7 @@ public class SpawnSystem : MonoBehaviour
                 if (!fast[i].car.activeInHierarchy)
                 {
                     fast[i].car.SetActive(true);
+                    fast[i].carScript.ResetValues();
                     fast[i].car.transform.position = self.transform.position;
                     fast[i].car.transform.rotation = self.transform.rotation;
                     fast[i].carScript.curTraffic = spawnTraffic;

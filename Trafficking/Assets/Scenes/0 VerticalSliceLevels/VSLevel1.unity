@@ -4645,8 +4645,8 @@ MonoBehaviour:
     junc4Rate: 0
   - Seconds: 20
     ratePrio: 2
-    slowRate: 0.5
-    medRate: 0.9
+    slowRate: 0.4
+    medRate: 0.8
     fastRate: 1
     junc1Rate: 0
     junc2Rate: 0.8
