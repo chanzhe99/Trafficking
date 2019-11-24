@@ -7,10 +7,10 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
 {
-    private Image buttonImage;
+    public Image buttonImage;
 
     public bool isRed = true;
-    bool changingLights = false;
+    public bool changingLights = false;
     public Sprite greenButton;
     public Sprite redButton;
     
