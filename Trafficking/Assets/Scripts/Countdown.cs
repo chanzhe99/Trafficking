@@ -16,7 +16,7 @@ public class Countdown : MonoBehaviour
     {
         startTime = 3.0f;
         isStart = false;
-        counterdownTimer.SetActive(true);
+        //counterdownTimer.SetActive(true);
     }
 
     // Update is called once per frame

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] GameObject Countdown;
+    [SerializeField] Countdown countdown;
     [SerializeField] GameObject EndScreen;
     [SerializeField] GameObject PauseMenu;
 
@@ -18,11 +18,11 @@ public class TimeManager : MonoBehaviour
 
     private void checkCountdown()
     {
-        if(Countdown.GetComponent<Countdown>().isStart == false)
+        if(countdown.isStart == false)
         {
             Time.timeScale = 0.0f;
         }
-        else if(Countdown.GetComponent<Countdown>().isStart == true)
+        else if(countdown.isStart == true)
         {
             Time.timeScale = 1.0f;
         }
@@ -30,7 +30,7 @@ public class TimeManager : MonoBehaviour
 
     private void checkEndScreen()
     {
-        if(EndScreen.GetComponent<EndScreen>().isGameOver == true && Countdown.GetComponent<Countdown>().isStart == true)
+        if(EndScreen.GetComponent<EndScreen>().isGameOver == true && countdown.isStart == true)
         {
             PauseMenu.GetComponent<PauseMenu>().isPause = true;
             Time.timeScale = 0.0f;
@@ -43,7 +43,7 @@ public class TimeManager : MonoBehaviour
         {
             Time.timeScale = 0.0f;
         }
-        else if(PauseMenu.GetComponent<PauseMenu>().isPause == false && Countdown.GetComponent<Countdown>().isStart == true)
+        else if(PauseMenu.GetComponent<PauseMenu>().isPause == false && countdown.isStart == true)
         {
             Time.timeScale = 1.0f;
         }
