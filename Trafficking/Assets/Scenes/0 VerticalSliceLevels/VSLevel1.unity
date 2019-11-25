@@ -235,11 +235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1087855262}
     m_Modifications:
-    - target: {fileID: 1456566165930125564, guid: c0b2ed4d78647ea40880936a866aa1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Plants
-      objectReference: {fileID: 0}
     - target: {fileID: 1456566165930125565, guid: c0b2ed4d78647ea40880936a866aa1c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456566165930125564, guid: c0b2ed4d78647ea40880936a866aa1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Plants
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b2ed4d78647ea40880936a866aa1c3, type: 3}
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 45.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4035,7 +4035,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 4
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -4064,7 +4064,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5838,18 +5838,18 @@ MonoBehaviour:
     junc4Rate: 0
   - Seconds: 11
     ratePrio: 1
-    slowRate: 0.5
-    medRate: 1
-    fastRate: 0
+    slowRate: 0.2
+    medRate: 0.5
+    fastRate: 1
     junc1Rate: 0.5
     junc2Rate: 0
     junc3Rate: 1
     junc4Rate: 0
   - Seconds: 13
     ratePrio: 2
-    slowRate: 0.8
-    medRate: 1
-    fastRate: 0
+    slowRate: 0.2
+    medRate: 0.8
+    fastRate: 1
     junc1Rate: 0.6
     junc2Rate: 0
     junc3Rate: 1
@@ -5885,7 +5885,7 @@ MonoBehaviour:
     junc4Rate: 0
   - Seconds: 10
     ratePrio: 0
-    slowRate: 0.5
+    slowRate: 0.3
     medRate: 0.7
     fastRate: 1
     junc1Rate: 0
@@ -5894,7 +5894,7 @@ MonoBehaviour:
     junc4Rate: 0
   - Seconds: 20
     ratePrio: 2
-    slowRate: 0.4
+    slowRate: 0.3
     medRate: 0.8
     fastRate: 1
     junc1Rate: 0
@@ -5923,9 +5923,9 @@ MonoBehaviour:
   timeLine:
   - Seconds: 20
     ratePrio: 0
-    slowRate: 0.5
-    medRate: 1
-    fastRate: 0
+    slowRate: 0.3
+    medRate: 0.5
+    fastRate: 1
     junc1Rate: 0.4
     junc2Rate: 1
     junc3Rate: 0
@@ -5945,8 +5945,8 @@ MonoBehaviour:
     medRate: 0.8
     fastRate: 1
     junc1Rate: 0.3
-    junc2Rate: 0
-    junc3Rate: 1
+    junc2Rate: 1
+    junc3Rate: 0
     junc4Rate: 0
   minLow: 5
   maxLow: 7
