@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int score;
-    private float points;
-    private float multiplier;
+    public int score;
+    private float points, multiplier;
+
+    [SerializeField] TMP_Text scoreText, /*pointsText,*/ multiplierText;
 
     private bool hasImpatientCar;
 
@@ -36,17 +38,7 @@ public class ScoreManager : MonoBehaviour
         points = 100 * multiplier;
         score += (int)points;
     }
-
-    public int GetScore()
-    {
-        return (int)score;
-    }
-
-    public int GetPoints()
-    {
-        return (int)points;
-    }
-
+    
     public void DeductScore()
     {
         score -= 100;
@@ -78,5 +70,27 @@ public class ScoreManager : MonoBehaviour
     public void ImpatientCarLeavesScreen()
     {
         hasImpatientCar = false;
+    }
+
+    private void Update()
+    {
+        scoreText.text = score.ToString("000,000");
+        //pointsText.text = points.ToString("0f");
+        multiplierText.text = multiplier.ToString("0.0x");
+    }
+
+    public int GetScore()
+    {
+        return (int)score;
+    }
+
+    public int GetPoints()
+    {
+        return (int)points;
+    }
+
+    public float GetMultiplier()
+    {
+        return (float)multiplier;
     }
 }

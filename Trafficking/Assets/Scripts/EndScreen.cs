@@ -16,12 +16,7 @@ public class EndScreen : MonoBehaviour
 
     private void Update()
     {
-        checkSatisfaction(); 
-    }
-
-    private void checkSatisfaction()
-    {
-        if(Score.Instance.meter <= 0.0f)
+        if (ScoreManager.instance.score < 0.0f)
         {
             isGameOver = true;
             endScreenUI.SetActive(true);
@@ -29,25 +24,25 @@ public class EndScreen : MonoBehaviour
         }
         else if (Timer.GetComponent<Timer>().rTime <= 0)
         {
-            if (Score.Instance.meter >= 0.0f)
+            if (ScoreManager.instance.score >= 0.0f)
             {
                 isGameOver = true;
                 endScreenUI.SetActive(true);
                 Win.SetActive(true);
-            } 
+            }
         }
     }
 
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Score.Instance.meter = 100f;
+        ScoreManager.instance.score = 0;
     }
 
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Score.Instance.meter = 100f;
+        ScoreManager.instance.score = 0;
     }
 
     public void ReturnToMainMenu()

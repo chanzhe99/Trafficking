@@ -537,7 +537,7 @@ public class Car : MonoBehaviour
         if (other.gameObject.CompareTag("Exit"))
         {
             gameObject.SetActive(false);
-            Score.Instance.carCounter++;
+            //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
             ScoreManager.instance.AdjustMultiplier();
             if (patience > 0)
