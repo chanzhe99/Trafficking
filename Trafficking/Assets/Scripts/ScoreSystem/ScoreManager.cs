@@ -38,6 +38,11 @@ public class ScoreManager : MonoBehaviour
         score2Star = scoreMeterMax * 2 / 3;
         score1Star = scoreMeterMax * 1 / 3;
 
+        for (int i = 0; i < scoreStars.Length; i++)
+        {
+            scoreStars[i].enabled = false;
+        }
+
         ResetScoreManager();
     }
 
@@ -57,10 +62,7 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         multiplier = 0.0f;
 
-        for (int i = 0; i < scoreStars.Length; i++)
-        {
-            scoreStars[i].enabled = false;
-        }
+        
     }
 
     public void AdjustMultiplier()
@@ -92,17 +94,29 @@ public class ScoreManager : MonoBehaviour
         multiplierText.text = multiplier.ToString("0.0x");
 
         scoreMeter.value = score;
-        if(score >= score1Star)
+        if(score >= score1Star && score < score2Star)
         {
             scoreStars[0].enabled = true;
+            scoreStars[1].enabled = false;
+            scoreStars[2].enabled = false;
         }
-        if(score >= score2Star)
+        else if(score >= score2Star && score < scoreMeterMax)
         {
+            scoreStars[0].enabled = true;
             scoreStars[1].enabled = true;
+            scoreStars[2].enabled = false;
         }
-        if(score >= scoreMeterMax)
+        else if(score >= scoreMeterMax)
         {
+            scoreStars[0].enabled = true;
+            scoreStars[1].enabled = true;
             scoreStars[2].enabled = true;
+        }
+        else
+        {
+            scoreStars[0].enabled = false;
+            scoreStars[1].enabled = false;
+            scoreStars[2].enabled = false;
         }
     }
 
