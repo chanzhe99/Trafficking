@@ -6,10 +6,14 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score;
+    [HideInInspector] public int score;
     private float points, multiplier;
 
+    private float score1Star, score2Star;
+    [SerializeField] Image[] scoreStars;
+    [SerializeField] int scoreMeterMax;
     [SerializeField] TMP_Text scoreText, /*pointsText,*/ multiplierText;
+    [SerializeField] Slider scoreMeter;
 
     private bool hasImpatientCar;
 
@@ -30,6 +34,10 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        scoreMeter.maxValue = scoreMeterMax;
+        score2Star = scoreMeterMax * 2 / 3;
+        score1Star = scoreMeterMax * 1 / 3;
+
         ResetScoreManager();
     }
 
@@ -48,6 +56,11 @@ public class ScoreManager : MonoBehaviour
     {
         score = 0;
         multiplier = 0.0f;
+
+        for (int i = 0; i < scoreStars.Length; i++)
+        {
+            scoreStars[i].enabled = false;
+        }
     }
 
     public void AdjustMultiplier()
@@ -77,6 +90,20 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString("000,000");
         //pointsText.text = points.ToString("0f");
         multiplierText.text = multiplier.ToString("0.0x");
+
+        scoreMeter.value = score;
+        if(score >= score1Star)
+        {
+            scoreStars[0].enabled = true;
+        }
+        if(score >= score2Star)
+        {
+            scoreStars[1].enabled = true;
+        }
+        if(score >= scoreMeterMax)
+        {
+            scoreStars[2].enabled = true;
+        }
     }
 
     public int GetScore()
