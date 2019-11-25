@@ -165,7 +165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &492542
 MonoBehaviour:
@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &45265172
 MonoBehaviour:
@@ -753,7 +753,7 @@ Transform:
   - {fileID: 689599064}
   - {fileID: 736291431}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &192617415
 PrefabInstance:
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreenUI: {fileID: 249746169}
-  timer: {fileID: 0}
+  timerUI: {fileID: 1042586999}
   Lose: {fileID: 1565273807}
   Win: {fileID: 1936972387}
   isGameOver: 0
@@ -1398,7 +1398,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &415039696
 PrefabInstance:
@@ -1852,7 +1852,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689599063
 GameObject:
@@ -2234,7 +2234,7 @@ RectTransform:
   - {fileID: 1163734289}
   - {fileID: 248667712}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1598043778}
-  levelTime: 20
+  levelTime: 10
   rTime: 100
 --- !u!1 &1087855261
 GameObject:
@@ -2743,58 +2743,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1087912721}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1097815469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1097815470}
-  - component: {fileID: 1097815471}
-  m_Layer: 0
-  m_Name: LevelScoreManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1097815470
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097815469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1097815471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097815469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 336821e388d5cf447bfb256f21e55a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  scoreStars:
-  - {fileID: 1643989426}
-  - {fileID: 1163423801}
-  - {fileID: 789451995}
-  score3Star: 50000
-  multiplierText: {fileID: 1658675391}
-  scoreText: {fileID: 1384510459}
-  scoreMeter: {fileID: 959894503}
 --- !u!1 &1136711098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,7 +2773,7 @@ Transform:
   - {fileID: 307187889}
   - {fileID: 828929957}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138313383
 GameObject:
@@ -3082,7 +3030,7 @@ Transform:
   - {fileID: 873940567}
   - {fileID: 1299281703}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268354163
 GameObject:
@@ -3840,6 +3788,16 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 1042586999}
+    - target: {fileID: 5282116477407745786, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
+        type: 3}
+      propertyPath: timerUI
+      value: 
+      objectReference: {fileID: 1042586999}
+    - target: {fileID: 5282116477407745786, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5282116477407745734, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3878,7 +3836,7 @@ PrefabInstance:
     - target: {fileID: 5282116477407745734, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5282116477407745734, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
         type: 3}
@@ -4490,7 +4448,7 @@ PrefabInstance:
     - target: {fileID: 9154484042344509163, guid: f4fe744fb9d2103469695d61e8866e4d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9154484042344509163, guid: f4fe744fb9d2103469695d61e8866e4d,
         type: 3}
@@ -5387,8 +5345,9 @@ GameObject:
   - component: {fileID: 1923086969}
   - component: {fileID: 1923086968}
   - component: {fileID: 1042586999}
+  - component: {fileID: 1923086970}
   m_Layer: 0
-  m_Name: LevelTimeManager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5423,6 +5382,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923086970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923086967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336821e388d5cf447bfb256f21e55a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  scoreStars:
+  - {fileID: 1643989426}
+  - {fileID: 1163423801}
+  - {fileID: 789451995}
+  score3Star: 50000
+  multiplierText: {fileID: 1658675391}
+  scoreText: {fileID: 1384510459}
+  scoreMeter: {fileID: 959894503}
 --- !u!1 &1936972387 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5282116478033508213, guid: fcc0c51cdb8f21e4ea6dfcd898b2f2db,
@@ -7066,7 +7046,7 @@ PrefabInstance:
     - target: {fileID: 9146750900408535124, guid: f459761537ca5034a8a9b02032f3531d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9146750900408535124, guid: f459761537ca5034a8a9b02032f3531d,
         type: 3}
