@@ -7,20 +7,20 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
-    [SerializeField] private float startTime;
+    [SerializeField] private float levelTime;
     [HideInInspector] public float rTime;
     float t;
     string minutes, seconds;
 
     private void Start()
     {
-        rTime = startTime;
+        rTime = levelTime;
     }
 
     void Update()
     {
-        t = startTime - Time.timeSinceLevelLoad;
-        rTime = startTime - Time.timeSinceLevelLoad;
+        t = levelTime - Time.timeSinceLevelLoad;
+        rTime = levelTime - Time.timeSinceLevelLoad;
 
         minutes = ((int)t / 60).ToString();
         seconds = (t % 60).ToString("00");

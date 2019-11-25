@@ -11,8 +11,8 @@ public class ScoreManager : MonoBehaviour
 
     private float score1Star, score2Star;
     [SerializeField] Image[] scoreStars;
-    [SerializeField] int scoreMeterMax;
-    [SerializeField] TMP_Text scoreText, /*pointsText,*/ multiplierText;
+    [SerializeField] float score3Star;
+    [SerializeField] TMP_Text multiplierText, scoreText/*pointsText,*/ ;
     [SerializeField] Slider scoreMeter;
 
     private bool hasImpatientCar;
@@ -34,9 +34,9 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        scoreMeter.maxValue = scoreMeterMax;
-        score2Star = scoreMeterMax * 2 / 3;
-        score1Star = scoreMeterMax * 1 / 3;
+        scoreMeter.maxValue = score3Star;
+        score2Star = score3Star * 2 / 3;
+        score1Star = score3Star * 1 / 3;
 
         for (int i = 0; i < scoreStars.Length; i++)
         {
@@ -60,9 +60,7 @@ public class ScoreManager : MonoBehaviour
     public void ResetScoreManager()
     {
         score = 0;
-        multiplier = 0.0f;
-
-        
+        multiplier = 1.0f;
     }
 
     public void AdjustMultiplier()
@@ -100,13 +98,13 @@ public class ScoreManager : MonoBehaviour
             scoreStars[1].enabled = false;
             scoreStars[2].enabled = false;
         }
-        else if(score >= score2Star && score < scoreMeterMax)
+        else if(score >= score2Star && score < score3Star)
         {
             scoreStars[0].enabled = true;
             scoreStars[1].enabled = true;
             scoreStars[2].enabled = false;
         }
-        else if(score >= scoreMeterMax)
+        else if(score >= score3Star)
         {
             scoreStars[0].enabled = true;
             scoreStars[1].enabled = true;

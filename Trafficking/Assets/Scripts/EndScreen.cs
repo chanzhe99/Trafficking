@@ -8,12 +8,12 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
     [SerializeField] GameObject endScreenUI;
-    [SerializeField] GameObject Timer;
+    [SerializeField] Timer timer;
     [SerializeField] GameObject Lose;
     [SerializeField] GameObject Win;
 
     public bool isGameOver = false;
-
+    
     private void Update()
     {
         if (ScoreManager.instance.score < 0.0f)
@@ -22,7 +22,7 @@ public class EndScreen : MonoBehaviour
             endScreenUI.SetActive(true);
             Lose.SetActive(true);
         }
-        else if (Timer.GetComponent<Timer>().rTime <= 0)
+        else if (timer.rTime <= 0)
         {
             if (ScoreManager.instance.score >= 0.0f)
             {
