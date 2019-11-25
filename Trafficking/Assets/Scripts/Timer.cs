@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = 100.0f;
+        startTime = 60.0f;
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         rTime = startTime - Time.timeSinceLevelLoad;
 
         string minutes = ((int)t / 60).ToString();
-        string seconds = (t % 60).ToString("f0");
+        string seconds = (t % 60).ToString("00");
 
         timerText.text = minutes + ":" + seconds;
     }

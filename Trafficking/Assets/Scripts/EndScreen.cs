@@ -41,15 +41,18 @@ public class EndScreen : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Score.Instance.meter = 100f;
     }
 
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Score.Instance.meter = 100f;
     }
 
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Score.Instance.meter = 100f;
     }
 }

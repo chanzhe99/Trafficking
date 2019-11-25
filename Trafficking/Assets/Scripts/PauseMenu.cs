@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject PauseMenuUI;
+    [SerializeField] GameObject SatisfactionMeter;
     public bool isPause;
 
     public void OpenPauseMenu()
@@ -22,11 +23,13 @@ public class PauseMenu : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Score.Instance.meter = 100f;
     }
 
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Score.Instance.meter = 100f;
     }
 
     public void Back()

@@ -235,6 +235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1087855262}
     m_Modifications:
+    - target: {fileID: 1456566165930125564, guid: c0b2ed4d78647ea40880936a866aa1c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Plants
+      objectReference: {fileID: 0}
     - target: {fileID: 1456566165930125565, guid: c0b2ed4d78647ea40880936a866aa1c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -289,11 +294,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1456566165930125564, guid: c0b2ed4d78647ea40880936a866aa1c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Plants
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b2ed4d78647ea40880936a866aa1c3, type: 3}
@@ -1240,12 +1240,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50
+  m_fontSize: 120
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 50
+  m_fontSizeMax: 120
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -1496,7 +1496,7 @@ RectTransform:
   - {fileID: 1515699031}
   - {fileID: 1635895310}
   m_Father: {fileID: 1138313384}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1583,7 +1583,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1138313384}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.67, y: 0.9812}
   m_AnchorMax: {x: 0.975, y: 0.9812}
@@ -2520,8 +2520,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1813407182}
-  - {fileID: 648937685}
   - {fileID: 566481458}
+  - {fileID: 648937685}
   m_Father: {fileID: 1163734289}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 45.65
+  m_fontSize: 21.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
