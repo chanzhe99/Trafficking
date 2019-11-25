@@ -37,6 +37,21 @@ public class ScoreManager : MonoBehaviour
         score += (int)points;
     }
 
+    public int GetScore()
+    {
+        return (int)score;
+    }
+
+    public int GetPoints()
+    {
+        return (int)points;
+    }
+
+    public void DeductScore()
+    {
+        score -= 100;
+    }
+
     public void ResetScoreManager()
     {
         score = 0;

@@ -7,14 +7,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
-    private float startTime;
-    public float rTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        startTime = 100.0f;
-    }
+    [SerializeField] private float startTime = 60.0f;
+    [HideInInspector] public float rTime;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +17,7 @@ public class Timer : MonoBehaviour
         rTime = startTime - Time.timeSinceLevelLoad;
 
         string minutes = ((int)t / 60).ToString();
-        string seconds = (t % 60).ToString("f0");
+        string seconds = (t % 60).ToString("00");
 
         timerText.text = minutes + ":" + seconds;
     }

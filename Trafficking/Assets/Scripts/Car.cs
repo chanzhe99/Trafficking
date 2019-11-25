@@ -177,6 +177,7 @@ public class Car : MonoBehaviour
     {
         //Debug.Log("Satisfaction: " + Score.Instance.meter);
         Score.Instance.meter -= 1f;
+        ScoreManager.instance.DeductScore();
         yield return new WaitForSeconds(1.0f);
         decreasingS = false;
     }
