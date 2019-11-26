@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        Score.Instance.meter = 100f;
+        //Score.Instance.meter = 100f;
     }
 
     public void Back()

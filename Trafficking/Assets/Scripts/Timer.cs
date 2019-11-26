@@ -27,4 +27,9 @@ public class Timer : MonoBehaviour
 
         timerText.text = minutes + ":" + seconds;
     }
+
+    public float GetLevelTime()
+    {
+        return levelTime;
+    }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DayNightLighting : MonoBehaviour
 {
-    
+    [SerializeField] Timer levelTimer;
+
     private Light dayLight;
     private float startTime = 0f;
     private float endTime = 0f;
@@ -16,7 +17,7 @@ public class DayNightLighting : MonoBehaviour
     private void Start()
     {
         startTime = 0f;
-        endTime = 10f;
+        endTime = levelTimer.GetLevelTime();
         dayLight = GetComponent<Light>();
         startColor = Color.white;
         //endColor = new Color(1f, 0.901960784f, 0.62745098f);
