@@ -27,6 +27,7 @@ public class Car : MonoBehaviour
     bool turning = false;
     private float maxSpeed = 0f;
     private Car tempCar;
+    float turningSpeed;
 
 
     // Variables for Quaternion rotation
@@ -78,6 +79,7 @@ public class Car : MonoBehaviour
         startRelCenter = Vector3.zero;
         endRelCenter = Vector3.zero;
         tempCar = null;
+        turningSpeed = 0f;
     }
 
     private void Awake()
@@ -214,6 +216,7 @@ public class Car : MonoBehaviour
         if(startTime == 0.0f)
         {
             //startTime = Time.time;
+            turningSpeed = carSpeed;
             target = nodes[currentNode];
             if (currentNode == 2)
             {
@@ -268,7 +271,7 @@ public class Car : MonoBehaviour
         float distance = Mathf.Sqrt(((a.position.x-b.position.x) * (a.position.x -b.position.x)) + ((a.position.z - b.position.z) * (a.position.z -b.position.z)));
         distance /= 2;
         distance = Mathf.PI * distance;
-        return distance / carSpeed;
+        return distance / turningSpeed;
     }
 
     private void Drive()
@@ -313,13 +316,15 @@ public class Car : MonoBehaviour
             }
             else
             {
-                carSpeed = maxSpeed;
+                if (!Physics.Raycast(transform.position, direct, out hit, 3.3f, layer))
+                    carSpeed = maxSpeed;
                 return false;
             }
         }
         else
         {
-            carSpeed = maxSpeed;
+            if (!Physics.Raycast(transform.position, direct, out hit, 3.3f, layer))
+                carSpeed = maxSpeed;
             return false;
         }
         
