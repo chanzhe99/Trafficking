@@ -25,6 +25,8 @@ public class Car : MonoBehaviour
     private bool decreasingS = false;
     private int turnNo;
     bool turning = false;
+    private float maxSpeed = 0f;
+    private Car tempCar;
 
 
     // Variables for Quaternion rotation
@@ -75,11 +77,13 @@ public class Car : MonoBehaviour
         centerPoint = Vector3.zero;
         startRelCenter = Vector3.zero;
         endRelCenter = Vector3.zero;
+        tempCar = null;
     }
 
     private void Awake()
     {
         nodes = new Transform[5];
+        maxSpeed = carSpeed;
     }
     private void Start()
     {
@@ -209,7 +213,7 @@ public class Car : MonoBehaviour
         stopped = false;
         if(startTime == 0.0f)
         {
-            startTime = Time.time;
+            //startTime = Time.time;
             target = nodes[currentNode];
             if (currentNode == 2)
             {
@@ -244,8 +248,8 @@ public class Car : MonoBehaviour
             Vector3 direct = (transform.TransformDirection(Vector3.left).normalized);
             GetCenter(direct);
         }
-        
-        float fracComplete = (Time.time - startTime) / GetJourneyTime(startPos, endPos) ;
+        startTime += Time.deltaTime;
+        float fracComplete = (startTime) / GetJourneyTime(startPos, endPos) ;
         transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
         transform.rotation = Quaternion.Lerp(startRot, targetRot, fracComplete);
         transform.position += centerPoint;
@@ -282,7 +286,7 @@ public class Car : MonoBehaviour
         float rayRange;
         if(turning)
         {
-            rayRange = 1.5f;
+            rayRange = 2.3f;
         }
         else
         {
@@ -296,16 +300,26 @@ public class Car : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Car"))
             {
+                if (tempCar == null)
+                {
+                    tempCar = hit.transform.gameObject.GetComponent<Car>();
+                }
+                if (carSpeed > tempCar.carSpeed)
+                {
+                    carSpeed = tempCar.carSpeed;
+                }
                 stopped = true;
                 return true;
             }
             else
             {
+                carSpeed = maxSpeed;
                 return false;
             }
         }
         else
         {
+            carSpeed = maxSpeed;
             return false;
         }
         
