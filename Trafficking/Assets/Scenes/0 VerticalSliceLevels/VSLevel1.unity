@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &492540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,17 +174,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492539}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 336821e388d5cf447bfb256f21e55a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  scoreStars: []
-  score3Star: 0
-  multiplierText: {fileID: 0}
-  scoreText: {fileID: 0}
-  scoreMeter: {fileID: 0}
+  scoreStars:
+  - {fileID: 1643989426}
+  - {fileID: 1163423801}
+  - {fileID: 789451995}
+  score3Star: 50000
+  multiplierText: {fileID: 1658675391}
+  scoreText: {fileID: 1384510459}
+  scoreMeter: {fileID: 959894503}
 --- !u!1 &45265170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,7 +3467,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 54.75
+  m_fontSize: 54.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5088,7 +5090,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 54.75
+  m_fontSize: 54.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5194,9 +5196,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 6.7325034}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1725100718
 MonoBehaviour:
@@ -5397,7 +5399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336821e388d5cf447bfb256f21e55a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   scoreStars:
   - {fileID: 1643989426}
   - {fileID: 1163423801}

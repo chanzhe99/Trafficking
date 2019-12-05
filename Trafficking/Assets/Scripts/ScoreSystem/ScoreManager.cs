@@ -6,8 +6,8 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    [HideInInspector] public int score;
-    private float points, multiplier;
+    [HideInInspector] static public int score;
+    static private float points, multiplier;
 
     private float score1Star, score2Star;
     [SerializeField] Image[] scoreStars;
@@ -15,22 +15,22 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text multiplierText, scoreText/*pointsText,*/ ;
     [SerializeField] Slider scoreMeter;
 
-    private bool hasImpatientCar;
+    static bool hasImpatientCar;
 
-    public static ScoreManager instance;
+    //public static ScoreManager instance;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     private void Start()
     {
@@ -46,13 +46,13 @@ public class ScoreManager : MonoBehaviour
         ResetScoreManager();
     }
 
-    public void AddToScore()
+    static public void AddToScore()
     {
         points = 100 * multiplier;
         score += (int)points;
     }
     
-    public void DeductScore()
+    static public void DeductScore()
     {
         score -= 100;
     }
@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour
         multiplier = 1.0f;
     }
 
-    public void AdjustMultiplier()
+    static public void AdjustMultiplier()
     {
         if (!hasImpatientCar)
         {
@@ -75,12 +75,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void ImpatientCarOnScreen()
+    static public void ImpatientCarOnScreen()
     {
         hasImpatientCar = true;
     }
 
-    public void ImpatientCarLeavesScreen()
+    static public void ImpatientCarLeavesScreen()
     {
         hasImpatientCar = false;
     }
@@ -118,7 +118,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public int GetScore()
+    static int GetScore()
     {
         return (int)score;
     }

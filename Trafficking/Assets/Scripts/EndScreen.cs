@@ -16,7 +16,7 @@ public class EndScreen : MonoBehaviour
 
     private void Update()
     {
-        if (ScoreManager.instance.score < 0.0f)
+        if (ScoreManager.score < 0.0f)
         {
             isGameOver = true;
             endScreenUI.SetActive(true);
@@ -24,7 +24,7 @@ public class EndScreen : MonoBehaviour
         }
         else if (timerUI.rTime <= 0.0f)
         {
-            if (ScoreManager.instance.score >= 0.0f)
+            if (ScoreManager.score >= 0.0f)
             {
                 isGameOver = true;
                 endScreenUI.SetActive(true);
@@ -36,13 +36,13 @@ public class EndScreen : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ScoreManager.instance.score = 0;
+        ScoreManager.score = 0;
     }
 
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        ScoreManager.instance.score = 0;
+        ScoreManager.score = 0;
     }
 
     public void ReturnToMainMenu()

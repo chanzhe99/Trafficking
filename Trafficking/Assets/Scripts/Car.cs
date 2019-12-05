@@ -170,7 +170,7 @@ public class Car : MonoBehaviour
         }
         if (patience < 1)
         {
-            ScoreManager.instance.ImpatientCarOnScreen();
+            ScoreManager.ImpatientCarOnScreen();
         }
         //Debug.Log("startTime: " + startTime);
        
@@ -183,7 +183,7 @@ public class Car : MonoBehaviour
     {
         //Debug.Log("Satisfaction: " + Score.Instance.meter);
         //Score.Instance.meter -= 1f;
-        ScoreManager.instance.DeductScore();
+        ScoreManager.DeductScore();
         yield return new WaitForSeconds(1.0f);
         decreasingS = false;
     }
@@ -558,12 +558,12 @@ public class Car : MonoBehaviour
             gameObject.SetActive(false);
             //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
-            ScoreManager.instance.AdjustMultiplier();
+            ScoreManager.AdjustMultiplier();
             if (patience > 0)
             {
-                ScoreManager.instance.AddToScore();
+                ScoreManager.AddToScore();
             }
         }
-        ScoreManager.instance.ImpatientCarLeavesScreen();
+        ScoreManager.ImpatientCarLeavesScreen();
     }
 }
