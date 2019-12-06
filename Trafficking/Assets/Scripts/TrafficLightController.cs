@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
+public class TrafficLightController : MonoBehaviour , IPointerClickHandler
 {
     public Image buttonImage;
 
@@ -107,32 +107,10 @@ public class TrafficLightController : MonoBehaviour //, IPointerClickHandler
         }
     }
 
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    SetAllRed();
-    //    for (int i=0; i<phase.Count; i++)
-    //    {
-    //        // LEFT TURN
-    //        if (phase[i].canGoLeft)
-    //            trafficLights[i].canLeftTurn = true;
-    //        else
-    //            trafficLights[i].canLeftTurn = false;
-
-    //        // RIGHT TURN
-    //        if (phase[i].canGoRight)
-    //            trafficLights[i].canRightTurn = true;
-    //        else
-    //            trafficLights[i].canRightTurn = false;
-
-    //        // STRAIGHT
-    //        if (phase[i].canGoStraight)
-    //            trafficLights[i].canStraightTurn = true;
-    //        else
-    //            trafficLights[i].canStraightTurn = false;
-
-    //        trafficLights[i].ChangeGo();
-    //    }
-    //}
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        AudioManager.instance.Play("Terminal Button SFX");
+    }
 }
 
 [System.Serializable]

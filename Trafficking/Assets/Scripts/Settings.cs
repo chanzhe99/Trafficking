@@ -26,21 +26,25 @@ public class Settings : MonoBehaviour
 
     public void OnMusic()
     {
+        AudioManager.instance.Play("Settings Button SFX");
         isMusicOn = true;
     }
 
     public void OffMusic()
     {
+        AudioManager.instance.Play("Settings Button SFX");
         isMusicOn = false;
     }
 
     public void OnSFX()
     {
+        AudioManager.instance.Play("Settings Button SFX");
         isSFXOn = true;
     }
 
     public void OffSFX()
     {
+        AudioManager.instance.Play("Settings Button SFX");
         isSFXOn = false;
     }
 

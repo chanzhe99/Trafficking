@@ -15,6 +15,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select1()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Level1.transform.localScale = new Vector3(2, 1, 1);
         Level2.transform.localScale = new Vector3(1, 1, 1);
         Level3.transform.localScale = new Vector3(1, 1, 1);
@@ -26,6 +27,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select2()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Level1.transform.localScale = new Vector3(1, 1, 1);
         Level2.transform.localScale = new Vector3(2, 1, 1);
         Level3.transform.localScale = new Vector3(1, 1, 1);
@@ -37,6 +39,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select3()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Level1.transform.localScale = new Vector3(1, 1, 1);
         Level2.transform.localScale = new Vector3(1, 1, 1);
         Level3.transform.localScale = new Vector3(2, 1, 1);
@@ -48,6 +51,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select4()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Level1.transform.localScale = new Vector3(1, 1, 1);
         Level2.transform.localScale = new Vector3(1, 1, 1);
         Level3.transform.localScale = new Vector3(1, 1, 1);
@@ -59,6 +63,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select5()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Level1.transform.localScale = new Vector3(1, 1, 1);
         Level2.transform.localScale = new Vector3(1, 1, 1);
         Level3.transform.localScale = new Vector3(1, 1, 1);
@@ -70,21 +75,32 @@ public class LevelSelector : MonoBehaviour
 
     public void LoadLevel1()
     {
+        PlayLevelBGM();
         SceneManager.LoadScene("VSLevel1");
     }
 
     public void LoadLevel2()
     {
+        PlayLevelBGM();
         SceneManager.LoadScene("VSLevel2");
     }
 
     public void LoadLevel3()
     {
+        PlayLevelBGM();
         SceneManager.LoadScene("VSLevel3");
     }
 
     public void Back()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void PlayLevelBGM()
+    {
+        AudioManager.instance.StopPlaying("Main Menu BGM");
+        AudioManager.instance.Play("Level BGM");
+        AudioManager.instance.Play("Busy Street SFX");
     }
 }

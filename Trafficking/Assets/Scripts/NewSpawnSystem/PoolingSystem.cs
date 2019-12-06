@@ -23,6 +23,7 @@ public class PoolingSystem : MonoBehaviour
     SpawnSystemUnit spawn;
 
     private GameObject spawnParent;
+    public int activeCarNumbers;
 
     public List<GameObject> pooledObjects;
     public static PoolingSystem Instance;
@@ -46,6 +47,27 @@ public class PoolingSystem : MonoBehaviour
         SpawnPool();
     }
 
+    private void FixedUpdate()
+    {
+        if (activeCarNumbers > 17)
+        {
+            if (AudioManager.instance.CheckIfPlaying("Traffic Jam SFX") == false)
+            {
+                if (AudioManager.instance.CheckIfPlaying("Busy Street SFX") == true)
+                    AudioManager.instance.StopPlaying("Busy Street SFX");
+                AudioManager.instance.Play("Traffic Jam SFX");
+            }
+        }
+        else
+        {
+            if (AudioManager.instance.CheckIfPlaying("Busy Street SFX") == false)
+            {
+                if (AudioManager.instance.CheckIfPlaying("Traffic Jam SFX") == true)
+                    AudioManager.instance.StopPlaying("Traffic Jam SFX");
+                AudioManager.instance.Play("Busy Street SFX");
+            }
+        }
+    }
 
     private void SpawnPool()
     {

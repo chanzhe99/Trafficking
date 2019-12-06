@@ -184,6 +184,7 @@ public class Car : MonoBehaviour
         //Debug.Log("Satisfaction: " + Score.Instance.meter);
         //Score.Instance.meter -= 1f;
         ScoreManager.DeductScore();
+        AudioManager.instance.Play("Honk SFX");
         yield return new WaitForSeconds(1.0f);
         decreasingS = false;
     }
@@ -558,12 +559,14 @@ public class Car : MonoBehaviour
             gameObject.SetActive(false);
             //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
+            PoolingSystem.Instance.activeCarNumbers--;
             ScoreManager.AdjustMultiplier();
             if (patience > 0)
             {
                 ScoreManager.AddToScore();
             }
+            
+            ScoreManager.ImpatientCarLeavesScreen();
         }
-        ScoreManager.ImpatientCarLeavesScreen();
     }
 }

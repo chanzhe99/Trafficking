@@ -32,6 +32,8 @@ public class TimeManager : MonoBehaviour
     {
         if(endScreen.isGameOver == true && countdown.isStart == true)
         {
+            AudioManager.instance.StopPlaying("Busy Street SFX");
+            AudioManager.instance.StopPlaying("Traffic Jam SFX");
             PauseMenu.GetComponent<PauseMenu>().isPause = true;
             Time.timeScale = 0.0f;
         }
@@ -42,6 +44,9 @@ public class TimeManager : MonoBehaviour
         if(PauseMenu.GetComponent<PauseMenu>().isPause == true)
         {
             Time.timeScale = 0.0f;
+            AudioManager.instance.Pause("Busy Street SFX");
+            AudioManager.instance.Pause("Traffic Jam SFX");
+
         }
         else if(PauseMenu.GetComponent<PauseMenu>().isPause == false && countdown.isStart == true)
         {

@@ -10,11 +10,13 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         SettingsPanelUI.SetActive(true);
     }
 
     public void CloseSettings()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         SettingsPanelUI.SetActive(false);
     }
 
@@ -40,11 +42,13 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevelSelect()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         SceneManager.LoadScene("LevelSelectMenu");
     }
 
     public void QuitGame()
     {
+        AudioManager.instance.Play("Menu Button SFX");
         Debug.Log("Quit");
         Application.Quit();
     }

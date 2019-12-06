@@ -66,6 +66,7 @@ public class SpawnSystem : MonoBehaviour
             //Debug.Log("true");
             if (canSpawn && !isSpawning)
             {
+                PoolingSystem.Instance.activeCarNumbers++;
                 if (curTime.ratePrio == SpawnRate.Low)
                 {
                     if (spawning != null) StopCoroutine(spawning);
@@ -124,7 +125,6 @@ public class SpawnSystem : MonoBehaviour
 
     IEnumerator SpawnVehicle(float sec)
     {
-
         yield return new WaitForSeconds(sec);
         spawning = null;
         isSpawning = false;

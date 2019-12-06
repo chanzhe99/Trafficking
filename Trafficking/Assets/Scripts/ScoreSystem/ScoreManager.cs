@@ -17,21 +17,6 @@ public class ScoreManager : MonoBehaviour
 
     static bool hasImpatientCar;
 
-    //public static ScoreManager instance;
-
-    //private void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //        DontDestroyOnLoad(gameObject);
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
     private void Start()
     {
         scoreMeter.maxValue = score3Star;
