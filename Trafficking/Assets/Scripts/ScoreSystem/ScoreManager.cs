@@ -7,7 +7,8 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     [HideInInspector] static public int score;
-    static private float points, multiplier;
+    [HideInInspector] static public float points = 0;
+    [HideInInspector] static public float multiplier;
 
     private float score1Star, score2Star;
     [SerializeField] Image[] scoreStars;
@@ -113,7 +114,7 @@ public class ScoreManager : MonoBehaviour
         return (int)points;
     }
 
-    public float GetMultiplier()
+    static float GetMultiplier()
     {
         return (float)multiplier;
     }

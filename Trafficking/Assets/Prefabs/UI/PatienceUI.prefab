@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boredSprite: {fileID: 21300000, guid: d41299e825e050945b5af3aea7ef078f, type: 3}
   angrySprite: {fileID: 21300000, guid: 2c13645bfed5e374384f0b2cf154af80, type: 3}
+  scoreText: {fileID: 127496739848893732}
 --- !u!114 &6217552647095156907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +140,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 100, y: 50}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &60125528411324134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -198,11 +199,11 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 36
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -17.097656, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 127496739848893732}
     characterCount: 0

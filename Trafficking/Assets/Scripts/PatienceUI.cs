@@ -8,6 +8,7 @@ public class PatienceUI : MonoBehaviour
 {
     [SerializeField] Sprite boredSprite;
     [SerializeField] Sprite angrySprite;
+    [SerializeField] TextMeshProUGUI scoreText;
     Image patienceImage;
     Car carScript;
     Color transparentColour;
@@ -26,21 +27,28 @@ public class PatienceUI : MonoBehaviour
 
     private void Update()
     {
-        if(carScript.patience > 7)
+        if(carScript.GetCarExit())
         {
             patienceImage.color = transparentColour;
+            scoreText.text = ScoreManager.points.ToString("0");
         }
-        else if(carScript.patience > 3 && carScript.patience < 8)
+        else
         {
-            patienceImage.color = fillColour;
-            patienceImage.sprite = boredSprite;
+            if (carScript.patience > 7)
+            {
+                patienceImage.color = transparentColour;
+            }
+            else if (carScript.patience > 3 && carScript.patience < 8)
+            {
+                patienceImage.color = fillColour;
+                patienceImage.sprite = boredSprite;
+            }
+            else if (carScript.patience < 4)
+            {
+                patienceImage.color = fillColour;
+                patienceImage.sprite = angrySprite;
+            }
         }
-        else if(carScript.patience < 4)
-        {
-            patienceImage.color = fillColour;
-            patienceImage.sprite = angrySprite;
-        }
-        
     }
 
     public void GetCarScript(Car car)

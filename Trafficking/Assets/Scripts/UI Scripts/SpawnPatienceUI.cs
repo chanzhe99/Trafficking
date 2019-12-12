@@ -17,6 +17,7 @@ public class SpawnPatienceUI : MonoBehaviour
     private void Update()
     {
         patienceUI.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0f, 0f, 0f));
+
     }
 
     public void SetCanvas(Canvas patienceCanvas)

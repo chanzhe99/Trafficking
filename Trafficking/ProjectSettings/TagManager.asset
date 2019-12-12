@@ -10,6 +10,7 @@ TagManager:
   - TurnRightLight
   - CrossLight
   - Exit
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -48,6 +48,8 @@ public class Car : MonoBehaviour
     Vector3 startRelCenter = Vector3.zero;
     Vector3 endRelCenter = Vector3.zero;
 
+    // Variable for carExit
+    bool carExited = false;
 
     public void ResetValues()
     {
@@ -554,19 +556,28 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.CompareTag("Score"))
+        {
+            ScoreManager.AdjustMultiplier();
+            if (patience > 0)
+            {
+                ScoreManager.AddToScore();
+                carExited = true;
+            }
+            ScoreManager.ImpatientCarLeavesScreen();
+        }
+
         if (other.gameObject.CompareTag("Exit"))
         {
             gameObject.SetActive(false);
             //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
             PoolingSystem.Instance.activeCarNumbers--;
-            ScoreManager.AdjustMultiplier();
-            if (patience > 0)
-            {
-                ScoreManager.AddToScore();
-            }
-            
-            ScoreManager.ImpatientCarLeavesScreen();
         }
+    }
+
+    public bool GetCarExit()
+    {
+        return carExited;
     }
 }
