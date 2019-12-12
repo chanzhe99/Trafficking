@@ -6,13 +6,11 @@ using UnityEngine.EventSystems;
 public class Tutorial : MonoBehaviour, IPointerClickHandler
 {
     public List<GameObject> Page;
-    public int currentPanel = 0;
-    
+    public int currentPanel = 1;
 
     public void ActivateTutorial()
     {
-        currentPanel = 0;
-        gameObject.SetActive(true);
+        currentPanel = 1;
         AudioManager.instance.Play("Menu Button SFX");
         Page[1].SetActive(true);
     }
