@@ -50,6 +50,7 @@ public class Car : MonoBehaviour
 
     // Variable for carExit
     bool carExited = false;
+    int carExitScore = 0;
 
     public void ResetValues()
     {
@@ -562,6 +563,7 @@ public class Car : MonoBehaviour
             if (patience > 0)
             {
                 ScoreManager.AddToScore();
+                carExitScore = ScoreManager.GetPoints();
                 carExited = true;
             }
             ScoreManager.ImpatientCarLeavesScreen();
@@ -573,11 +575,17 @@ public class Car : MonoBehaviour
             //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
             PoolingSystem.Instance.activeCarNumbers--;
+            carExited = false;
         }
     }
 
     public bool GetCarExit()
     {
         return carExited;
+    }
+
+    public int GetCarExitScore()
+    {
+        return carExitScore;
     }
 }

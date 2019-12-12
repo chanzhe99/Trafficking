@@ -109,7 +109,7 @@ public class ScoreManager : MonoBehaviour
         return (int)score;
     }
 
-    public int GetPoints()
+    public static int GetPoints()
     {
         return (int)points;
     }

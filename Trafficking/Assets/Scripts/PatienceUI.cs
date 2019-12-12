@@ -13,6 +13,7 @@ public class PatienceUI : MonoBehaviour
     Car carScript;
     Color transparentColour;
     Color fillColour;
+    int carExitScore;
 
     private void Start()
     {
@@ -30,10 +31,11 @@ public class PatienceUI : MonoBehaviour
         if(carScript.GetCarExit())
         {
             patienceImage.color = transparentColour;
-            scoreText.text = ScoreManager.points.ToString("0");
+            scoreText.text = carScript.GetCarExitScore().ToString("0");
         }
         else
         {
+            scoreText.text = null;
             if (carScript.patience > 7)
             {
                 patienceImage.color = transparentColour;
