@@ -17,19 +17,19 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator Transition()
     {
-        for(float f = 0f; f <= 1; f += Time.deltaTime)
+        for(float f = 0f; f < 1; f += Time.deltaTime)
         {
             kduLogoCanvas.alpha = f;
             yield return null;
         }
-
+        kduLogoCanvas.alpha = 1;
         yield return new WaitForSeconds(1f);
-        
         for (float f = 1f; f >= 0; f -= Time.deltaTime)
         {
             kduLogoCanvas.alpha = f;
             yield return null;
         }
+        kduLogoCanvas.alpha = 0f;
         yield return new WaitForSeconds(1f);
 
 
@@ -38,14 +38,14 @@ public class SplashScreen : MonoBehaviour
             uowLogoCanvas.alpha = f;
             yield return null;
         }
-
+        uowLogoCanvas.alpha = 1;
         yield return new WaitForSeconds(1f);
-        
         for (float f = 1f; f >= 0; f -= Time.deltaTime)
         {
             uowLogoCanvas.alpha = f;
             yield return null;
         }
+        uowLogoCanvas.alpha = 0;
         yield return new WaitForSeconds(1f);
         
         for(float f = 0f; f <= 1; f += Time.deltaTime)
@@ -53,14 +53,14 @@ public class SplashScreen : MonoBehaviour
             teamLogoCanvas.alpha = f;
             yield return null;
         }
-
+        teamLogoCanvas.alpha = 1;
         yield return new WaitForSeconds(1f);
-        
         for (float f = 1f; f >= 0; f -= Time.deltaTime)
         {
             teamLogoCanvas.alpha = f;
             yield return null;
         }
+        teamLogoCanvas.alpha = 0;
         yield return new WaitForSeconds(1f);
 
         LoadTitle();
