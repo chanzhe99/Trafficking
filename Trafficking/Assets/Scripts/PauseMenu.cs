@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.StopPlaying("Level BGM");
         AudioManager.instance.Play("Level BGM");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Score.Instance.meter = 100f;
+        //Score.Instance.meter = 100f;
     }
 
     public void ReturnToMainMenu()
