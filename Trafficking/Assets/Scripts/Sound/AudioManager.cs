@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -32,7 +33,15 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Main Menu BGM");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            AudioManager.instance.Play("Main Menu BGM");
+        }
+        else if (SceneManager.GetActiveScene().name == "VSLevel1")
+        {
+            AudioManager.instance.Play("Level BGM");
+            AudioManager.instance.Play("Busy Street SFX");
+        }
     }
 
     public void Play(string name)
