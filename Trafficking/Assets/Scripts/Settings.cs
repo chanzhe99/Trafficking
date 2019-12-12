@@ -26,24 +26,52 @@ public class Settings : MonoBehaviour
 
     public void OnMusic()
     {
+        AudioManager.instance.OnVolume("Level BGM", 0.3f);
+        AudioManager.instance.OnVolume("Main Menu BGM", 0.3f);
+
         AudioManager.instance.Play("Settings Button SFX");
         isMusicOn = true;
     }
 
     public void OffMusic()
     {
+        AudioManager.instance.OffVolume("Level BGM", 0.0f);
+        AudioManager.instance.OffVolume("Main Menu BGM", 0.0f);
+
         AudioManager.instance.Play("Settings Button SFX");
         isMusicOn = false;
     }
 
     public void OnSFX()
     {
+        AudioManager.instance.OnVolume("Busy Street SFX", 0.5f);
+        AudioManager.instance.OnVolume("Game Over SFX", 0.7f);
+        AudioManager.instance.OnVolume("Honk SFX", 0.6f);
+        AudioManager.instance.OnVolume("Menu Button SFX", 0.6f);
+        AudioManager.instance.OnVolume("Settings Button SFX", 0.6f);
+        AudioManager.instance.OnVolume("Star Stamp SFX", 0.6f);
+        AudioManager.instance.OnVolume("Terminal Button SFX", 0.6f);
+        AudioManager.instance.OnVolume("Traffic Jam SFX", 0.05f);
+        AudioManager.instance.OnVolume("Victory SFX", 0.7f);
+        AudioManager.instance.OnVolume("Points SFX", 0.5f);
+
         AudioManager.instance.Play("Settings Button SFX");
         isSFXOn = true;
     }
 
     public void OffSFX()
     {
+        AudioManager.instance.OnVolume("Busy Street SFX", 0.0f);
+        AudioManager.instance.OnVolume("Game Over SFX", 0.0f);
+        AudioManager.instance.OnVolume("Honk SFX", 0.0f);
+        AudioManager.instance.OnVolume("Menu Button SFX", 0.0f);
+        AudioManager.instance.OnVolume("Settings Button SFX", 0.0f);
+        AudioManager.instance.OnVolume("Star Stamp SFX", 0.0f);
+        AudioManager.instance.OnVolume("Terminal Button SFX", 0.0f);
+        AudioManager.instance.OnVolume("Traffic Jam SFX", 0.0f);
+        AudioManager.instance.OnVolume("Victory SFX", 0.0f);
+        AudioManager.instance.OnVolume("Points SFX", 0.0f);
+
         AudioManager.instance.Play("Settings Button SFX");
         isSFXOn = false;
     }

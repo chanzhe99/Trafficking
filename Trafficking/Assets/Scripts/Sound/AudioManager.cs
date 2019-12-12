@@ -108,5 +108,25 @@ public class AudioManager : MonoBehaviour
         return false;
     }
 
+    public void OffVolume(string name, float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.soundName == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        s.source.volume = volume;
+    }
 
+    public void OnVolume(string name, float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.soundName == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        s.source.volume = volume;
+    }
 }
