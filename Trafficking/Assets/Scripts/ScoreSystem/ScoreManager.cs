@@ -17,6 +17,10 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Slider scoreMeter;
 
     static bool hasImpatientCar;
+    [HideInInspector] public bool is1Star = false;
+    [HideInInspector] public bool is2Star = false;
+    [HideInInspector] public bool is3Star = false;
+    public int finalPoints;
 
     private void Start()
     {
@@ -83,25 +87,38 @@ public class ScoreManager : MonoBehaviour
             scoreStars[0].enabled = true;
             scoreStars[1].enabled = false;
             scoreStars[2].enabled = false;
+            is1Star = true;
+            is2Star = false;
+            is3Star = false;
         }
         else if(score >= score2Star && score < score3Star)
         {
             scoreStars[0].enabled = true;
             scoreStars[1].enabled = true;
             scoreStars[2].enabled = false;
+            is2Star = false;
+            is2Star = true;
+            is3Star = false;
         }
         else if(score >= score3Star)
         {
             scoreStars[0].enabled = true;
             scoreStars[1].enabled = true;
             scoreStars[2].enabled = true;
+            is3Star = false;
+            is2Star = false;
+            is3Star = true;
         }
         else
         {
             scoreStars[0].enabled = false;
             scoreStars[1].enabled = false;
             scoreStars[2].enabled = false;
+            is1Star = false;
+            is2Star = false;
+            is3Star = false;
         }
+        finalPoints = score;
     }
 
     static int GetScore()

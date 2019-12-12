@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class EndScreen : MonoBehaviour
 {
@@ -11,8 +12,13 @@ public class EndScreen : MonoBehaviour
     [SerializeField] Timer timerUI;
     [SerializeField] GameObject Lose;
     [SerializeField] GameObject Win;
+    [SerializeField] GameObject scoreManager;
+    [SerializeField] TMP_Text pScore;
+    [SerializeField] GameObject Star1;
+    [SerializeField] GameObject Star2;
+    [SerializeField] GameObject Star3;
 
-    public bool isGameOver = false;
+    [HideInInspector] public bool isGameOver = false;
 
     private void Update()
     {
@@ -21,14 +27,46 @@ public class EndScreen : MonoBehaviour
             isGameOver = true;
             endScreenUI.SetActive(true);
             Lose.SetActive(true);
+            pScore.text = scoreManager.GetComponent<ScoreManager>().finalPoints.ToString("000,000");
         }
         else if (timerUI.rTime <= 0.0f)
         {
             if (ScoreManager.score >= 0.0f)
             {
-                isGameOver = true;
-                endScreenUI.SetActive(true);
-                Win.SetActive(true);
+                if(scoreManager.GetComponent<ScoreManager>().is1Star == false)
+                {
+                    isGameOver = true;
+                    endScreenUI.SetActive(true);
+                    Lose.SetActive(true);
+                    pScore.text = scoreManager.GetComponent<ScoreManager>().finalPoints.ToString("000,000");
+                }
+                else if(scoreManager.GetComponent<ScoreManager>().is3Star == true)
+                {
+                    isGameOver = true;
+                    endScreenUI.SetActive(true);
+                    Win.SetActive(true);
+                    Star1.SetActive(true);
+                    Star2.SetActive(true);
+                    Star3.SetActive(true);
+                    pScore.text = scoreManager.GetComponent<ScoreManager>().finalPoints.ToString("000,000");
+                }
+                else if(scoreManager.GetComponent<ScoreManager>().is2Star == true)
+                {
+                    isGameOver = true;
+                    endScreenUI.SetActive(true);
+                    Win.SetActive(true);
+                    Star1.SetActive(true);
+                    Star2.SetActive(true);
+                    pScore.text = scoreManager.GetComponent<ScoreManager>().finalPoints.ToString("000,000");
+                }
+                else if(scoreManager.GetComponent<ScoreManager>().is1Star == true)
+                {
+                    isGameOver = true;
+                    endScreenUI.SetActive(true);
+                    Win.SetActive(true);
+                    Star1.SetActive(true);
+                    pScore.text = scoreManager.GetComponent<ScoreManager>().finalPoints.ToString("000,000");
+                }
             }
         }
     }
