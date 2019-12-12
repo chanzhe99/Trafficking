@@ -8,9 +8,10 @@ public class Settings : MonoBehaviour
     [SerializeField] GameObject SFXButtonOn;
     [SerializeField] GameObject MusicButtonOff;
     [SerializeField] GameObject SFXButtonOff;
+    [SerializeField] GameObject Credits;
 
-    public bool isMusicOn;
-    public bool isSFXOn;
+    [HideInInspector] public bool isMusicOn;
+    [HideInInspector] public bool isSFXOn;
 
     private void Start()
     {
@@ -102,5 +103,15 @@ public class Settings : MonoBehaviour
             SFXButtonOff.SetActive(true);
             SFXButtonOn.SetActive(false);
         }
+    }
+
+    public void openCredits()
+    {
+        Credits.SetActive(true);
+    }
+
+    public void closeCreddits()
+    {
+        Credits.SetActive(false);
     }
 }
