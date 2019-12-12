@@ -10,7 +10,6 @@ public class SpawnPatienceUI : MonoBehaviour
 
     private void Start()
     {
-        patienceUICanvas = FindObjectOfType<Canvas>();
         patienceUI = Instantiate(patienceUIPrefab, patienceUICanvas.transform);
         patienceUI.GetComponent<PatienceUI>().GetCarScript(this.GetComponent<Car>());
     }
@@ -18,5 +17,10 @@ public class SpawnPatienceUI : MonoBehaviour
     private void Update()
     {
         patienceUI.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0f, 0f, 0f));
+    }
+
+    public void SetCanvas(Canvas patienceCanvas)
+    {
+        patienceUICanvas = patienceCanvas;
     }
 }
