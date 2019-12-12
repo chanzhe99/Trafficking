@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 492541}
   - component: {fileID: 492540}
-  - component: {fileID: 492542}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -167,26 +166,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &492542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492539}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 336821e388d5cf447bfb256f21e55a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreStars:
-  - {fileID: 1643989426}
-  - {fileID: 1163423801}
-  - {fileID: 789451995}
-  score3Star: 50000
-  multiplierText: {fileID: 1658675391}
-  scoreText: {fileID: 1384510459}
-  scoreMeter: {fileID: 959894503}
 --- !u!1 &10288868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.000015258789}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395371770
@@ -5755,7 +5734,7 @@ MonoBehaviour:
   - {fileID: 1643989426}
   - {fileID: 1163423801}
   - {fileID: 789451995}
-  score3Star: 50000
+  score3Star: 35000
   multiplierText: {fileID: 1658675391}
   scoreText: {fileID: 1384510459}
   scoreMeter: {fileID: 959894503}
