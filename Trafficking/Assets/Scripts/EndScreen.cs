@@ -19,7 +19,6 @@ public class EndScreen : MonoBehaviour
         if (ScoreManager.score < 0.0f)
         {
             isGameOver = true;
-            AudioManager.instance.Play("Game Over SFX");
             endScreenUI.SetActive(true);
             Lose.SetActive(true);
         }
@@ -28,12 +27,12 @@ public class EndScreen : MonoBehaviour
             if (ScoreManager.score >= 0.0f)
             {
                 isGameOver = true;
-                AudioManager.instance.Play("Victory SFX");
                 endScreenUI.SetActive(true);
                 Win.SetActive(true);
             }
         }
     }
+    
 
     public void Retry()
     {
