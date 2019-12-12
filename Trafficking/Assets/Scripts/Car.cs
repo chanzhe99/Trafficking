@@ -564,6 +564,7 @@ public class Car : MonoBehaviour
             if (patience > 0)
             {
                 ScoreManager.AddToScore();
+                AudioManager.instance.Play("Points SFX");
                 carExitScore = ScoreManager.GetPoints();
                 carExited = true;
             }
