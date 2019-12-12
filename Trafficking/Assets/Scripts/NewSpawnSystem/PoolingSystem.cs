@@ -50,13 +50,17 @@ public class PoolingSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (activeCarNumbers > 17)
+        if (activeCarNumbers > 15)
         {
             if (AudioManager.instance.CheckIfPlaying("Traffic Jam SFX") == false)
             {
                 if (AudioManager.instance.CheckIfPlaying("Busy Street SFX") == true)
                     AudioManager.instance.StopPlaying("Busy Street SFX");
                 AudioManager.instance.Play("Traffic Jam SFX");
+            }
+            else
+            {
+                AudioManager.instance.Unpause("Traffic Jam SFX");
             }
         }
         else
@@ -66,6 +70,10 @@ public class PoolingSystem : MonoBehaviour
                 if (AudioManager.instance.CheckIfPlaying("Traffic Jam SFX") == true)
                     AudioManager.instance.StopPlaying("Traffic Jam SFX");
                 AudioManager.instance.Play("Busy Street SFX");
+            }
+            else
+            {
+                AudioManager.instance.Unpause("Busy Street SFX");
             }
         }
     }

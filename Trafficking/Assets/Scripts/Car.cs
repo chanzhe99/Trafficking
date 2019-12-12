@@ -560,6 +560,7 @@ public class Car : MonoBehaviour
         if(other.gameObject.CompareTag("Score"))
         {
             ScoreManager.AdjustMultiplier();
+            PoolingSystem.Instance.activeCarNumbers--;
             if (patience > 0)
             {
                 ScoreManager.AddToScore();
@@ -574,7 +575,6 @@ public class Car : MonoBehaviour
             gameObject.SetActive(false);
             //Score.Instance.carCounter++;
             //Destroy(other.gameObject);
-            PoolingSystem.Instance.activeCarNumbers--;
             carExited = false;
         }
     }
