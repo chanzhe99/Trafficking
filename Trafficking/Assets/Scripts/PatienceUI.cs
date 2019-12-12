@@ -6,31 +6,41 @@ using TMPro;
 
 public class PatienceUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI patience;
-    Image patienceColour;
+    [SerializeField] Sprite boredSprite;
+    [SerializeField] Sprite angrySprite;
+    Image patienceImage;
     Car carScript;
+    Color transparentColour;
+    Color fillColour;
 
     private void Start()
     {
-        patienceColour = this.GetComponent<Image>();
+        patienceImage = this.GetComponent<Image>();
+        fillColour = patienceImage.color;
+        transparentColour = patienceImage.color;
+        fillColour.a = 1f;
+        transparentColour.a = 0f;
+
+        patienceImage.color = transparentColour;
     }
 
     private void Update()
     {
         if(carScript.patience > 7)
         {
-            patienceColour.color = Color.green;
+            patienceImage.color = transparentColour;
         }
         else if(carScript.patience > 3 && carScript.patience < 8)
         {
-            patienceColour.color = Color.yellow;
+            patienceImage.color = fillColour;
+            patienceImage.sprite = boredSprite;
         }
         else if(carScript.patience < 4)
         {
-            patienceColour.color = Color.red;
+            patienceImage.color = fillColour;
+            patienceImage.sprite = angrySprite;
         }
-
-        patience.text = carScript.patience.ToString();
+        
     }
 
     public void GetCarScript(Car car)

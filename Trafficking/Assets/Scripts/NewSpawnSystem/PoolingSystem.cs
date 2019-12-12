@@ -11,6 +11,7 @@ public struct SpawnSystemUnit
 
 public class PoolingSystem : MonoBehaviour
 {
+    [SerializeField] Canvas patienceCanvas;
     [SerializeField] GameObject slow;
     [SerializeField] GameObject med1;
     [SerializeField] GameObject med2;
@@ -83,6 +84,7 @@ public class PoolingSystem : MonoBehaviour
     {
         GameObject obj = Instantiate(slow, new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj, carScript = obj.GetComponent<Car>() };
+        obj.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj.SetActive(false);
         for(int i=0; i< spawnSys.Count; i++)
         {
@@ -94,6 +96,7 @@ public class PoolingSystem : MonoBehaviour
     {
         GameObject obj1 = Instantiate((med1), new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj1, carScript = obj1.GetComponent<Car>() };
+        obj1.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj1.SetActive(false);
         for (int i = 0; i < spawnSys.Count; i++)
         {
@@ -101,6 +104,7 @@ public class PoolingSystem : MonoBehaviour
         }
         GameObject obj2 = Instantiate((med2), new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj2, carScript = obj2.GetComponent<Car>() };
+        obj2.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj2.SetActive(false);
         for (int i = 0; i < spawnSys.Count; i++)
         {
@@ -108,6 +112,7 @@ public class PoolingSystem : MonoBehaviour
         }
         GameObject obj3 = Instantiate((med3), new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj3, carScript = obj3.GetComponent<Car>() };
+        obj3.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj3.SetActive(false);
         for (int i = 0; i < spawnSys.Count; i++)
         {
@@ -115,6 +120,7 @@ public class PoolingSystem : MonoBehaviour
         }
         GameObject obj4 = Instantiate((med4), new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj4, carScript = obj4.GetComponent<Car>() };
+        obj4.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj4.SetActive(false);
         for (int i = 0; i < spawnSys.Count; i++)
         {
@@ -126,6 +132,7 @@ public class PoolingSystem : MonoBehaviour
     {
         GameObject obj5 = Instantiate((fast), new Vector3(0, 0, 0), Quaternion.identity);
         spawn = new SpawnSystemUnit { car = obj5, carScript = obj5.GetComponent<Car>() };
+        obj5.GetComponent<SpawnPatienceUI>().SetCanvas(patienceCanvas);
         obj5.SetActive(false);
         for (int i = 0; i < spawnSys.Count; i++)
         {
