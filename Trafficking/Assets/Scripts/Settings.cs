@@ -45,6 +45,7 @@ public class Settings : MonoBehaviour
 
     public void OnSFX()
     {
+        AudioManager.instance.Play("Settings Button SFX");
         AudioManager.instance.OnVolume("Busy Street SFX", 0.5f);
         AudioManager.instance.OnVolume("Game Over SFX", 0.7f);
         AudioManager.instance.OnVolume("Honk SFX", 0.6f);
@@ -56,7 +57,6 @@ public class Settings : MonoBehaviour
         AudioManager.instance.OnVolume("Victory SFX", 0.7f);
         AudioManager.instance.OnVolume("Points SFX", 0.5f);
 
-        AudioManager.instance.Play("Settings Button SFX");
         isSFXOn = true;
     }
 
